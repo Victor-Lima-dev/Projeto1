@@ -69,11 +69,95 @@ namespace ResolverQuestao.Controllers
             // Retorna a mesma view com os erros
             return View(exercicio);
 
+        }
 
+
+        //HTTP GET - Details
+
+        [HttpGet("Details/{id}")]
+        public IActionResult Details(int id)
+        {
+            //buscar o exercicio no banco de dados, include alternativas
+    
+            var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
+
+            //verificar se o exercicio existe
+            if (exercicio == null)
+            {
+                return NotFound();
+            }
+
+            //lista de todas as alternativas
+            var alternativas = _context.Alternativas.ToList();
+
+
+            //enviar o exercicio para a view
+            return View(exercicio);
         }
 
 
 
+        //HTTP GET - Edit
+        [HttpGet("Edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            //buscar o exercicio no banco de dados
+            var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
+
+            //verificar se o exercicio existe
+            if (exercicio == null)
+            {
+                return NotFound();
+            }
+
+            //alternativas
+            var alternativas = _context.Alternativas.ToList();
+
+            //enviar o exercicio para a view
+            return View(exercicio);
+        }
+
+        //HTTP POST - Edit
+        [HttpPost("Edit/{id}")]
+        public IActionResult Edit (Exercicio exercicio)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Exercicios.Update(exercicio);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+            // Adiciona uma mensagem de erro para cada propriedade inválida
+            foreach (var key in ModelState.Keys)
+            {
+                if (ModelState[key].ValidationState == ModelValidationState.Invalid)
+                {
+                    ModelState.AddModelError(key, $"O valor de {key} é inválido.");
+                }
+            }
+            // Retorna a mesma view com os erros
+            return View(exercicio);
+        }
+
+        //HTTP GET - Delete
+        [HttpGet("Delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            //buscar o exercicio no banco de dados
+            var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
+
+            //apagar o exercicio
+            _context.Exercicios.Remove(exercicio);
+            _context.SaveChanges();
+            
+            return RedirectToAction("Index");
+
+        
+        }
+
+        
 
 
 

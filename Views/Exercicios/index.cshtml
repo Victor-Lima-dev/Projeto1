@@ -4,10 +4,17 @@
 
     <h1 class="title text-center"> Exercicios</h1>
 
+    @* Criar *@
+    <a asp-action="Create" class="btn btn-primary">Criar</a>
+    
     @foreach (var item in Model)
     {
         <ul class="list-group">
             <li class="list-group-item">@item.Titulo</li>
+            <a asp-action="Details" asp-route-id = "@item.ExercicioId">Detalhes</a>
+            <a asp-action="Edit" asp-route-id = "@item.ExercicioId">Editar</a>
+            <a asp-action="Delete" asp-route-id = "@item.ExercicioId">Deletar</a>
+
         </ul>
     }
 

@@ -1,0 +1,30 @@
+@model Exercicio
+
+<div class="container">
+    <h1>@Model.Titulo <span class="badge bg-secondary">@Model.Tipo</span></h1>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">Enunciado:</li>
+        <li class="list-group-item">@Model.Enunciado</li>
+    </ul>
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">Resposta:</li>
+        <li class="list-group-item">@Model.Resposta</li>
+    </ul>
+    <h4>Alternativas</h4>
+
+    <ol class="list-group list-group-numbered"></ol>
+    @foreach (var item in Model.Alternativas)
+    {
+        @if (item.Texto == Model.Resposta)
+        {
+            <li class="list-group-item list-group-item-success">@item.Texto</li>
+        }
+
+        <li class="list-group-item">@item.Texto</li>
+
+    }
+    </ol>
+    <a asp-action="Delete" asp-route-id = "@Model.ExercicioId">Deletar</a>
+    <a asp-action="Edit" asp-route-id = "@Model.ExercicioId">Editar</a>
+    <a asp-action="Index">Voltar</a>
+</div>

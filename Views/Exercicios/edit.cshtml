@@ -1,14 +1,14 @@
 @model Exercicio
 
-<h1>Criar Exercício</h1>
+<h1>Editar Exercício</h1>
 
 
-
-<form asp-action="Create" method="post">
+<form asp-action="Edit" method="post">
     <div class="form-group">
+        <input asp-for="ExercicioId" type="hidden" />
         <label asp-for="Titulo">Título</label>
         <input asp-for="Titulo" class="form-control"/>
-
+        
         @Html.ValidationMessageFor(model => model.Titulo)
 
     </div>
@@ -80,7 +80,7 @@
     @* submeter *@
 
     <div class="form-group">
-        <input type="submit" value="Criar" class="btn btn-primary" />
+        <input type="submit" value="Editar" class="btn btn-primary" />
     </div>
 
 </form>
