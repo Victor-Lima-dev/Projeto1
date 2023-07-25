@@ -1,0 +1,129 @@
+@model Exercicio
+
+<h1>Criar Exercício</h1>
+
+
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Titulo">Título</label>
+        <input asp-for="Titulo" class="form-control"/>
+        @Html.ValidationMessageFor(model => model.Titulo)
+
+    </div>
+
+    @* Enunciado *@
+    <div class="form-group">
+        <label asp-for="Enunciado">Enunciado</label>
+        <textarea asp-for="Enunciado" class="form-control"></textarea>
+            @Html.ValidationMessageFor(model => model.Enunciado)
+
+    </div>
+    @* Enunciado *@
+
+    @* Resposta *@
+
+    <div class="form-group">
+        <label asp-for="Resposta">Resposta</label>
+        <textarea asp-for="Resposta" class="form-control"></textarea>
+            @Html.ValidationMessageFor(model => model.Resposta)
+        
+    </div>
+
+    @* Resposta *@
+
+    @* Tipo *@
+
+    <div class="form-group">
+        <label asp-for="Tipo">Tipo</label>
+        <input asp-for="Tipo" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Tipo)
+
+    </div>
+
+    @* Tipo *@
+
+    @* Alternativas *@
+
+    <div class="form-group">
+        <label>Alternativas</label>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Texto</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="alternativas">
+                @{ var index = 0; }
+                @foreach (var alternativa in Model.Alternativas)
+                {
+                    <tr>
+                        <td><input type="text" name="Alternativas[@index].Texto"
+                                value="@alternativa.Texto" class="form-control" /></td>
+                    @Html.ValidationMessageFor(model => model.Alternativas[index].Texto)
+
+                        <td><button type="button" class="btn btn-danger" onclick="removerAlternativa(this)">Remover</button>
+                        </td>
+                    </tr>
+                     index++;
+                }
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" onclick="adicionarAlternativa()">Adicionar Alternativa</button>
+    </div>
+
+    @* Alternativas *@
+
+
+    @* submeter *@
+
+    <div class="form-group">
+        <input type="submit" value="Criar" class="btn btn-primary" />
+    </div>
+
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // Define uma variável global chamada index que armazena o número de alternativas existentes
+var index = $("#alternativas").children().length;
+
+// Define uma função chamada adicionarAlternativa que não recebe nenhum parâmetro
+function adicionarAlternativa() {
+    // Cria uma variável chamada alternativas que armazena o elemento HTML com o id "alternativas"
+    var alternativas = $("#alternativas");
+    // Cria uma variável chamada tr que armazena um novo elemento HTML do tipo <tr> (table row)
+    var tr = $("<tr></tr>");
+    // Cria uma variável chamada tdTexto que armazena um novo elemento HTML do tipo <td> (table data)
+    var tdTexto = $("<td></td>");
+    // Cria uma variável chamada inputTexto que armazena um novo elemento HTML do tipo <input> com os atributos type, name e class definidos
+    var inputTexto = $("<input type='text' name='Alternativas[" + index + "].Texto' class='form-control' />");
+    // Adiciona o elemento inputTexto como filho do elemento tdTexto
+    tdTexto.append(inputTexto);
+    // Cria uma variável chamada tdAcoes que armazena um novo elemento HTML do tipo <td>
+    var tdAcoes = $("<td></td>");
+    // Cria uma variável chamada buttonRemover que armazena um novo elemento HTML do tipo <button> com os atributos type, class e onclick definidos
+    var buttonRemover = $("<button type='button' class='btn btn-danger' onclick='removerAlternativa(this)'>Remover</button>");
+    // Adiciona o elemento buttonRemover como filho do elemento tdAcoes
+    tdAcoes.append(buttonRemover);
+    // Adiciona os elementos tdTexto e tdAcoes como filhos do elemento tr
+    tr.append(tdTexto);
+    tr.append(tdAcoes);
+    // Adiciona o elemento tr como filho do elemento alternativas
+    alternativas.append(tr);
+    // Incrementa a variável index em 1
+    index++;
+}
+
+// Define uma função chamada removerAlternativa que recebe um parâmetro chamado button
+function removerAlternativa(button) {
+    // Cria uma variável chamada tr que armazena o elemento pai do elemento pai do botão
+    var tr = $(button).parent().parent();
+    // Remove o elemento tr do documento HTML
+    tr.remove();
+}
+
+
+</script>

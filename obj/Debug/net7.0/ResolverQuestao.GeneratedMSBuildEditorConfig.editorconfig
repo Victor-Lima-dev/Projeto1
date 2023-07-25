@@ -9,37 +9,45 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ResolverQuestao
 build_property.RootNamespace = ResolverQuestao
-build_property.ProjectDir = c:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\
+build_property.ProjectDir = C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao
+build_property.MSBuildProjectDirectory = C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Home/Index.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpY2lvc1xjcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpY2lvc1xpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Home/Privacy.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/Error.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/_ViewImports.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/_ViewStart.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/_Layout.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-g7jzfjwjgk

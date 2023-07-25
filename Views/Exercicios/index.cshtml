@@ -1,0 +1,14 @@
+@model List<Exercicio>
+
+<div class="container">
+
+    <h1 class="title text-center"> Exercicios</h1>
+
+    @foreach (var item in Model)
+    {
+        <ul class="list-group">
+            <li class="list-group-item">@item.Titulo</li>
+        </ul>
+    }
+
+</div>
