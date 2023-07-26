@@ -1,0 +1,93 @@
+@model ResolverQuestao.Models.ViewModels.ListaExerciciosViewModel
+
+@{
+    var exercicios = Model.Exercicios;
+}
+
+<div class="container">
+    <h1>Lista de Exercícios</h1>
+</div>
+
+<form asp-action="Create" method="post">
+
+
+    <div class="form-group">
+        <label asp-for="@Model.ListaExercicio.Titulo"></label>
+        <input asp-for="@Model.ListaExercicio.Titulo" class="form-control" />
+        <span asp-validation-for="@Model.ListaExercicio.Titulo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.ListaExercicio.Descricao">Descrição</label>
+        <input asp-for="@Model.ListaExercicio.Descricao" class="form-control" />
+        <span asp-validation-for="@Model.ListaExercicio.Descricao" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.ListaExercicio.Tipo">Descrição</label>
+        <input asp-for="@Model.ListaExercicio.Tipo" class="form-control" />
+        <span asp-validation-for="@Model.ListaExercicio.Tipo" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label asp-for="@Model.ExerciciosSelecionados">Exercicios</label>
+        @foreach (var item in exercicios)
+        {
+            <div class="form-check">
+                <input type="checkbox" name="ExerciciosSelecionados" value="@item.ExercicioId" class="form-check-input">
+                <label class="form-check-label">@item.Enunciado</label>
+            </div>
+        }
+    </div>
+
+    @* Perguntar se Vai adicionar um material de apoio *@
+
+    <div class="form-group">
+        <label for="pergunta">Vai adicionar Material de Apoio?</label>
+        <select class="form-control" id="pergunta" name="pergunta">
+            <option value="0">Não</option>
+            <option value="1">Sim</option>
+        </select>
+    </div>
+
+
+
+    <div class="form-group hide" style = "display : none;">
+        <label asp-for="@Model.ListaExercicio.MaterialSuporte">Material de Apoio</label>
+        <input asp-for="@Model.ListaExercicio.MaterialSuporte" class="form-control" />
+        <span asp-validation-for="@Model.ListaExercicio.MaterialSuporte" class="text-danger"></span>
+    </div>
+    
+
+
+
+    <input type="submit" value="Criar Lista de Exercicios" class="btn btn-primary" />
+
+</form>
+
+@* importar jquery *@
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+    //se #pergunta for igual a 1, mostra o campo Material de Apoio
+    //se #pergunta for igual a 0, esconde o campo Material de Apoio
+
+    $(document).ready(function () {
+        $("#pergunta").change(function () {
+            if ($(this).val() == 1) {
+                $(".hide").show();
+            } else {
+                $(".hide").hide();
+            }
+        });
+    });
+
+
+
+
+
+</script>

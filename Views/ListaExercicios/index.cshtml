@@ -1,0 +1,19 @@
+@model List<ResolverQuestao.Models.ListaExercicio>
+
+<div class="container">
+    <h1 class="text-center">Listas</h1>
+</div>
+
+@foreach (var item in Model)
+{
+
+    <ul class="list-group">
+        <li class="list-group-item">@item.Titulo</li>
+        <a asp-action = "Details" asp-route-id="@item.ListaExercicioId" class="btn btn-primary">Detalhes</a>
+        <a asp-action = "Delete" asp-route-id="@item.ListaExercicioId" class="btn btn-primary">Deletar</a>
+        <a asp-action = "Edit" asp-route-id="@item.ListaExercicioId" class="btn btn-primary">Editar</a>
+    </ul>
+
+}
+
+<a asp-action="Create" class="btn btn-primary">Criar Lista</a>

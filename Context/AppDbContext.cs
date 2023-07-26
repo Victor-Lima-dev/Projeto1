@@ -13,6 +13,8 @@ namespace ResolverQuestao.Context
         
         public DbSet<Exercicio> Exercicios { get; set; }
         public DbSet<Alternativa> Alternativas { get; set; }
+
+        public DbSet<ListaExercicio> ListaExercicios { get; set; }
         
     }
 }

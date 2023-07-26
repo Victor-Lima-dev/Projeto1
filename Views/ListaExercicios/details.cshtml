@@ -1,0 +1,18 @@
+@model ListaExercicio
+
+
+<h1>@Model.Titulo</h1>
+
+<p>@Model.Descricao</p>
+<p>@Model.Tipo</p>
+
+@if ( ViewBag.MaterialSuporte == true)
+{
+    <p>@Model.MaterialSuporte</p>
+}
+
+@foreach (var item in Model.Exercicios)
+{
+    <p>@item.Enunciado</p>
+    <p>@item.Resposta</p>
+}

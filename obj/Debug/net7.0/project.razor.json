@@ -18650,8 +18650,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\ListaExercicios\\create.cshtml",
+      "TargetPath": "Views\\ListaExercicios\\create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\ListaExercicios\\details.cshtml",
+      "TargetPath": "Views\\ListaExercicios\\details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18660,8 +18670,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\ListaExercicios\\index.cshtml",
+      "TargetPath": "Views\\ListaExercicios\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\Exercicios\\details.cshtml",
       "TargetPath": "Views\\Exercicios\\details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\ListaExercicios\\edit.cshtml",
+      "TargetPath": "Views\\ListaExercicios\\edit.cshtml",
       "FileKind": "mvc"
     },
     {

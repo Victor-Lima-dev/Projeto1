@@ -30,5 +30,13 @@ namespace ResolverQuestao.Models
 
         public string? MaterialSuporte { get; set; }
 
+
+        //relaçao muito para muitos, ListaExercicios
+
+        public List<ListaExercicio> ListaExercicios { get; set; } = new List<ListaExercicio>();
+
+          
+
+
     }
 }
