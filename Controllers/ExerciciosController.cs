@@ -51,6 +51,15 @@ namespace ResolverQuestao.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(exercicio.Explicacao == null)
+                {
+                    exercicio.Explicacao = "";
+                }
+
+                if(exercicio.MaterialSuporte == null)
+                {
+                    exercicio.MaterialSuporte = "";
+                }
                 _context.Exercicios.Add(exercicio);
                 _context.SaveChanges();
 
@@ -178,6 +187,7 @@ namespace ResolverQuestao.Controllers
             //lista de todas as alternativas
             var alternativas = _context.Alternativas.ToList();
 
+
             return View(exercicio);
         }
 
@@ -210,6 +220,27 @@ namespace ResolverQuestao.Controllers
             {
                 ViewBag.Resposta = false;
             }
+
+              //verificar se o exercicio possui explicaçao
+            if (exercicio.Explicacao == null || exercicio.Explicacao == "")
+            {
+                ViewBag.Explicacao = false;
+            }
+            else
+            {
+                ViewBag.Explicacao = true;
+            }
+
+            //verificar se o exercicio possui referencia
+            if (exercicio.MaterialSuporte == null || exercicio.MaterialSuporte  == "")
+            {
+                ViewBag.MaterialSuporte = false;
+            }
+            else
+            {
+                ViewBag.MaterialSuporte = true;
+            }
+
 
             return View(exercicio);
         }

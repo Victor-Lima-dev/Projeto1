@@ -33,6 +33,41 @@
 
     @* Resposta *@
 
+   
+ 
+
+
+    @* Explicação *@
+   <div class="form-group booleanoExplicacao">
+            <label for="explicacao">Deseja Adicionar uma Explicação?</label>
+            <div id="explicacao" class="form-control">
+                <button id="sim" onclick="mostrarGuiaExplicação()">Sim</button>
+            </div>
+     </div>
+
+    <div class="form-group explicacao" style="display: none;>
+        <label asp-for="Explicacao">Explicação</label>
+        <textarea asp-for="Explicacao" class="form-control"></textarea>
+            @Html.ValidationMessageFor(model => model.Explicacao)
+    </div>
+    @* Explicação *@
+
+    @* Material de Apoio *@
+
+    <div class="form-group booleanoMaterialApoio">
+            <label for="explicacao">Deseja Adicionar uma Referencia?</label>
+            <div id="explicacao" class="form-control">
+                <button id="sim" onclick="mostrarMaterialApoio()">Sim</button>
+            </div>
+     </div>
+
+    <div class="form-group materialApoio" style="display: none;>
+        <label asp-for="MaterialSuporte">Material de Apoio</label>
+        <input asp-for="MaterialSuporte" class="form-control" />
+            @Html.ValidationMessageFor(model => model.MaterialSuporte)
+    </div>
+     @* Material de Apoio *@
+
     @* Tipo *@
 
     <div class="form-group">
@@ -127,6 +162,27 @@ function removerAlternativa(button) {
     // Remove o elemento tr do documento HTML
     tr.remove();
 }
+
+
+
+   
+    function mostrarGuiaExplicação() {   
+        //tirar o comportamento do form
+        event.preventDefault();
+        $(".explicacao").show();
+        $(".booleanoExplicacao").hide();
+    }
+
+    //função para mostrar o campo de material de apoio
+    function mostrarMaterialApoio() {
+        event.preventDefault();
+        $(".materialApoio").show();
+        $(".booleanoMaterialApoio").hide();
+    }
+
+
+
+
 
 
 </script>

@@ -2,6 +2,7 @@
 
 
 
+
 <div class="container">
 
     <h1 class="text-center">@Model.Titulo</h1>
@@ -43,6 +44,8 @@
                 Resposta correta!
             </div>
         }
+
+
         else
         {
             <div class="alert alert-danger hide" role="alert">
@@ -59,37 +62,66 @@
             <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
                 A resposta correta é: <span id="correta"></span>
             </div>
-        }
-    }
+
+
+            <div class="explicacaoMaterialApoio" style="display: none;">
 
 
 
-</div>
+                @if (ViewBag.Explicacao == true || ViewBag.MaterialSuporte == true)
+                {
 
-@* js script *@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    if (ViewBag.Explicacao == true)
+                    {
+                        <div>
+                            <p>Explicação</p>
+                            <p>@Model.Explicacao</p>
+                        </div>
+                    }
+                    if (ViewBag.MaterialSuporte == true)
+                    {
+                        <div>
+                            <p>Material de Apoio</p>
+                            <p>@Model.MaterialSuporte</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>
+                        <p>Não há explicação ou material de apoio para esta questão</p>
+                    </div>
+                }
+                }
+            </div>
 
-<script>
+        }}
 
-    // função para mostrar a resposta correta na div
-    function mostrarResposta() {
-        // pega o valor da resposta correta do modelo
-        var correta = "@Model.Resposta";
-        // mostra a resposta correta na div
-        $("#correta").text(correta);
-        $("#resposta-correta").show();
-        $(".hide").hide();
-    }
+        @* js script *@
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    // função para recarregar a página
-    function recarregarPagina() {
-        $(".hide").hide();
-    }
+        <script>
+
+            // função para mostrar a resposta correta na div
+            function mostrarResposta() {
+                // pega o valor da resposta correta do modelo
+                var correta = "@Model.Resposta";
+                // mostra a resposta correta na div
+                $("#correta").text(correta);
+                $("#resposta-correta",).show();
+                $(".explicacaoMaterialApoio").show();
+                $(".hide").hide();
+            }
+
+            // função para recarregar a página
+            function recarregarPagina() {
+                $(".hide").hide();
+            }
 
 
 
 
 
 
-</script>
+        </script>
 

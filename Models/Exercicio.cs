@@ -25,5 +25,10 @@ namespace ResolverQuestao.Models
         [MinLength(2, ErrorMessage = "O exercício deve ter pelo menos duas alternativas.")]
         public List<Alternativa> Alternativas { get; set; } = new List<Alternativa>();
 
+
+        public string? Explicacao { get; set; }
+
+        public string? MaterialSuporte { get; set; }
+
     }
 }
