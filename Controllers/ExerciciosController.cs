@@ -78,7 +78,7 @@ namespace ResolverQuestao.Controllers
         public IActionResult Details(int id)
         {
             //buscar o exercicio no banco de dados, include alternativas
-    
+
             var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
 
             //verificar se o exercicio existe
@@ -119,26 +119,31 @@ namespace ResolverQuestao.Controllers
 
         //HTTP POST - Edit
         [HttpPost("Edit/{id}")]
-        public IActionResult Edit (Exercicio exercicio)
+        public IActionResult Edit(Exercicio exercicio)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Exercicios.Update(exercicio);
-                _context.SaveChanges();
 
-                return RedirectToAction("Index");
-            }
 
-            // Adiciona uma mensagem de erro para cada propriedade inválida
-            foreach (var key in ModelState.Keys)
+            //verificar se tem alguma alternativa com texto vazio, se tiver, excluir ela
+
+            var alternativas = exercicio.Alternativas.ToList();
+
+            foreach (var alternativa in alternativas)
             {
-                if (ModelState[key].ValidationState == ModelValidationState.Invalid)
+                if (alternativa.Texto == null || alternativa.Texto == "")
                 {
-                    ModelState.AddModelError(key, $"O valor de {key} é inválido.");
+                    _context.Alternativas.Remove(alternativa);
                 }
+
             }
-            // Retorna a mesma view com os erros
-            return View(exercicio);
+
+
+
+            _context.Exercicios.Update(exercicio);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+
+
         }
 
         //HTTP GET - Delete
@@ -151,13 +156,64 @@ namespace ResolverQuestao.Controllers
             //apagar o exercicio
             _context.Exercicios.Remove(exercicio);
             _context.SaveChanges();
-            
-            return RedirectToAction("Index");
 
-        
+            return RedirectToAction("Index");
         }
 
-        
+
+        //HTTP GET - Resolver Questao / id
+
+        [HttpGet("ResolverQuestao/{id}")]
+        public IActionResult ResolverQuestao(int id)
+        {
+            //buscar o exercicio no banco de dados
+            var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
+
+            //verificar se o exercicio existe
+            if (exercicio == null)
+            {
+                return NotFound();
+            }
+
+            //lista de todas as alternativas
+            var alternativas = _context.Alternativas.ToList();
+
+            return View(exercicio);
+        }
+
+
+        //HTTP POST - Resolver Questao / id
+
+        [HttpPost("ResolverQuestao/{id}")]
+        public IActionResult ResolverQuestao(int id, string resposta)
+        {
+            //procurar o exercicio
+            var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
+
+            //lista de todas as alternativas
+
+            var alternativas = _context.Alternativas.ToList();
+
+            //verificar se o exercicio existe
+            if (exercicio == null)
+            {
+                return NotFound();
+            }
+
+            //verificar a resposta
+
+            if (resposta == exercicio.Resposta)
+            {
+                ViewBag.Resposta = true;
+            }
+            else
+            {
+                ViewBag.Resposta = false;
+            }
+
+            return View(exercicio);
+        }
+
 
 
 

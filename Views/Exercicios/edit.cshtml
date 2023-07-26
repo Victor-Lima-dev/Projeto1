@@ -59,6 +59,11 @@
                 @{ var index = 0; }
                 @foreach (var alternativa in Model.Alternativas)
                 {
+
+                @* id das alternativas, hidden *@
+                    <input type="hidden" name="Alternativas[@index].AlternativaId"
+                                value="@alternativa.AlternativaId"/>
+                        
                     <tr>
                         <td><input type="text" name="Alternativas[@index].Texto"
                                 value="@alternativa.Texto" class="form-control" /></td>
