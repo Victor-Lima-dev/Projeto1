@@ -1,0 +1,142 @@
+@model ListaExercicio
+
+
+@{
+    var materialSuporte = ViewBag.MaterialSuporte;
+    var idExercicio = ViewBag.IdExercicio;
+    var resposta = ViewBag.Resposta;
+
+    //exercicio retornado
+
+    var exercicio = Model.Exercicios.Where(e => e.ExercicioId == idExercicio).FirstOrDefault();
+}
+
+@* Exercicios com alternativas *@
+
+@foreach (var item in Model.Exercicios)
+{
+    <h2>@item.Titulo</h2>
+    <h4>@item.Enunciado</h4>
+    <p> @item.Tipo</p>
+
+    <form  asp-action="ResponderLista" method="post">
+
+
+        @foreach (var alternativas in item.Alternativas)
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="resposta" id="resposta" value="@alternativas.Texto" checked>
+                <label class="form-check-label" for="resposta">
+                    @alternativas.Texto
+                </label>
+            </div>
+        }
+
+
+        @if (idExercicio != null && item.ExercicioId == idExercicio)
+        {
+            if (resposta == true)
+            {
+                <div class="alert alert-success" role="alert">
+                    Resposta correta!
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger" role="alert">
+                    Resposta incorreta!
+                </div>
+
+
+                 <div class="form-group hide">
+                <label for="pergunta">Deseja ver a resposta correta?</label>
+                <div id="pergunta" class="form-control">
+                    <button id="sim" onclick="mostrarResposta()">Sim</button>
+                    <button id="nao" onclick="recarregarPagina()">Não</button>
+                </div>
+            </div>
+            <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
+                A resposta correta é: <span id="correta"></span>
+            </div>
+
+
+            <div class="explicacaoMaterialApoio" style="display: none;">
+
+
+
+                @if (ViewBag.Explicacao == true || ViewBag.MaterialSuporte == true)
+                {
+
+                    if (ViewBag.Explicacao == true)
+                    {
+                        <div>
+                            <p>Explicação</p>
+                            <p>@item.Explicacao</p>
+                        </div>
+                    }
+                    if (ViewBag.MaterialSuporte == true)
+                    {
+                        <div>
+                            <p>Material de Apoio</p>
+                            <p>@item.MaterialSuporte</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>
+                        <p>Não há explicação ou material de apoio para esta questão</p>
+                    </div>
+                }
+                
+            </div>
+
+
+
+            }
+        }
+
+
+
+
+        <input type="hidden" name="id" value="@item.ExercicioId" />
+        @* enviar *@
+
+        <div class="form-group">
+            <input type="submit" value="Enviar" class="btn btn-primary" />
+        </div>
+
+    </form>
+}
+
+
+
+        @* js script *@
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+
+            // função para mostrar a resposta correta na div
+            function mostrarResposta() {
+                // remover o comportamento padrão do botão
+                event.preventDefault();
+                
+                var correta = "@exercicio.Resposta";
+                // mostra a resposta correta na div
+                $("#correta").text(correta);
+                $("#resposta-correta",).show();
+                $(".explicacaoMaterialApoio").show();
+                $(".hide").hide();
+            }
+
+            // função para recarregar a página
+            function recarregarPagina() {
+                $(".hide").hide();
+            }
+
+
+
+
+
+
+        </script>
