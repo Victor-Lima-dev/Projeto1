@@ -1,3 +1,6 @@
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ResolverQuestao.Context;
 
@@ -9,6 +12,15 @@ builder.Services.AddControllersWithViews();
 string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultConnection2");
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql (mySqlConnectionStr, ServerVersion. AutoDetect (mySqlConnectionStr)));
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
+builder.Services.AddMemoryCache();
+builder.Services.AddSession();
+
 
 
 var app = builder.Build();
@@ -26,7 +38,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
+
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",
