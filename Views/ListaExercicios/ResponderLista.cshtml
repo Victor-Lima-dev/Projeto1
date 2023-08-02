@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
-                A resposta correta é: <span id="correta"></span>
+                A resposta correta é: <span id="correta">@item.Resposta</span>
             </div>
 
 
@@ -121,9 +121,9 @@
                 // remover o comportamento padrão do botão
                 event.preventDefault();
                 
-                var correta = "@exercicio.Resposta";
+            
                 // mostra a resposta correta na div
-                $("#correta").text(correta);
+                $("#correta").show();
                 $("#resposta-correta",).show();
                 $(".explicacaoMaterialApoio").show();
                 $(".hide").hide();

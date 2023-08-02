@@ -177,12 +177,10 @@ body
 /* home */
 .home
 {
+
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  height: 100%;
+  gap: 2rem;
   
 }
 /* home */
@@ -245,4 +243,12 @@ body
 .form-pesquisa-input
 {
   flex: 2;
+}
+
+.details-container
+{
+  display: flex;
+
+  gap: 1rem;
+  margin: .5rem 0;
 }

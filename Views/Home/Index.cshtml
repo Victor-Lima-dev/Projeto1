@@ -11,62 +11,85 @@
 <div class="home">
 
 
-@if (temListas)
-{
-    <div class="container-home">
-        <h4>Listas de Exercicios</h4>
-        <ul>
-            @foreach (var item in Model.ListaExercicios)
-            {
-                <li>
-                    <a>@item.Titulo</a>
-                </li>
-            }
+    @if (temListas)
+    {
+        <div class="container-home">
+             <h1 class="title text-center">Lista Exercicios</h1>
+            <ul class="list-group">
+                @foreach (var item in Model.ListaExercicios)
+                {
+                    <div class="icones-container">
 
-        </ul>
-    </div>
-}
+                        <li class="list-group-item lista-item">@item.Titulo</li>
+                        <li class="list-group-item icones-container-tipo ">@item.Tipo</li>
 
-else
-{
-    <div class="container-home">
-        <h4 class="text-center">
-            Não há listas de exercicios cadastradas
-        </h4>
-    </div>
-}
+                        <div class="icones-container-icones">
+                            <a asp-action="ResponderLista" asp-controller="ListaExercicios" asp-route-id="@item.ListaExercicioId"><i
+                                    class="fa-solid fa-check"></i></a>
+                            <a asp-action="Edit" asp-controller="ListaExercicios" asp-route-id="@item.ListaExercicioId"><i
+                                    class="fa-solid fa-pen-to-square"></i></a>
+                            <a asp-action="Details" asp-controller="ListaExercicios" asp-route-id="@item.ListaExercicioId"><i class="fa-solid fa-expand"></i></a>
+                            <a asp-action="Delete" asp-controller="ListaExercicios" asp-route-id="@item.ListaExercicioId"><i
+                                    class="fa-solid fa-trash-can"></i></a>
+                        </div>
+                    </div>
+                }
+
+            </ul>
+        </div>
+    }
+
+    else
+    {
+        <div class="container-home">
+            <h4 class="text-center">
+                Não há listas de exercicios cadastradas
+            </h4>
+        </div>
+    }
 
 
 
 
-@if (temExercicios)
-{
-    <div class="container-home">
-        <h4>Listas de Exercicios</h4>
-        <ul>
-            <li>
-                <a>Teste</a>
-            </li>
 
-            @foreach (var item in Model.Exercicios)
-            {
-                <li>
-                    <a>@item.Titulo</a>
-                </li>
-            }
-            
 
-        </ul>
-    </div>
-}
-else
-{
-    <div class="container-home">
-        <h4 class="text-center">
-            Não há exercicios cadastrados
-        </h4>
-    </div>
-}
+
+
+    @if (temExercicios)
+    {
+        <div class="container-home">
+             <h1 class="title text-center"> Exercicios</h1>
+            <ul class="list-group">
+
+                @foreach (var item in Model.Exercicios)
+                {
+                    <div class="icones-container">
+
+                        <li class="list-group-item lista-item">@item.Titulo</li>
+                        <li class="list-group-item icones-container-tipo ">@item.Tipo</li>
+
+                        <div class="icones-container-icones">
+                            <a asp-action="ResolverQuestao" asp-controller="Exercicios"  asp-route-id="@item.ExercicioId"><i
+                                    class="fa-solid fa-check"></i></a>
+                            <a asp-action="Edit" asp-controller="Exercicios" asp-route-id="@item.ExercicioId"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a asp-action="Details" asp-controller="Exercicios" asp-route-id="@item.ExercicioId"><i class="fa-solid fa-expand"></i></a>
+                            <a asp-action="Delete" asp-controller="Exercicios" asp-route-id="@item.ExercicioId"><i class="fa-solid fa-trash-can"></i></a>
+                        </div>
+                    </div>
+                }
+
+
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="container-home">
+            <h4 class="text-center">
+                Não há exercicios cadastrados
+            </h4>
+        </div>
+    }
 
 </div>
 
