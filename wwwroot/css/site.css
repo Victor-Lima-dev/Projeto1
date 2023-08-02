@@ -183,5 +183,66 @@ body
   justify-content: center;
   gap: 1rem;
   height: 100%;
+  
 }
 /* home */
+
+.form-container {
+  width: 80% !important;
+  margin: 0 auto !important;
+}
+
+.icones-container
+{
+  display: flex;
+
+}
+
+.lista-item{
+  /* width: 70%; */
+  flex: 3;
+}
+
+.icones-container-icones
+{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  /* width: 20%; */
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.icones-container-tipo{
+  width: 10%;
+  flex: 1;
+  font-weight: bold;
+  color: darkgray;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 768px) {
+  .icones-container-icones
+  {
+    margin: 0 .5rem;
+  }
+}
+
+.criar-exercicio
+{
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.form-pesquisa
+{
+  display: flex;
+  gap: 1rem;
+}
+
+.form-pesquisa-input
+{
+  flex: 2;
+}

@@ -1,19 +1,35 @@
 @model Usuario
 
-<form asp-action="Login">
 
-<label for="Username">Usuario</label>
+<div class="form-container">
+
+
+<form asp-action="Login" class="form-horizontal">
+
+    <h1 class="text-center">Login</h1>
+
+<div class="form-group teste1">
+<label for="Username" class="col-sm-2 control-label">Usuario</label>
+<div class="col-sm-10">
 @* input para Username *@
-<input type="text" name="Username" id="Username" />
+<input type="text" name="Username" id="Username" class="form-control" />
+</div>
+</div>
 
-<label for="Password">Senha</label>
-
+<div class="form-group teste1">
+<label for="Password" class="col-sm-2 control-label">Senha</label>
+<div class="col-sm-10 ">
 @* input para Password *@
-<input type="password" name="Password" id="Password" />
-
+<input type="password" name="Password" id="Password" class="form-control" />
+</div>
+</div>
 
 @* submeter *@
-<input type="submit" value="Entrar" />
-
+<div class="form-group teste1">
+<div class="col-sm-offset-2 col-sm-10">
+<input type="submit" value="Entrar" class="btn btn-primary" />
+</div>
+</div>
 
 </form>
+</div>
