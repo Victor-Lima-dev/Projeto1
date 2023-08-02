@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 html {
   font-size: 14px;
 }
@@ -19,4 +21,167 @@ html {
 
 body {
   margin-bottom: 60px;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+/* variaveis */
+
+:root{
+  --var-color-nav: rgb(226, 226, 226);
+  --var-color-nav2: rgb(151, 151, 151);
+  --var-color-main: rgb(255, 255, 255);
+  
+
+}
+
+body
+{
+  background: var(--var-color-nav);
+ 
+}
+
+
+
+
+/* navbar */
+
+.nav-container
+{
+  background: var(--var-color-nav) !important;
+  border-radius: 50px;
+}
+
+.nav-container-item
+{
+  font-size: 1.1rem;
+  
+  padding: .5rem;
+  margin: 0 .1rem ;
+
+  width: 8rem;
+
+  border-radius: 50px;
+  
+
+  text-align: center;
+
+
+  /* tempo de animação */
+
+  transition: all .5s ease-in-out;
+
+
+}
+
+.nav-container-item:hover
+{
+  background: var(--var-color-nav2);
+  
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-container
+  {
+    border-radius: 0px;
+  }
+  .nav-container-login
+  {
+    border-radius: 0px;
+  }
+}
+
+.nav-container-login{
+
+  display: flex;
+ text-align: center;
+ background: var(--var-color-nav);
+  border-radius: 50px;
+}
+
+.nav-container-login > a
+{
+  width: 8rem;
+}
+
+/* navbar */
+
+/* main */
+
+.home-main-section1
+{
+  box-shadow: 0 0 0.5rem 0.1rem rgb(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 20px;
+  background: var(--var-color-main);
+  width: 70%;
+}
+.home-main-section2
+{
+  box-shadow: 0 0 0.5rem 0.1rem rgb(0, 0, 0, 0.1);
+  width: 30%;
+  background: var(--var-color-main);
+  padding: 1rem;
+  border-radius: 20px;
+  height: max-content;
+}
+
+.home-main
+{
+  display: flex;
+}
+
+.home-main-section2-usuario
+{
+  /* colocar a primeira letra maiuscula */
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.home-main-section2-metricas
+{
+  display: flex;
+  text-align: center;
+  
+}
+
+.home-main-section2-metricas-container
+{
+  width: 50%;
+}
+
+.home-main{
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .home-main
+  {
+    flex-direction: column;
+    /* alterar a ordem  */
+  }
+  .home-main-section1
+  {
+    width: 100%;
+    order: 1;
+  }
+  .home-main-section2
+  {
+    width: 100%;
+  }
+}
+/* main */
+
+/* home */
+.home
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+}
+/* home */

@@ -17,6 +17,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkSto
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Usuarios/Login");
+
 
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();

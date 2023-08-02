@@ -20,6 +20,8 @@ namespace ResolverQuestao.Models
 
         public List<Exercicio> Exercicios { get; set; } = new List<Exercicio>();
 
+        public string UsuarioId { get; set; }
+
 
     }
 }

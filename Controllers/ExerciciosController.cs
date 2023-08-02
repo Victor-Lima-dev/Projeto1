@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Logging;
@@ -11,6 +12,7 @@ using ResolverQuestao.Models;
 
 namespace ResolverQuestao.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class ExerciciosController : Controller
     {
@@ -29,10 +31,15 @@ namespace ResolverQuestao.Controllers
         public IActionResult Index()
         {
             //deixar uma lista com os exercicios
-
             var exercicios = _context.Exercicios.ToList();
 
-            return View(exercicios);
+            //pegar os exercicios do usuario logado
+
+            var exerciciosUsuario = new List<Exercicio>();
+
+            exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
+
+            return View(exerciciosUsuario);
         }
 
 
@@ -49,8 +56,13 @@ namespace ResolverQuestao.Controllers
         [HttpPost("Create")]
         public IActionResult Create(Exercicio exercicio)
         {
-            if (ModelState.IsValid)
-            {
+
+
+                //colocar o id do usuario logado no exercicio
+
+                exercicio.UsuarioId = User.Identity.Name;
+
+          
                 if(exercicio.Explicacao == null)
                 {
                     exercicio.Explicacao = "";
@@ -64,19 +76,7 @@ namespace ResolverQuestao.Controllers
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
-            }
-
-
-            // Adiciona uma mensagem de erro para cada propriedade inválida
-            foreach (var key in ModelState.Keys)
-            {
-                if (ModelState[key].ValidationState == ModelValidationState.Invalid)
-                {
-                    ModelState.AddModelError(key, $"O valor de {key} é inválido.");
-                }
-            }
-            // Retorna a mesma view com os erros
-            return View(exercicio);
+            
 
         }
 

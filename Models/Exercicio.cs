@@ -35,6 +35,8 @@ namespace ResolverQuestao.Models
 
         public List<ListaExercicio> ListaExercicios { get; set; } = new List<ListaExercicio>();
 
+        public string UsuarioId { get; set; }
+
           
 
 

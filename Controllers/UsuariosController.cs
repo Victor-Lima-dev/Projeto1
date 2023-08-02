@@ -114,7 +114,7 @@ namespace ResolverQuestao.Controllers
 
         //HTTP Post LOUGOUT
 
-        [HttpPost("logout")]
+        [HttpGet("logout")]
         public async Task<IActionResult> Logout()
         {
             HttpContext.Session.Clear();

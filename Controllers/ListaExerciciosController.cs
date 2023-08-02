@@ -10,9 +10,11 @@ using ResolverQuestao.Context;
 using ResolverQuestao.Models.ViewModels;
 
 using ResolverQuestao.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ResolverQuestao.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     public class ListaExerciciosController : Controller
     {
@@ -34,7 +36,13 @@ namespace ResolverQuestao.Controllers
             //deixar uma lista com os exercicios
             var exercicios = _context.Exercicios.Include(e => e.ListaExercicios).ToList();
             var listas = _context.ListaExercicios.Include(l => l.Exercicios).ToList();
-            return View(listas);
+
+            //pegar as listas do usuario logado
+            var listasUsuario = new List<ListaExercicio>();
+            listasUsuario = listas.Where(l => l.UsuarioId == User.Identity.Name).ToList();
+
+
+            return View(listasUsuario);
         }
 
         //HTTP GET - CREATE
@@ -47,6 +55,8 @@ namespace ResolverQuestao.Controllers
 
             listaViewModel.Exercicios = exercicios;
 
+
+
             return View(listaViewModel);
         }
 
@@ -56,6 +66,11 @@ namespace ResolverQuestao.Controllers
         public IActionResult Create(ListaExerciciosViewModel listaViewModel)
         {
             var exercicios = _context.Exercicios.ToList();
+
+            //colocar o id do usuario logado na lista
+
+            listaViewModel.ListaExercicio.UsuarioId = User.Identity.Name;
+
 
             var listaCriada = new ListaExercicio();
 
@@ -73,6 +88,7 @@ namespace ResolverQuestao.Controllers
             listaCriada.Tipo = listaViewModel.ListaExercicio.Tipo;
             listaCriada.Descricao = listaViewModel.ListaExercicio.Descricao;
             listaCriada.MaterialSuporte = listaViewModel.ListaExercicio.MaterialSuporte;
+            listaCriada.UsuarioId = listaViewModel.ListaExercicio.UsuarioId;
 
             _context.ListaExercicios.Add(listaCriada);
             _context.SaveChanges();
