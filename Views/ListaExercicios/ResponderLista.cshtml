@@ -6,10 +6,18 @@
     var idExercicio = ViewBag.IdExercicio;
     var resposta = ViewBag.Resposta;
 
+
+    int indice = ViewBag.Indice;
+
+    var visualizar = indice + 1 + " de " + Model.Exercicios.Count();
+
+    ViewBag.Indice = indice + 1;
+
     //exercicio retornado
 
     var exercicio = Model.Exercicios.Where(e => e.ExercicioId == idExercicio).FirstOrDefault();
 }
+<h1>@visualizar</h1>
 
 @* Exercicios com alternativas *@
 
@@ -20,6 +28,8 @@
     <p> @item.Tipo</p>
 
     <form  asp-action="ResponderLista" method="post">
+
+        <input type="hidden" name="indice" value="@ViewBag.Indice" />
 
 
         @foreach (var alternativas in item.Alternativas)

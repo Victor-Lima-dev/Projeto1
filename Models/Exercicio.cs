@@ -9,8 +9,6 @@ namespace ResolverQuestao.Models
     public class Exercicio
     {
         public int ExercicioId { get; set; }
-
-        [StringLength(100, MinimumLength = 3, ErrorMessage = "O enunciado deve ter entre 3 e 100 caracteres.")]
         public string Enunciado { get; set; }
 
         [Required(ErrorMessage = "O título é obrigatório.")]
@@ -36,6 +34,7 @@ namespace ResolverQuestao.Models
         public List<ListaExercicio> ListaExercicios { get; set; } = new List<ListaExercicio>();
 
         public string UsuarioId { get; set; }
+
 
           
 

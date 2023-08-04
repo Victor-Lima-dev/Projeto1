@@ -286,6 +286,17 @@ namespace ResolverQuestao.Controllers
             {
                 ViewBag.MaterialSuporte = true;
             }
+        
+           
+            if( ViewBag.Indice == null)
+            {
+                ViewBag.Indice = 0;
+            }
+            else
+            {
+                ViewBag.Indice = ViewBag.Indice + listaExercicio.IndiceExercicio;
+            }
+        
 
             return View(listaExercicio);
         }
@@ -347,6 +358,17 @@ namespace ResolverQuestao.Controllers
 
             ViewBag.IdExercicio= id;
 
+            if( ViewBag.Indice == null)
+            {
+                ViewBag.Indice = 0;
+            }
+            else
+            {
+                ViewBag.Indice = ViewBag.Indice;
+            }
+        
+            
+   
 
             return View(listaExercicio);
         }

@@ -23,5 +23,10 @@ namespace ResolverQuestao.Models
         public string UsuarioId { get; set; }
 
 
+        public int IndiceExercicio { get; set; } = 0;
+
+        
+
+
     }
 }
