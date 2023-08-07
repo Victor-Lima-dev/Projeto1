@@ -8,24 +8,42 @@
 
     //exercicio retornado
 
+    var exercicio = Model.Exercicios.Where(e => e.ExercicioId == idExercicio).FirstOrDefault();
+
+    var contagemExercicios = Model.Exercicios.Count();
+
+    var indice = Model.IndiceExercicio;
+
+    if (indice > contagemExercicios - 1)
+    {
+        indice = 0;
+    }
+
+
+    var exercicioFoco = Model.Exercicios[indice];
 
 }
 
 
 @* Exercicios com alternativas *@
 
+<h1>@Model.IndiceExercicio</h1>
+<h1>@contagemExercicios</h1>
 
-@foreach (var item in Model.Exercicios)
-{
-    <h2>@item.Titulo</h2>
-    <h4>@item.Enunciado</h4>
-    <p> @item.Tipo</p>
-
-    <form asp-action="ResponderLista" method="post">
+<p>@Model.Exercicios[indice].Enunciado</p>
 
 
 
-        @foreach (var alternativas in item.Alternativas)
+    <h2>@exercicioFoco.Titulo</h2>
+    <h4>@exercicioFoco.Enunciado</h4>
+    <p> @exercicioFoco.Tipo</p>
+
+    <form asp-action="ResponderSequencia" method="post">
+
+        <input type="hidden" name="indice" value="@indice" />
+
+
+        @foreach (var alternativas in exercicioFoco.Alternativas)
         {
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="resposta" id="resposta" value="@alternativas.Texto" checked>
@@ -36,7 +54,7 @@
         }
 
 
-        @if (idExercicio != null && item.ExercicioId == idExercicio)
+        @if (idExercicio != null && exercicioFoco.ExercicioId == idExercicio)
         {
             if (resposta == true)
             {
@@ -59,11 +77,13 @@
                     </div>
                 </div>
                 <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
-                    A resposta correta é: <span id="correta">@item.Resposta</span>
+                    A resposta correta é: <span id="correta">@exercicioFoco.Resposta</span>
                 </div>
 
 
                 <div class="explicacaoMaterialApoio" style="display: none;">
+
+
 
                     @if (ViewBag.Explicacao == true || ViewBag.MaterialSuporte == true)
                     {
@@ -72,14 +92,14 @@
                         {
                             <div>
                                 <p>Explicação</p>
-                                <p>@item.Explicacao</p>
+                                <p>@exercicioFoco.Explicacao</p>
                             </div>
                         }
                         if (ViewBag.MaterialSuporte == true)
                         {
                             <div>
                                 <p>Material de Apoio</p>
-                                <p>@item.MaterialSuporte</p>
+                                <p>@exercicioFoco.MaterialSuporte</p>
                             </div>
                         }
                     }
@@ -97,7 +117,10 @@
             }
         }
 
-        <input type="hidden" name="id" value="@item.ExercicioId" />
+
+
+
+        <input type="hidden" name="id" value="@exercicioFoco.ExercicioId" />
         @* enviar *@
 
         <div class="form-group">
@@ -105,7 +128,7 @@
         </div>
 
     </form>
-}
+
 
 
 

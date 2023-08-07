@@ -286,17 +286,9 @@ namespace ResolverQuestao.Controllers
             {
                 ViewBag.MaterialSuporte = true;
             }
-        
-           
-            if( ViewBag.Indice == null)
-            {
-                ViewBag.Indice = 0;
-            }
-            else
-            {
-                ViewBag.Indice = ViewBag.Indice + listaExercicio.IndiceExercicio;
-            }
-        
+
+
+
 
             return View(listaExercicio);
         }
@@ -306,7 +298,7 @@ namespace ResolverQuestao.Controllers
         //HTTP POST - Resolver Questao / id
 
         [HttpPost("ResponderLista/{id}")]
-        public IActionResult ResponderLista(int id, string resposta)
+        public IActionResult ResponderLista(int id, string resposta, int indice)
         {
             //procurar o exercicio
             var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
@@ -315,6 +307,8 @@ namespace ResolverQuestao.Controllers
             var listaExercicio = _context.ListaExercicios.Include(l => l.Exercicios).FirstOrDefault(l => l.Exercicios.Contains(exercicio));
 
             //lista de todas as alternativas
+
+            listaExercicio.IndiceExercicio = indice;
 
             var alternativas = _context.Alternativas.ToList();
 
@@ -335,7 +329,7 @@ namespace ResolverQuestao.Controllers
                 ViewBag.Resposta = false;
             }
 
-              //verificar se o exercicio possui explicaçao
+            //verificar se o exercicio possui explicaçao
             if (exercicio.Explicacao == null || exercicio.Explicacao == "")
             {
                 ViewBag.Explicacao = false;
@@ -346,36 +340,133 @@ namespace ResolverQuestao.Controllers
             }
 
             //verificar se o exercicio possui referencia
-            if (exercicio.MaterialSuporte == null || exercicio.MaterialSuporte  == "")
+            if (exercicio.MaterialSuporte == null || exercicio.MaterialSuporte == "")
             {
                 ViewBag.MaterialSuporte = false;
             }
             else
             {
                 ViewBag.MaterialSuporte = true;
-        
+
             }
 
-            ViewBag.IdExercicio= id;
 
-            if( ViewBag.Indice == null)
-            {
-                ViewBag.Indice = 0;
-            }
-            else
-            {
-                ViewBag.Indice = ViewBag.Indice;
-            }
-        
-            
-   
+            //viewbag com o id do exercicio
+            ViewBag.IdExercicio = exercicio.ExercicioId;
+
+            listaExercicio.IndiceExercicio = listaExercicio.IndiceExercicio + 1;
+
 
             return View(listaExercicio);
         }
 
 
 
+ //Responder Lista
+        [HttpGet("ResponderSequencia/{id}")]
+        public IActionResult ResponderSequencia(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            //var alternativas
+            var alternativas = _context.Alternativas.ToList();
+
+
+
+
+            var listaExercicio = _context.ListaExercicios
+                                        .Include(l => l.Exercicios)
+                                        .ThenInclude(e => e.Alternativas)
+                                        .FirstOrDefault(l => l.ListaExercicioId == id);
+
+
+            if (listaExercicio == null)
+            {
+                return NotFound();
+            }
+
+            //verificar se possui material de suporte
+
+            if (listaExercicio.MaterialSuporte == null)
+            {
+                ViewBag.MaterialSuporte = false;
+            }
+            else
+            {
+                ViewBag.MaterialSuporte = true;
+            }
+
+
+
+
+            return View(listaExercicio);
+        }
+
+        [HttpPost("ResponderSequencia/{id}")]
+        public IActionResult ResponderSequencia(int id, string resposta, int indice)
+        {
+            //procurar o exercicio
+            var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
+
+            //procurar qual lista ele pertence
+            var listaExercicio = _context.ListaExercicios.Include(l => l.Exercicios).FirstOrDefault(l => l.Exercicios.Contains(exercicio));
+
+            //lista de todas as alternativas
+
+            listaExercicio.IndiceExercicio = indice;
+
+            var alternativas = _context.Alternativas.ToList();
+
+            //verificar se o exercicio existe
+            if (exercicio == null)
+            {
+                return NotFound();
+            }
+
+            //verificar a resposta
+
+            if (resposta == exercicio.Resposta)
+            {
+                ViewBag.Resposta = true;
+            }
+            else
+            {
+                ViewBag.Resposta = false;
+            }
+
+            //verificar se o exercicio possui explicaçao
+            if (exercicio.Explicacao == null || exercicio.Explicacao == "")
+            {
+                ViewBag.Explicacao = false;
+            }
+            else
+            {
+                ViewBag.Explicacao = true;
+            }
+
+            //verificar se o exercicio possui referencia
+            if (exercicio.MaterialSuporte == null || exercicio.MaterialSuporte == "")
+            {
+                ViewBag.MaterialSuporte = false;
+            }
+            else
+            {
+                ViewBag.MaterialSuporte = true;
+
+            }
+
+
+            //viewbag com o id do exercicio
+            ViewBag.IdExercicio = exercicio.ExercicioId;
+
+            listaExercicio.IndiceExercicio = listaExercicio.IndiceExercicio + 1;
+
+
+            return View(listaExercicio);
+        }
 
 
 
