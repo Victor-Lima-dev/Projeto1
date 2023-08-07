@@ -298,7 +298,7 @@ namespace ResolverQuestao.Controllers
         //HTTP POST - Resolver Questao / id
 
         [HttpPost("ResponderLista/{id}")]
-        public IActionResult ResponderLista(int id, string resposta, int indice)
+        public IActionResult ResponderLista(int id, string resposta)
         {
             //procurar o exercicio
             var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
@@ -306,9 +306,6 @@ namespace ResolverQuestao.Controllers
             //procurar qual lista ele pertence
             var listaExercicio = _context.ListaExercicios.Include(l => l.Exercicios).FirstOrDefault(l => l.Exercicios.Contains(exercicio));
 
-            //lista de todas as alternativas
-
-            listaExercicio.IndiceExercicio = indice;
 
             var alternativas = _context.Alternativas.ToList();
 
@@ -354,7 +351,6 @@ namespace ResolverQuestao.Controllers
             //viewbag com o id do exercicio
             ViewBag.IdExercicio = exercicio.ExercicioId;
 
-            listaExercicio.IndiceExercicio = listaExercicio.IndiceExercicio + 1;
 
 
             return View(listaExercicio);
@@ -362,9 +358,9 @@ namespace ResolverQuestao.Controllers
 
 
 
- //Responder Lista
+        //Responder Lista
         [HttpGet("ResponderSequencia/{id}")]
-        public IActionResult ResponderSequencia(int? id)
+        public IActionResult ResponderSequencia(int? id, int indice)
         {
             if (id == null)
             {
@@ -373,16 +369,10 @@ namespace ResolverQuestao.Controllers
 
             //var alternativas
             var alternativas = _context.Alternativas.ToList();
-
-
-
-
             var listaExercicio = _context.ListaExercicios
                                         .Include(l => l.Exercicios)
                                         .ThenInclude(e => e.Alternativas)
                                         .FirstOrDefault(l => l.ListaExercicioId == id);
-
-
             if (listaExercicio == null)
             {
                 return NotFound();
@@ -399,8 +389,7 @@ namespace ResolverQuestao.Controllers
                 ViewBag.MaterialSuporte = true;
             }
 
-
-
+            listaExercicio.IndiceExercicio = indice;
 
             return View(listaExercicio);
         }
@@ -462,11 +451,43 @@ namespace ResolverQuestao.Controllers
             //viewbag com o id do exercicio
             ViewBag.IdExercicio = exercicio.ExercicioId;
 
-            listaExercicio.IndiceExercicio = listaExercicio.IndiceExercicio + 1;
 
 
             return View(listaExercicio);
         }
+
+        //HTTP POST - ProximoExercicio
+        [HttpPost("ProximoExercicio")]
+        public IActionResult ProximoExercicio(int id, int indice)
+        {
+            int proximoIndice = indice + 1;
+            //procurar a lista com id
+            var listaExercicio = _context.ListaExercicios
+                                        .Include(l => l.Exercicios)
+                                        .ThenInclude(e => e.Alternativas)
+                                        .FirstOrDefault(l => l.ListaExercicioId == id);
+
+            //redirecionar para o exercicio com o proximo indice
+
+            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice });
+        }
+
+        //HTTP POST - VoltarExercicio
+        [HttpPost("VoltarExercicio")]
+        public IActionResult VoltarExercicio(int id, int indice)
+        {
+            int proximoIndice = indice - 1;
+            //procurar a lista com id
+            var listaExercicio = _context.ListaExercicios
+                                        .Include(l => l.Exercicios)
+                                        .ThenInclude(e => e.Alternativas)
+                                        .FirstOrDefault(l => l.ListaExercicioId == id);
+
+            //redirecionar para o exercicio com o proximo indice
+
+            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice });
+        }
+
 
 
 

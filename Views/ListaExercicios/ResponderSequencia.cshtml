@@ -19,21 +19,12 @@
         indice = 0;
     }
 
-
     var exercicioFoco = Model.Exercicios[indice];
 
 }
 
 
 @* Exercicios com alternativas *@
-
-<h1>@Model.IndiceExercicio</h1>
-<h1>@contagemExercicios</h1>
-
-<p>@Model.Exercicios[indice].Enunciado</p>
-
-
-
     <h2>@exercicioFoco.Titulo</h2>
     <h4>@exercicioFoco.Enunciado</h4>
     <p> @exercicioFoco.Tipo</p>
@@ -130,7 +121,27 @@
     </form>
 
 
+<form asp-action="ProximoExercicio" asp-controller="ListaExercicios" method="post">
 
+    <input type="hidden" name="indice" value="@indice" />
+    <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+
+    <div class="form-group">
+        <input type="submit" value="Próximo" class="btn btn-primary" />
+    </div>
+
+</form>
+
+<form asp-action="VoltarExercicio" asp-controller="ListaExercicios" method="post">
+
+    <input type="hidden" name="indice" value="@indice" />
+    <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+
+    <div class="form-group">
+        <input type="submit" value="Anterior" class="btn btn-primary" />
+    </div>
+
+</form>
 
 @* js script *@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -154,10 +165,4 @@
     function recarregarPagina() {
         $(".hide").hide();
     }
-
-
-
-
-
-
 </script>
