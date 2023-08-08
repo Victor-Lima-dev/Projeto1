@@ -489,7 +489,61 @@ namespace ResolverQuestao.Controllers
         }
 
 
+        //metodo para procurar por tipo
+        [HttpGet("ProcurarPorTipo")]
+        public IActionResult ProcurarPorTipo(string tipo)
+        {
+            //pegar as listas do usuario logado
+            var listas = new List<ListaExercicio>();
+            listas = _context.ListaExercicios.Include(l => l.Exercicios).ToList();
 
+            var listasUsuario = listas.Where(l => l.UsuarioId == User.Identity.Name).ToList();
+
+            //verificar se o tipo é nulo
+            if (tipo == null)
+            {
+                return View("Index", listasUsuario);
+            }
+
+            //verificar se o tipo é vazio
+            if (tipo == "")
+            {
+                return View("Index", listasUsuario);
+            }
+
+            //pegar as listas com o tipo
+            var listasPorTipo = listasUsuario.Where(l => l.Tipo == tipo).ToList();
+
+            return View("Index", listasPorTipo);
+        }
+
+
+     
+
+        //metodo para procurar por tipo
+        [HttpGet("ProcurarPorTipoExercicios")]
+        public IActionResult ProcurarPorTipoExercicios(string tipo)
+        {
+            var listaViewModel = new ListaExerciciosViewModel();
+            //pegar os exercicios do usuario logado
+            var exercicios = new List<Exercicio>();
+            exercicios = _context.Exercicios.ToList();
+            var exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
+
+            //filtrar pelo tipo
+            if (tipo == null)
+            {
+                return View("Create", listaViewModel);
+            }
+            var exerciciosFiltrados = exerciciosUsuario.Where(e => e.Tipo == tipo).ToList();
+
+           
+            listaViewModel.Exercicios = exerciciosFiltrados;
+
+            return View("Create",listaViewModel);
+
+            
+        }
 
 
 

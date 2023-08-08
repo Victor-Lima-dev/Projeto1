@@ -58,25 +58,25 @@ namespace ResolverQuestao.Controllers
         {
 
 
-                //colocar o id do usuario logado no exercicio
+            //colocar o id do usuario logado no exercicio
 
-                exercicio.UsuarioId = User.Identity.Name;
+            exercicio.UsuarioId = User.Identity.Name;
 
-          
-                if(exercicio.Explicacao == null)
-                {
-                    exercicio.Explicacao = "";
-                }
 
-                if(exercicio.MaterialSuporte == null)
-                {
-                    exercicio.MaterialSuporte = "";
-                }
-                _context.Exercicios.Add(exercicio);
-                _context.SaveChanges();
+            if (exercicio.Explicacao == null)
+            {
+                exercicio.Explicacao = "";
+            }
 
-                return RedirectToAction("Index");
-            
+            if (exercicio.MaterialSuporte == null)
+            {
+                exercicio.MaterialSuporte = "";
+            }
+            _context.Exercicios.Add(exercicio);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+
 
         }
 
@@ -221,7 +221,7 @@ namespace ResolverQuestao.Controllers
                 ViewBag.Resposta = false;
             }
 
-              //verificar se o exercicio possui explicaçao
+            //verificar se o exercicio possui explicaçao
             if (exercicio.Explicacao == null || exercicio.Explicacao == "")
             {
                 ViewBag.Explicacao = false;
@@ -232,7 +232,7 @@ namespace ResolverQuestao.Controllers
             }
 
             //verificar se o exercicio possui referencia
-            if (exercicio.MaterialSuporte == null || exercicio.MaterialSuporte  == "")
+            if (exercicio.MaterialSuporte == null || exercicio.MaterialSuporte == "")
             {
                 ViewBag.MaterialSuporte = false;
             }
@@ -250,7 +250,25 @@ namespace ResolverQuestao.Controllers
 
 
 
+        //metodo para procurar por tipo
+        [HttpGet("ProcurarPorTipo")]
+        public IActionResult ProcurarPorTipo(string tipo)
+        {
+           //pegar a lista de exercicios do usuario
+            var exercicios = _context.Exercicios.ToList();
 
+            //pegar os exercicios do usuario logado
+
+            var exerciciosUsuario = new List<Exercicio>();
+
+            exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
+
+            //pegar os exercicios do tipo selecionado
+            var exerciciosTipo = exerciciosUsuario.Where(e => e.Tipo == tipo).ToList();
+
+            return View("Index", exerciciosTipo);
+           
+        }
 
 
 

@@ -1,5 +1,13 @@
 @model List<Exercicio>
 
+    @{
+        var tipos = new List<string>();
+        foreach (var item in Model)
+        {
+            tipos.Add(item.Tipo);
+        }
+    }
+
 <div class="container">
 
     <h1 class="title text-center"> Exercicios</h1>
@@ -11,11 +19,19 @@
             <label class="visually-hidden" for="autoSizingInputGroup">Procurar por Titulo ou Tipo</label>
             <div class="input-group">
                 <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
-                <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Procurar por Titulo ou Tipo">
+                <select class="form-control" id="tipo" name="tipo" onchange="window.location.href=this.value">
+                    <option value="">Procurar por Tipo</option>
+                    @foreach (var tipo in tipos.Distinct())
+                    {
+                        <option value="@Url.Action("ProcurarPorTipo", "Exercicios", new {tipo = tipo})"> @tipo
+                        </option>
+                    }
+                </select>
             </div>
         </div>
     </div>
-    
+    <a asp-action="Index" class="btn btn-primary">Limpar Pesquisa</a>
+
 
     @foreach (var item in Model)
     {
