@@ -14,8 +14,8 @@
             @foreach (var item in Model.Alternativas)
             {
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="resposta" id="resposta" value="@item.Texto" checked>
-                    <label class="form-check-label" for="resposta">
+                    <input class="form-check-input" type="radio" name="resposta" id="@item.AlternativaId" value="@item.Texto" checked>
+                    <label class="form-check-label" for="@item.AlternativaId">
                         @item.Texto
                     </label>
                 </div>

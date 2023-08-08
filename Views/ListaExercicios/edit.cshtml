@@ -4,6 +4,12 @@
     var antesEditExercicios = Model.Exercicios;
 
     var exerciciosDisponiveis = Model.TodosExercicios;
+
+    //remover os exercicios que já estão na lista
+    foreach (var item in antesEditExercicios)
+    {
+        exerciciosDisponiveis.Remove(item);
+    }
 }
 
 <div class="container">
@@ -40,7 +46,9 @@
         @foreach (var item in antesEditExercicios)
         {
             <div class="form-check">
-                <input type="checkbox" name="ExerciciosSelecionados" value="@item.ExercicioId" class="form-check-input">
+                @* deixar o checkbox marcado *@
+            
+                <input type="checkbox" name="ExerciciosSelecionados" value="@item.ExercicioId" class="form-check-input" checked>
                 <label class="form-check-label">@item.Enunciado</label>              
             </div>
         }

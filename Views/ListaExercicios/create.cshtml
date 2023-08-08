@@ -20,7 +20,7 @@
 
     <div class="form-group">
         <label asp-for="@Model.ListaExercicio.Titulo"></label>
-        <input asp-for="@Model.ListaExercicio.Titulo" class="form-control" />
+        <input asp-for="@Model.ListaExercicio.Titulo" class="form-control"value="@Model.ListaExercicio.Titulo" />
         <span asp-validation-for="@Model.ListaExercicio.Titulo" class="text-danger"></span>
     </div>
 
@@ -50,7 +50,6 @@
 
     <a asp-action="Create" class="btn btn-primary">Limpar Pesquisa</a>
 
-
     <div class="form-group">
         <label asp-for="@Model.ExerciciosSelecionados">Exercicios</label>
         @foreach (var item in exercicios)
@@ -58,7 +57,7 @@
             <div class="form-check">
                 <input type="checkbox" name="ExerciciosSelecionados" value="@item.ExercicioId" id="@item.ExercicioId" class="form-check-input">
                 <label class="form-check-label" for="@item.ExercicioId">@item.Enunciado</label>
-            </div>
+            </div>            
         }
     </div>
 
@@ -86,6 +85,7 @@
     <input type="submit" value="Criar Lista de Exercicios" class="btn btn-primary" />
 
 </form>
+
 
 @* importar jquery *@
 

@@ -220,18 +220,24 @@ namespace ResolverQuestao.Controllers
 
             var exerciciosSelecionadosEdit = listaViewModel.ExerciciosSelecionadosEdit;
 
-            //unir as duas listas de exercicios selecionados e remover os duplicados
-            var exerciciosSelecionadosFinal = exerciciosSelecionados.Union(exerciciosSelecionadosEdit).ToList();
+            //fazer um foreach em que adiciona todos os exerciciosSelecioanadosEdit em exercicios Selecionados
+            foreach (var item in exerciciosSelecionadosEdit)
+            {
+                exerciciosSelecionados.Add(item);
+            }
+            
 
 
             //limpar a lista de exercicios
             listaExercicio.Exercicios.Clear();
 
+            var exerciciosSelecionadosFinal = exerciciosSelecionados.Distinct().ToList();
+
 
 
 
             //adicionar ao listaExercicio os exercicios selecionados
-            foreach (var item in exerciciosSelecionadosFinal)
+            foreach (var item in exerciciosSelecionados)
             {
                 var exercicio = _context.Exercicios.Find(item);
                 listaExercicio.Exercicios.Add(exercicio);
@@ -518,7 +524,7 @@ namespace ResolverQuestao.Controllers
         }
 
 
-     
+
 
         //metodo para procurar por tipo
         [HttpGet("ProcurarPorTipoExercicios")]
@@ -537,13 +543,14 @@ namespace ResolverQuestao.Controllers
             }
             var exerciciosFiltrados = exerciciosUsuario.Where(e => e.Tipo == tipo).ToList();
 
-           
+
             listaViewModel.Exercicios = exerciciosFiltrados;
 
-            return View("Create",listaViewModel);
+            return View("Create", listaViewModel);
 
-            
+
         }
+
 
 
 
