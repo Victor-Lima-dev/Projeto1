@@ -19,11 +19,11 @@
         indice = 0;
     }
 
-    if(indice < 0)
+    if (indice < 0)
     {
         indice = contagemExercicios - 1;
     }
-    
+
 
     var exercicioFoco = Model.Exercicios[indice];
 
@@ -31,100 +31,100 @@
 
 
 @* Exercicios com alternativas *@
-    <h2>@exercicioFoco.Titulo</h2>
-    <h4>@exercicioFoco.Enunciado</h4>
-    <p> @exercicioFoco.Tipo</p>
+<h2>@exercicioFoco.Titulo</h2>
+<h4>@exercicioFoco.Enunciado</h4>
+<p> @exercicioFoco.Tipo</p>
 
-    <form asp-action="ResponderSequencia" method="post">
+<form asp-action="ResponderSequencia" method="post">
 
-        <input type="hidden" name="indice" value="@indice" />
+    <input type="hidden" name="indice" value="@indice" />
 
 
-        @foreach (var alternativas in exercicioFoco.Alternativas)
+    @foreach (var alternativas in exercicioFoco.Alternativas)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="resposta" id="resposta" value="@alternativas.Texto" checked>
+            <label class="form-check-label" for="resposta">
+                @alternativas.Texto
+            </label>
+        </div>
+    }
+
+
+    @if (idExercicio != null && exercicioFoco.ExercicioId == idExercicio)
+    {
+        if (resposta == true)
         {
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="resposta" id="resposta" value="@alternativas.Texto" checked>
-                <label class="form-check-label" for="resposta">
-                    @alternativas.Texto
-                </label>
+            <div class="alert alert-success" role="alert">
+                Resposta correta!
             </div>
         }
-
-
-        @if (idExercicio != null && exercicioFoco.ExercicioId == idExercicio)
+        else
         {
-            if (resposta == true)
-            {
-                <div class="alert alert-success" role="alert">
-                    Resposta correta!
+            <div class="alert alert-danger" role="alert">
+                Resposta incorreta!
+            </div>
+
+
+            <div class="form-group hide">
+                <label for="pergunta">Deseja ver a resposta correta?</label>
+                <div id="pergunta" class="form-control">
+                    <button id="sim" onclick="mostrarResposta()">Sim</button>
+                    <button id="nao" onclick="recarregarPagina()">Não</button>
                 </div>
-            }
-            else
-            {
-                <div class="alert alert-danger" role="alert">
-                    Resposta incorreta!
-                </div>
+            </div>
+            <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
+                A resposta correta é: <span id="correta">@exercicioFoco.Resposta</span>
+            </div>
 
 
-                <div class="form-group hide">
-                    <label for="pergunta">Deseja ver a resposta correta?</label>
-                    <div id="pergunta" class="form-control">
-                        <button id="sim" onclick="mostrarResposta()">Sim</button>
-                        <button id="nao" onclick="recarregarPagina()">Não</button>
-                    </div>
-                </div>
-                <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
-                    A resposta correta é: <span id="correta">@exercicioFoco.Resposta</span>
-                </div>
-
-
-                <div class="explicacaoMaterialApoio" style="display: none;">
+            <div class="explicacaoMaterialApoio" style="display: none;">
 
 
 
-                    @if (ViewBag.Explicacao == true || ViewBag.MaterialSuporte == true)
-                    {
+                @if (ViewBag.Explicacao == true || ViewBag.MaterialSuporte == true)
+                {
 
-                        if (ViewBag.Explicacao == true)
-                        {
-                            <div>
-                                <p>Explicação</p>
-                                <p>@exercicioFoco.Explicacao</p>
-                            </div>
-                        }
-                        if (ViewBag.MaterialSuporte == true)
-                        {
-                            <div>
-                                <p>Material de Apoio</p>
-                                <p>@exercicioFoco.MaterialSuporte</p>
-                            </div>
-                        }
-                    }
-                    else
+                    if (ViewBag.Explicacao == true)
                     {
                         <div>
-                            <p>Não há explicação ou material de apoio para esta questão</p>
+                            <p>Explicação</p>
+                            <p>@exercicioFoco.Explicacao</p>
                         </div>
                     }
+                    if (ViewBag.MaterialSuporte == true)
+                    {
+                        <div>
+                            <p>Material de Apoio</p>
+                            <p>@exercicioFoco.MaterialSuporte</p>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>
+                        <p>Não há explicação ou material de apoio para esta questão</p>
+                    </div>
+                }
 
-                </div>
+            </div>
 
 
 
-            }
         }
+    }
 
 
 
 
-        <input type="hidden" name="id" value="@exercicioFoco.ExercicioId" />
-        @* enviar *@
+    <input type="hidden" name="id" value="@exercicioFoco.ExercicioId" />
+    @* enviar *@
 
-        <div class="form-group">
-            <input type="submit" value="Enviar" class="btn btn-primary" />
-        </div>
+    <div class="form-group">
+        <input type="submit" value="Enviar" class="btn btn-primary" />
+    </div>
 
-    </form>
+</form>
 
 
 <form asp-action="ProximoExercicio" asp-controller="ListaExercicios" method="post">
@@ -146,8 +146,21 @@
     <div class="form-group">
         <input type="submit" value="Anterior" class="btn btn-primary" />
     </div>
+</form>
+
+
+<form asp-action="SelecionarExercicio" asp-controller="ListaExercicios" method="post">
+    @foreach (var item in Model.Exercicios)
+    {
+
+        <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+        <input type="submit" value="@Model.Exercicios.IndexOf(item)" name="indice" class="btn btn-primary" />
+    }
 
 </form>
+
+
+
 
 @* js script *@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

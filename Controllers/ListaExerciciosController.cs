@@ -51,9 +51,13 @@ namespace ResolverQuestao.Controllers
         {
             //lista de exercicios
             var exercicios = _context.Exercicios.ToList();
+
+            //filtrar os exercicios do usuario logado
+            var exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
+
             var listaViewModel = new ListaExerciciosViewModel();
 
-            listaViewModel.Exercicios = exercicios;
+            listaViewModel.Exercicios = exerciciosUsuario;
 
 
 
@@ -492,6 +496,21 @@ namespace ResolverQuestao.Controllers
             //redirecionar para o exercicio com o proximo indice
 
             return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice });
+        }
+
+        //HTTP POST - SelecionarExercicio
+        [HttpPost("SelecionarExercicio")]
+        public IActionResult SelecionarExercicio(int id, int indice)
+        {
+            //procurar a lista com id
+            var listaExercicio = _context.ListaExercicios
+                                        .Include(l => l.Exercicios)
+                                        .ThenInclude(e => e.Alternativas)
+                                        .FirstOrDefault(l => l.ListaExercicioId == id);
+
+            //redirecionar para o exercicio com o proximo indice
+
+            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = indice });
         }
 
 

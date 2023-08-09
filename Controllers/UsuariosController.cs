@@ -33,7 +33,7 @@ namespace ResolverQuestao.Controllers
             _signInManager = signInManager;
 
         }
-        
+
 
         public IActionResult Index()
         {
@@ -48,7 +48,7 @@ namespace ResolverQuestao.Controllers
 
             var usuario = new Usuario
             {
-                ReturnUrl = url  
+                ReturnUrl = url
             };
 
             return View(usuario);
@@ -61,17 +61,17 @@ namespace ResolverQuestao.Controllers
 
             var user = _userManager.FindByNameAsync(usuario.Username).Result;
 
-              
 
 
-            if(user != null)
+
+            if (user != null)
 
             {
                 var result = _signInManager.PasswordSignInAsync(user, usuario.Password, false, false).Result;
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
-                    if(!string.IsNullOrEmpty(usuario.ReturnUrl))
+                    if (!string.IsNullOrEmpty(usuario.ReturnUrl))
                     {
                         return Redirect(usuario.ReturnUrl);
                     }
@@ -81,7 +81,7 @@ namespace ResolverQuestao.Controllers
                     }
                 }
             }
-           
+
             return View();
         }
 
@@ -98,17 +98,17 @@ namespace ResolverQuestao.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registrar(Usuario usuario)
         {
-          var user = new IdentityUser() { UserName = usuario.Username };
-          var result = await _userManager.CreateAsync(user, usuario.Password);
+            var user = new IdentityUser() { UserName = usuario.Username };
+            var result = await _userManager.CreateAsync(user, usuario.Password);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return RedirectToAction("Login");
             }
 
             return View(usuario);
 
-           
+
         }
 
 
