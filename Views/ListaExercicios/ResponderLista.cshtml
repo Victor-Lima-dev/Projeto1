@@ -28,8 +28,8 @@
         @foreach (var alternativas in item.Alternativas)
         {
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="resposta" id="resposta" value="@alternativas.Texto" checked>
-                <label class="form-check-label" for="resposta">
+                <input class="form-check-input" type="radio" name="resposta" id="@alternativas.AlternativaId" value="@alternativas.Texto">
+                <label class="form-check-label" for="@alternativas.AlternativaId">
                     @alternativas.Texto
                 </label>
             </div>

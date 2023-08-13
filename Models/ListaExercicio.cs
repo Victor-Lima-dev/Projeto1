@@ -25,7 +25,7 @@ namespace ResolverQuestao.Models
 
         public int IndiceExercicio { get; set; } = 0;
 
-        
+        public List<ListaRegistro> ListaRegistros { get; set; } = new List<ListaRegistro>();
 
 
     }

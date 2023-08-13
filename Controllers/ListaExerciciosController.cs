@@ -370,7 +370,7 @@ namespace ResolverQuestao.Controllers
 
         //Responder Lista
         [HttpGet("ResponderSequencia/{id}")]
-        public IActionResult ResponderSequencia(int? id, int indice)
+        public IActionResult ResponderSequencia(int? id, int indice, int acertos, int erros)
         {
             if (id == null)
             {
@@ -401,12 +401,36 @@ namespace ResolverQuestao.Controllers
 
             listaExercicio.IndiceExercicio = indice;
 
+            if (acertos == 0)
+            {
+                ViewBag.Acertos = 0;
+            }
+            else
+            {
+                ViewBag.Acertos = acertos;
+            }
+
+            if (erros == 0)
+            {
+                ViewBag.Erros = 0;
+            }
+            else
+            {
+                ViewBag.Erros = erros;
+            }
+
+
             return View(listaExercicio);
         }
 
         [HttpPost("ResponderSequencia/{id}")]
-        public IActionResult ResponderSequencia(int id, string resposta, int indice)
+        public IActionResult ResponderSequencia(int id, string resposta, int indice, int acertos, int erros)
         {
+
+
+
+
+
             //procurar o exercicio
             var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
 
@@ -430,10 +454,12 @@ namespace ResolverQuestao.Controllers
             if (resposta == exercicio.Resposta)
             {
                 ViewBag.Resposta = true;
+                acertos++;
             }
             else
             {
                 ViewBag.Resposta = false;
+                erros++;
             }
 
             //verificar se o exercicio possui explicaçao
@@ -460,6 +486,8 @@ namespace ResolverQuestao.Controllers
 
             //viewbag com o id do exercicio
             ViewBag.IdExercicio = exercicio.ExercicioId;
+            ViewBag.Acertos = acertos;
+            ViewBag.Erros = erros;
 
 
 
@@ -468,7 +496,7 @@ namespace ResolverQuestao.Controllers
 
         //HTTP POST - ProximoExercicio
         [HttpPost("ProximoExercicio")]
-        public IActionResult ProximoExercicio(int id, int indice)
+        public IActionResult ProximoExercicio(int id, int indice, int acertos, int erros)
         {
             int proximoIndice = indice + 1;
             //procurar a lista com id
@@ -478,13 +506,14 @@ namespace ResolverQuestao.Controllers
                                         .FirstOrDefault(l => l.ListaExercicioId == id);
 
             //redirecionar para o exercicio com o proximo indice
+            ViewBag.Acertos = acertos;
 
-            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice });
+            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice, acertos = acertos, erros = erros });
         }
 
         //HTTP POST - VoltarExercicio
         [HttpPost("VoltarExercicio")]
-        public IActionResult VoltarExercicio(int id, int indice)
+        public IActionResult VoltarExercicio(int id, int indice, int acertos, int erros)
         {
             int proximoIndice = indice - 1;
             //procurar a lista com id
@@ -494,13 +523,13 @@ namespace ResolverQuestao.Controllers
                                         .FirstOrDefault(l => l.ListaExercicioId == id);
 
             //redirecionar para o exercicio com o proximo indice
-
-            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice });
+            ViewBag.Acertos = acertos;
+            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice, acertos = acertos, erros = erros });
         }
 
         //HTTP POST - SelecionarExercicio
         [HttpPost("SelecionarExercicio")]
-        public IActionResult SelecionarExercicio(int id, int indice)
+        public IActionResult SelecionarExercicio(int id, int indice, int acertos, int erros)
         {
             //procurar a lista com id
             var listaExercicio = _context.ListaExercicios
@@ -510,7 +539,7 @@ namespace ResolverQuestao.Controllers
 
             //redirecionar para o exercicio com o proximo indice
 
-            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = indice });
+            return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = indice, acertos = acertos, erros = erros });
         }
 
 

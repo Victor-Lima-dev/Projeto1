@@ -27,7 +27,16 @@
 
     var exercicioFoco = Model.Exercicios[indice];
 
+    var acertos = ViewBag.Acertos;
+
+    var erros = ViewBag.Erros;
+
 }
+
+
+<h1>Exercicio @indice de @contagemExercicios</h1>
+<h1>@acertos</h1>
+<h1>@erros</h1>
 
 
 @* Exercicios com alternativas *@
@@ -39,12 +48,16 @@
 
     <input type="hidden" name="indice" value="@indice" />
 
+    <input type="hidden" name="acertos" value="@acertos" />
+    <input type="hidden" name="erros" value="@erros" />
+
 
     @foreach (var alternativas in exercicioFoco.Alternativas)
     {
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="resposta" id="resposta" value="@alternativas.Texto" checked>
-            <label class="form-check-label" for="resposta">
+            <input class="form-check-input" type="radio" name="resposta" id="@alternativas.AlternativaId"
+                value="@alternativas.Texto">
+            <label class="form-check-label" for="@alternativas.AlternativaId">
                 @alternativas.Texto
             </label>
         </div>
@@ -131,6 +144,10 @@
 
     <input type="hidden" name="indice" value="@indice" />
     <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+    <input type="hidden" name="acertos" value="@acertos" />
+    <input type="hidden" name="erros" value="@erros" />
+
+
 
     <div class="form-group">
         <input type="submit" value="Próximo" class="btn btn-primary" />
@@ -142,6 +159,10 @@
 
     <input type="hidden" name="indice" value="@indice" />
     <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+    <input type="hidden" name="acertos" value="@acertos" />
+    <input type="hidden" name="erros" value="@erros" />
+
+
 
     <div class="form-group">
         <input type="submit" value="Anterior" class="btn btn-primary" />
@@ -156,7 +177,8 @@
         <input type="hidden" name="id" value="@Model.ListaExercicioId" />
         <input type="submit" value="@Model.Exercicios.IndexOf(item)" name="indice" class="btn btn-primary" />
     }
-
+    <input type="hidden" name="acertos" value="@acertos" />
+    <input type="hidden" name="erros" value="@erros" />
 </form>
 
 
