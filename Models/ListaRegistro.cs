@@ -19,5 +19,7 @@ namespace ResolverQuestao.Models
 
         public int Erros { get; set; }
 
+        public string TituloLista { get; set; }
+
     }
 }

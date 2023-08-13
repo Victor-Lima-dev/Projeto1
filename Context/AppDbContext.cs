@@ -18,6 +18,8 @@ namespace ResolverQuestao.Context
         public DbSet<Alternativa> Alternativas { get; set; }
 
         public DbSet<ListaExercicio> ListaExercicios { get; set; }
+
+        public DbSet<ListaRegistro> ListaRegistros { get; set; }
         
     }
 }

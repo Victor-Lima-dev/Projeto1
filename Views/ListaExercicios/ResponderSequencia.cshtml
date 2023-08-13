@@ -177,10 +177,17 @@
         <input type="hidden" name="id" value="@Model.ListaExercicioId" />
         <input type="submit" value="@Model.Exercicios.IndexOf(item)" name="indice" class="btn btn-primary" />
     }
+
     <input type="hidden" name="acertos" value="@acertos" />
     <input type="hidden" name="erros" value="@erros" />
 </form>
 
+<form asp-action="Registrar" asp-controller="ListaRegistros">
+    <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+    <input type="hidden" name="acertos" value="@acertos" />
+    <input type="hidden" name="erros" value="@erros" />
+    <input type="submit" value="Registrar" class="btn btn-primary" />
+</form>
 
 
 
