@@ -39,6 +39,9 @@ namespace ResolverQuestao.Controllers
 
             exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
 
+            //inverter lista
+            exerciciosUsuario.Reverse();
+
             return View(exerciciosUsuario);
         }
 

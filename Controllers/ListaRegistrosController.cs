@@ -36,6 +36,9 @@ namespace ResolverQuestao.Controllers
             //pegar os registros do usuario logado
             var registrosUsuario = registros.FindAll(registro => registro.UsuarioId == usuarioId);
 
+            //invertendo a lista para mostrar os ultimos registros primeiro
+            registrosUsuario.Reverse();
+
             return View(registrosUsuario);
         }
 

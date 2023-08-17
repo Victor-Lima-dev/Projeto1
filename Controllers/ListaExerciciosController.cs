@@ -52,12 +52,21 @@ namespace ResolverQuestao.Controllers
             //lista de exercicios
             var exercicios = _context.Exercicios.ToList();
 
+            //lista de listas
+            var listas = _context.ListaExercicios.Include(l => l.Exercicios).ToList();
+
             //filtrar os exercicios do usuario logado
             var exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
 
             var listaViewModel = new ListaExerciciosViewModel();
 
             listaViewModel.Exercicios = exerciciosUsuario;
+
+            //selecionar todos os exercicios cujo ListaExercicios.count == 0
+
+            var exerciciosSemLista = exerciciosUsuario.Where(e => e.ListaExercicios.Count == 0).ToList();
+
+            listaViewModel.ExerciciosSemLista = exerciciosSemLista;
 
 
 
@@ -94,6 +103,11 @@ namespace ResolverQuestao.Controllers
             listaCriada.MaterialSuporte = listaViewModel.ListaExercicio.MaterialSuporte;
             listaCriada.UsuarioId = listaViewModel.ListaExercicio.UsuarioId;
 
+            //adicionar os topicos da viewmodel na lista criada
+            var topicos = listaViewModel.TopicoListas;
+
+            listaCriada.TopicoListas = topicos;
+
             _context.ListaExercicios.Add(listaCriada);
             _context.SaveChanges();
 
@@ -117,6 +131,8 @@ namespace ResolverQuestao.Controllers
             {
                 return NotFound();
             }
+
+            var topicosLista = _context.TopicoListas.ToList();
 
             //verificar se possui material de suporte
 
@@ -218,6 +234,20 @@ namespace ResolverQuestao.Controllers
             var listaExercicio = _context.ListaExercicios.Include(l => l.Exercicios).FirstOrDefault(l => l.ListaExercicioId == listaViewModel.ListaExercicio.ListaExercicioId);
 
 
+            //verificar nos itens dos topicos, se houver algum cujo conteudo e titulo estiverem vazios é para excluir
+            var topicos = listaViewModel.TopicoListas;
+            
+            foreach (var item in topicos)
+            {
+                if (item.Conteudo == "" || item.Titulo == "")
+                {
+                    _context.TopicoListas.Remove(item);
+                }
+            }
+
+            
+            //adicionar na listaExercicio os topicos da listaViewModel
+            listaExercicio.TopicoListas = topicos;
 
 
             var exerciciosSelecionados = listaViewModel.ExerciciosSelecionados;

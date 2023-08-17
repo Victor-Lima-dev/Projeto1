@@ -18,6 +18,8 @@
         materia.Add(item.Materia);
     }
 
+    var exerciciosSemLista = Model.ExerciciosSemLista;
+
 }
 
 <div class="container">
@@ -37,10 +39,47 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="@Model.ListaExercicio.Tipo">Descrição</label>
+        <label asp-for="@Model.ListaExercicio.Tipo">Tipo</label>
         <input asp-for="@Model.ListaExercicio.Tipo" class="form-control" />
         <span asp-validation-for="@Model.ListaExercicio.Tipo" class="text-danger"></span>
     </div>
+
+    @* topicos *@
+
+<div class="form-group">
+        <label>Topicos</label>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Conteudo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="topicos">
+                @{ var index = 0; }
+                @foreach (var topico in Model.TopicoListas)
+                {
+                    <tr>
+                        <td><input type="text" name="TopicoListas[@index].Titulo"
+                                value="@topico.Titulo" class="form-control" /></td>
+                        @Html.ValidationMessageFor(model => model.TopicoListas[index].Titulo)
+                        <td><input type="text" name="TopicoListas[@index].Conteudo"
+                                value="@topico.Conteudo" class="form-control" /></td>
+                        @Html.ValidationMessageFor(model => model.TopicoListas[index].Conteudo)
+                        <td><button type="button" class="btn btn-danger" onclick="removerTopico(this)">Remover</button>
+                        </td>
+                    </tr>
+                     index++;
+                }
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" onclick="adicionarTopico()">Adicionar Topico</button>
+    </div>
+
+
+@* topicos *@
+
 
     <div class="input-group">
         <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
@@ -81,6 +120,18 @@
         }
     </div>
 
+     <div class="form-group">
+        <label asp-for="@Model.ExerciciosSelecionados">Exercicios sem Lista</label>
+        @foreach (var item in exerciciosSemLista)
+        {
+            <div class="form-check">
+                <input type="checkbox" name="ExerciciosSelecionados" value="@item.ExercicioId" id="@item.ExercicioId"
+                    class="form-check-input">
+                <label class="form-check-label" for="@item.ExercicioId">@item.Enunciado</label>
+            </div>
+        }
+    </div>
+
     @* Perguntar se Vai adicionar um material de apoio *@
 
     <div class="form-group">
@@ -102,7 +153,15 @@
 
 
 
+
+
+
     <input type="submit" value="Criar Lista de Exercicios" class="btn btn-primary" />
+
+
+
+
+
 
 </form>
 
@@ -126,7 +185,50 @@
         });
     });
 
+    var index = $("#topicos").children().length;
 
+// Define uma função chamada adicionarTopico que não recebe nenhum parâmetro
+function adicionarTopico() {
+    // Cria uma variável chamada topicos que armazena o elemento HTML com o id "topicos"
+    var topicos = $("#topicos");
+    // Cria uma variável chamada tr que armazena um novo elemento HTML do tipo <tr> (table row)
+    var tr = $("<tr></tr>");
+    // Cria uma variável chamada tdTitulo que armazena um novo elemento HTML do tipo <td> (table data)
+    var tdTitulo = $("<td></td>");
+    // Cria uma variável chamada inputTitulo que armazena um novo elemento HTML do tipo <input> com os atributos type, name e class definidos
+    var inputTitulo = $("<input type='text' name='TopicoListas[" + index + "].Titulo' class='form-control' />");
+    // Adiciona o elemento inputTitulo como filho do elemento tdTitulo
+    tdTitulo.append(inputTitulo);
+    // Cria uma variável chamada tdConteudo que armazena um novo elemento HTML do tipo <td>
+    var tdConteudo = $("<td></td>");
+    // Cria uma variável chamada inputConteudo que armazena um novo elemento HTML do tipo <input> com os atributos type, name e class definidos
+    var inputConteudo = $("<textarea type='text' name='TopicoListas[" + index + "].Conteudo' class='form-control'></textarea>");
+    // Adiciona o elemento inputConteudo como filho do elemento tdConteudo
+    tdConteudo.append(inputConteudo);
+    // Cria uma variável chamada tdAcoes que armazena um novo elemento HTML do tipo <td>
+    var tdAcoes = $("<td></td>");
+    // Cria uma variável chamada buttonRemover que armazena um novo elemento HTML do tipo <button> com os atributos type, class e onclick definidos
+    var buttonRemover = $("<button type='button' class='btn btn-danger' onclick='removerTopico(this)'>Remover</button>");
+    // Adiciona o elemento buttonRemover como filho do elemento tdAcoes
+    tdAcoes.append(buttonRemover);
+    // Adiciona os elementos tdTitulo, tdConteudo e tdAcoes como filhos do elemento tr
+    tr.append(tdTitulo);
+    tr.append(tdConteudo);
+    tr.append(tdAcoes);
+    // Adiciona o elemento tr como filho do elemento topicos
+    topicos.append(tr);
+    // Incrementa a variável index em 1
+    index++;
+}
+
+// Define uma função chamada removerTopico que recebe um parâmetro chamado button
+function removerTopico(button) {
+    // Cria uma variável chamada tr que armazena o elemento pai do elemento pai do botão
+    var tr = $(button).parent().parent();
+    // Remove o elemento tr do documento HTML
+    tr.remove();
+
+}
 
 
 

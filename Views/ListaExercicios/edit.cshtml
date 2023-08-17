@@ -65,6 +65,39 @@
         }
     </div>
 
+@* Topicos *@
+<div class="form-group">
+    <label>Topicos</label>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Conteudo</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="topicos">
+            @{ var index = 0; }
+            @foreach (var topico in Model.TopicoListas)
+            {
+                <tr>
+                    <td><input type="text" name="TopicoListas[@index].Titulo"
+                            value="@topico.Titulo" class="form-control" /></td>
+                    @Html.ValidationMessageFor(model => model.TopicoListas[index].Titulo)
+                    <td><input type="text" name="TopicoListas[@index].Conteudo"
+                            value="@topico.Conteudo" class="form-control" /></td>
+                    @Html.ValidationMessageFor(model => model.TopicoListas[index].Conteudo)
+                    <td><button type="button" class="btn btn-danger" onclick="removerTopico(this)">Remover</button>
+                    </td>
+                </tr>
+                 index++;
+            }
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" onclick="adicionarTopico()">Adicionar Topico</button>
+</div>
+
+@* Topicos *@
 
 
     @* Perguntar se Vai adicionar um material de apoio *@
@@ -111,7 +144,62 @@
             }
         });
     });
+ //se #pergunta for igual a 1, mostra o campo Material de Apoio
+    //se #pergunta for igual a 0, esconde o campo Material de Apoio
 
+    $(document).ready(function () {
+        $("#pergunta").change(function () {
+            if ($(this).val() == 1) {
+                $(".hide").show();
+            } else {
+                $(".hide").hide();
+            }
+        });
+    });
+
+    var index = $("#topicos").children().length;
+
+// Define uma função chamada adicionarTopico que não recebe nenhum parâmetro
+function adicionarTopico() {
+    // Cria uma variável chamada topicos que armazena o elemento HTML com o id "topicos"
+    var topicos = $("#topicos");
+    // Cria uma variável chamada tr que armazena um novo elemento HTML do tipo <tr> (table row)
+    var tr = $("<tr></tr>");
+    // Cria uma variável chamada tdTitulo que armazena um novo elemento HTML do tipo <td> (table data)
+    var tdTitulo = $("<td></td>");
+    // Cria uma variável chamada inputTitulo que armazena um novo elemento HTML do tipo <input> com os atributos type, name e class definidos
+    var inputTitulo = $("<input type='text' name='TopicoListas[" + index + "].Titulo' class='form-control' />");
+    // Adiciona o elemento inputTitulo como filho do elemento tdTitulo
+    tdTitulo.append(inputTitulo);
+    // Cria uma variável chamada tdConteudo que armazena um novo elemento HTML do tipo <td>
+    var tdConteudo = $("<td></td>");
+    // Cria uma variável chamada inputConteudo que armazena um novo elemento HTML do tipo <input> com os atributos type, name e class definidos
+    var inputConteudo = $("<input type='text' name='TopicoListas[" + index + "].Conteudo' class='form-control' />");
+    // Adiciona o elemento inputConteudo como filho do elemento tdConteudo
+    tdConteudo.append(inputConteudo);
+    // Cria uma variável chamada tdAcoes que armazena um novo elemento HTML do tipo <td>
+    var tdAcoes = $("<td></td>");
+    // Cria uma variável chamada buttonRemover que armazena um novo elemento HTML do tipo <button> com os atributos type, class e onclick definidos
+    var buttonRemover = $("<button type='button' class='btn btn-danger' onclick='removerTopico(this)'>Remover</button>");
+    // Adiciona o elemento buttonRemover como filho do elemento tdAcoes
+    tdAcoes.append(buttonRemover);
+    // Adiciona os elementos tdTitulo, tdConteudo e tdAcoes como filhos do elemento tr
+    tr.append(tdTitulo);
+    tr.append(tdConteudo);
+    tr.append(tdAcoes);
+    // Adiciona o elemento tr como filho do elemento topicos
+    topicos.append(tr);
+    // Incrementa a variável index em 1
+    index++;
+}
+
+// Define uma função chamada removerTopico que recebe um parâmetro chamado button
+function removerTopico(button) {
+    // Cria uma variável chamada tr que armazena o elemento pai do elemento pai do botão
+    var tr = $(button).parent().parent();
+    // Remove o elemento tr do documento HTML
+    tr.remove();
+}
 
 
 

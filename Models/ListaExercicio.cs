@@ -29,6 +29,8 @@ namespace ResolverQuestao.Models
 
         public string? Materia { get; set; }
 
+        public List<TopicoLista> TopicoListas { get; set; } = new List<TopicoLista>();
+
 
     }
 }

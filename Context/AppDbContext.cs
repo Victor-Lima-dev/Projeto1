@@ -21,5 +21,6 @@ namespace ResolverQuestao.Context
 
         public DbSet<ListaRegistro> ListaRegistros { get; set; }
         
+        public DbSet<TopicoLista> TopicoListas { get; set; }
     }
 }

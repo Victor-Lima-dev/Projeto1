@@ -17,6 +17,10 @@ namespace ResolverQuestao.Models.ViewModels
 
         public List<Exercicio> TodosExercicios { get; set; } = new List<Exercicio>();
 
+        public List<Exercicio> ExerciciosSemLista { get; set; } = new List<Exercicio>();
+
+        public List<TopicoLista> TopicoListas { get; set; } = new List<TopicoLista>();
+
         
 
 
