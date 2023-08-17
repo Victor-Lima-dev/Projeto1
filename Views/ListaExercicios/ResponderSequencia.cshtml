@@ -33,6 +33,12 @@
 
 }
 
+<div class="lista">
+    
+
+<div class="lista-exercicios">
+
+
 
 <h1>Exercicio @indice de @contagemExercicios</h1>
 <h1>@acertos</h1>
@@ -188,8 +194,18 @@
     <input type="hidden" name="erros" value="@erros" />
     <input type="submit" value="Registrar" class="btn btn-primary" />
 </form>
+</div>
 
-
+  <section class="topicos-lista">
+                    <div>
+    @foreach (var item in Model.TopicoListas)
+    {
+        <h5>@item.Titulo</h5>
+        <p>@item.Conteudo</p>
+    }
+                    </div>
+    </section>
+    </div>
 
 @* js script *@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

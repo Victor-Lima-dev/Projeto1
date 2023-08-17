@@ -114,9 +114,12 @@ body
   padding: 1rem;
   border-radius: 20px;
   background: var(--var-color-main);
-  width: 70%;
+  /* width: 70%; */
+  width: 100%;
 }
-.home-main-section2
+
+
+/* .home-main-section2
 {
   box-shadow: 0 0 0.5rem 0.1rem rgb(0, 0, 0, 0.1);
   width: 30%;
@@ -124,7 +127,33 @@ body
   padding: 1rem;
   border-radius: 20px;
   height: max-content;
+}  */
+
+.lista-exercicios
+{
+  box-shadow: 0 0 0.5rem 0.1rem rgb(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 20px;
+  background: var(--var-color-main);
+   width: 70%;
 }
+
+.lista
+{
+  display: flex;
+  gap: 1rem;
+}
+
+.topicos-lista
+{
+  box-shadow: 0 0 0.5rem 0.1rem rgb(0, 0, 0, 0.1);
+  width: 30%;
+  background: var(--var-color-main);
+  padding: 1rem;
+  border-radius: 20px;
+  height: max-content;
+
+} 
 
 .home-main
 {

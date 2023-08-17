@@ -35,8 +35,8 @@
                                 asp-controller="ListaExercicios" asp-action="Index">Listas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark nav-container-item" asp-area=""
-                                asp-controller="ListaRegistros" asp-action="Index">Historico</a>
+                            <a class="nav-link text-dark nav-container-item" asp-area="" asp-controller="ListaRegistros"
+                                asp-action="Index">Historico</a>
                         </li>
                     </ul>
 
@@ -73,28 +73,31 @@
         <main role="main" class="pb-3">
             <div class="home-main">
 
+
+                
                 <section class="home-main-section1">
-                    @RenderBody()
+                @RenderBody()
 
-                </section>
-                <section class="home-main-section2">
-                    <div class="home-main-section2-usuario">
-                        <h4 class="home-main-section2-usuario-titulo">@User.Identity.Name!</h3>
-                            <p class="home-main-section2-usuario-titulo">@DateTime.Now.ToString("dd-MM-yyyy")</p>
-                    </div>
+                </section> 
 
-                    <div class="home-main-section2-metricas">
-                        <div class="home-main-section2-metricas-container">
-                            <h5 class="home-main-section2-usuario-metricas-contador">@ViewBag.ContagemExercicios</h5>
-                            <p>Exercicios</p>
-                        </div>
-                        <div class="home-main-section2-metricas-container">
-                            <h5 class="home-main-section2-usuario-metricas-contador">@ViewBag.ContagemListas</h5>
-                            <p>Listas</p>
-                        </div>
-                    </div>
+                @* <section class="home-main-section2">
+                <div class="home-main-section2-usuario">
+                <h4 class="home-main-section2-usuario-titulo">@User.Identity.Name!</h3>
+                <p class="home-main-section2-usuario-titulo">@DateTime.Now.ToString("dd-MM-yyyy")</p>
+                </div>
 
-                </section>
+                <div class="home-main-section2-metricas">
+                <div class="home-main-section2-metricas-container">
+                <h5 class="home-main-section2-usuario-metricas-contador">@ViewBag.ContagemExercicios</h5>
+                <p>Exercicios</p>
+                </div>
+                <div class="home-main-section2-metricas-container">
+                <h5 class="home-main-section2-usuario-metricas-contador">@ViewBag.ContagemListas</h5>
+                <p>Listas</p>
+                </div>
+                </div>
+
+                </section> *@
 
             </div>
 

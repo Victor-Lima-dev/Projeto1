@@ -52,6 +52,9 @@ namespace ResolverQuestao.Controllers
             //lista de exercicios
             var exercicios = _context.Exercicios.ToList();
 
+            //lista de topicos
+            var topicos = _context.TopicoListas.ToList();
+
             //lista de listas
             var listas = _context.ListaExercicios.Include(l => l.Exercicios).ToList();
 
@@ -449,6 +452,8 @@ namespace ResolverQuestao.Controllers
                 ViewBag.Erros = erros;
             }
 
+            //lista de todos os topicos
+            var topicos = _context.TopicoListas.ToList();
 
             return View(listaExercicio);
         }
@@ -459,7 +464,8 @@ namespace ResolverQuestao.Controllers
 
 
 
-
+                //lista de todos os topicos
+            var topicos = _context.TopicoListas.ToList();
 
             //procurar o exercicio
             var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
@@ -538,6 +544,9 @@ namespace ResolverQuestao.Controllers
             //redirecionar para o exercicio com o proximo indice
             ViewBag.Acertos = acertos;
 
+                //lista de todos os topicos
+            var topicos = _context.TopicoListas.ToList();
+
             return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice, acertos = acertos, erros = erros });
         }
 
@@ -554,6 +563,8 @@ namespace ResolverQuestao.Controllers
 
             //redirecionar para o exercicio com o proximo indice
             ViewBag.Acertos = acertos;
+                //lista de todos os topicos
+            var topicos = _context.TopicoListas.ToList();
             return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice, acertos = acertos, erros = erros });
         }
 
@@ -568,6 +579,8 @@ namespace ResolverQuestao.Controllers
                                         .FirstOrDefault(l => l.ListaExercicioId == id);
 
             //redirecionar para o exercicio com o proximo indice
+                //lista de todos os topicos
+            var topicos = _context.TopicoListas.ToList();
 
             return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = indice, acertos = acertos, erros = erros });
         }
@@ -597,6 +610,8 @@ namespace ResolverQuestao.Controllers
 
             //pegar as listas com o tipo
             var listasPorTipo = listasUsuario.Where(l => l.Tipo == tipo).ToList();
+                //lista de todos os topicos
+            var topicos = _context.TopicoListas.ToList();
 
             return View("Index", listasPorTipo);
         }
@@ -623,6 +638,8 @@ namespace ResolverQuestao.Controllers
 
 
             listaViewModel.Exercicios = exerciciosFiltrados;
+                //lista de todos os topicos
+            var topicos = _context.TopicoListas.ToList();
 
             return View("Create", listaViewModel);
         }
@@ -646,7 +663,8 @@ namespace ResolverQuestao.Controllers
 
             var exerciciosFiltrados = exerciciosUsuario.Where(e => e.Materia == materia).ToList();
             listaViewModel.Exercicios = exerciciosFiltrados;
-
+    //lista de todos os topicos
+            var topicos = _context.TopicoListas.ToList();
             return View("Create", listaViewModel);
         }
 
