@@ -35,6 +35,8 @@ namespace ResolverQuestao.Models
 
         public string UsuarioId { get; set; }
 
+        public string? Materia { get; set; }
+
 
           
 

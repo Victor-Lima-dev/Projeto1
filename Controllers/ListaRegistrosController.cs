@@ -23,11 +23,6 @@ namespace ResolverQuestao.Controllers
             _context = context;
         }
 
-
-
-
-
-       
         //HTTP GET Index
         [HttpGet("index")]
         public IActionResult Index()
@@ -55,8 +50,6 @@ namespace ResolverQuestao.Controllers
 
             //pegar o titulo da lista de exercicio
             var tituloLista = listaExercicio.Titulo;
-
-
 
             //usuario id vai ser o id do usuario logado
             var usuarioId = User.Identity.Name;

@@ -33,7 +33,15 @@
 
     @* Resposta *@
 
-   
+   @* Materia *@
+    <div class="form-group">
+        <label asp-for="Materia">Materia</label>
+        <input asp-for="Materia" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Materia)
+    </div>
+
+
+   @* Materia *@
  
 
 

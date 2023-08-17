@@ -595,10 +595,30 @@ namespace ResolverQuestao.Controllers
             listaViewModel.Exercicios = exerciciosFiltrados;
 
             return View("Create", listaViewModel);
-
-
         }
 
+
+        //HTTP GET Procurar por Materia de Exercicios
+        [HttpGet("ProcurarPorMateriaExercicios")]
+        public IActionResult ProcurarPorMateriaExercicios(string materia)
+        {
+            var listaViewModel = new ListaExerciciosViewModel();
+            //pegar os exercicios do usuario logado
+            var exercicios = new List<Exercicio>();
+            exercicios = _context.Exercicios.ToList();
+            var exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
+
+            //filtrar pelo tipo
+            if (materia == null)
+            {
+                return View("Create", listaViewModel);
+            }
+
+            var exerciciosFiltrados = exerciciosUsuario.Where(e => e.Materia == materia).ToList();
+            listaViewModel.Exercicios = exerciciosFiltrados;
+
+            return View("Create", listaViewModel);
+        }
 
 
 

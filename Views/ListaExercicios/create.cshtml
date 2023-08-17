@@ -11,6 +11,13 @@
 
     var exerciciosPorTipo = new List<Exercicio>();
 
+    var materia = new List<string>();
+
+    foreach (var item in exercicios)
+    {
+        materia.Add(item.Materia);
+    }
+
 }
 
 <div class="container">
@@ -42,6 +49,19 @@
             @foreach (var tipo in tipos.Distinct())
             {
                 <option value="@Url.Action("ProcurarPorTipoExercicios", "ListaExercicios", new {tipo = tipo})"> @tipo
+                </option>
+            }
+        </select>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+        <select class="form-control" id="materia" name="materia" onchange="window.location.href=this.value">
+            <option value="">Procurar por Materia</option>
+            @foreach (var tipo in materia.Distinct())
+            {
+                <option value="@Url.Action("ProcurarPorMateriaExercicios", "ListaExercicios", new {materia = @tipo})">
+                    @tipo
                 </option>
             }
         </select>
