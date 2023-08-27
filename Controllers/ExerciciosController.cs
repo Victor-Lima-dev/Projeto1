@@ -131,11 +131,12 @@ namespace ResolverQuestao.Controllers
 
         //HTTP POST - Edit
         [HttpPost("Edit/{id}")]
-        public IActionResult Edit(Exercicio exercicio)
+        public IActionResult Edit(Exercicio exercicio, int id)
         {
+          
 
+    
 
-            //verificar se tem alguma alternativa com texto vazio, se tiver, excluir ela
 
             var alternativas = exercicio.Alternativas.ToList();
 
@@ -147,8 +148,6 @@ namespace ResolverQuestao.Controllers
                 }
 
             }
-
-
 
             _context.Exercicios.Update(exercicio);
             _context.SaveChanges();
@@ -248,11 +247,6 @@ namespace ResolverQuestao.Controllers
             return View(exercicio);
         }
 
-
-
-
-
-
         //metodo para procurar por tipo
         [HttpGet("ProcurarPorTipo")]
         public IActionResult ProcurarPorTipo(string tipo)
@@ -272,8 +266,6 @@ namespace ResolverQuestao.Controllers
             return View("Index", exerciciosTipo);
            
         }
-
-
 
 
 

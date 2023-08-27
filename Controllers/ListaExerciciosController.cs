@@ -223,6 +223,15 @@ namespace ResolverQuestao.Controllers
             listaExercicioViewModel.TodosExercicios = todosExercicios;
             listaExercicioViewModel.Exercicios = exercicios;
 
+            //procurar os topicos
+            var topicos = _context.TopicoListas.ToList();
+
+            //pegar os topicos da lista
+            var topicosLista = listaExercicio.TopicoListas.ToList();
+
+            //colocar na viewModel
+            listaExercicioViewModel.TopicoListas = topicosLista;
+
             return View(listaExercicioViewModel);
         }
 
@@ -236,6 +245,8 @@ namespace ResolverQuestao.Controllers
 
             var listaExercicio = _context.ListaExercicios.Include(l => l.Exercicios).FirstOrDefault(l => l.ListaExercicioId == listaViewModel.ListaExercicio.ListaExercicioId);
 
+            //pegar todos os topicos do banco
+            var topicosLista = _context.TopicoListas.ToList();
 
             //verificar nos itens dos topicos, se houver algum cujo conteudo e titulo estiverem vazios é para excluir
             var topicos = listaViewModel.TopicoListas;
@@ -247,6 +258,23 @@ namespace ResolverQuestao.Controllers
                     _context.TopicoListas.Remove(item);
                 }
             }
+
+            //identificar o usuario que é dono da lista
+            var usuario = listaExercicio.UsuarioId;
+
+
+
+            //verificar os topicos, caso algum topico esteja vazio, é para excluir
+            foreach (var item in topicos)
+            {
+                if (item.Conteudo == "" || item.Titulo == "")
+                {
+                    _context.TopicoListas.Remove(item);
+                }
+            }
+
+
+
 
             
             //adicionar na listaExercicio os topicos da listaViewModel
@@ -330,9 +358,6 @@ namespace ResolverQuestao.Controllers
                 ViewBag.MaterialSuporte = true;
             }
 
-
-
-
             return View(listaExercicio);
         }
 
@@ -403,7 +428,7 @@ namespace ResolverQuestao.Controllers
 
         //Responder Lista
         [HttpGet("ResponderSequencia/{id}")]
-        public IActionResult ResponderSequencia(int? id, int indice, int acertos, int erros)
+        public IActionResult ResponderSequencia(int? id, int indice, int acertos, int erros, string titulo)
         {
             if (id == null)
             {
@@ -452,7 +477,7 @@ namespace ResolverQuestao.Controllers
                 ViewBag.Erros = erros;
             }
 
-            //lista de todos os topicos
+            //pegar todos os topicos
             var topicos = _context.TopicoListas.ToList();
 
             return View(listaExercicio);
@@ -461,8 +486,6 @@ namespace ResolverQuestao.Controllers
         [HttpPost("ResponderSequencia/{id}")]
         public IActionResult ResponderSequencia(int id, string resposta, int indice, int acertos, int erros)
         {
-
-
 
                 //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
@@ -530,6 +553,8 @@ namespace ResolverQuestao.Controllers
             return View(listaExercicio);
         }
 
+
+
         //HTTP POST - ProximoExercicio
         [HttpPost("ProximoExercicio")]
         public IActionResult ProximoExercicio(int id, int indice, int acertos, int erros)
@@ -585,6 +610,8 @@ namespace ResolverQuestao.Controllers
             return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = indice, acertos = acertos, erros = erros });
         }
 
+
+        
 
         //metodo para procurar por tipo
         [HttpGet("ProcurarPorTipo")]
@@ -668,6 +695,12 @@ namespace ResolverQuestao.Controllers
             return View("Create", listaViewModel);
         }
 
+
+    
+
+        
+
+     
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

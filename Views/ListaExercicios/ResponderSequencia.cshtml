@@ -34,178 +34,187 @@
 }
 
 <div class="lista">
-    
-
-<div class="lista-exercicios">
 
 
-
-<h1>Exercicio @indice de @contagemExercicios</h1>
-<h1>@acertos</h1>
-<h1>@erros</h1>
+    <div class="lista-exercicios">
 
 
-@* Exercicios com alternativas *@
-<h2>@exercicioFoco.Titulo</h2>
-<h4>@exercicioFoco.Enunciado</h4>
-<p> @exercicioFoco.Tipo</p>
 
-<form asp-action="ResponderSequencia" method="post">
-
-    <input type="hidden" name="indice" value="@indice" />
-
-    <input type="hidden" name="acertos" value="@acertos" />
-    <input type="hidden" name="erros" value="@erros" />
+        <h1>Exercicio @indice de @contagemExercicios</h1>
+        <h1>@acertos</h1>
+        <h1>@erros</h1>
 
 
-    @foreach (var alternativas in exercicioFoco.Alternativas)
-    {
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="resposta" id="@alternativas.AlternativaId"
-                value="@alternativas.Texto">
-            <label class="form-check-label" for="@alternativas.AlternativaId">
-                @alternativas.Texto
-            </label>
-        </div>
-    }
+        @* Exercicios com alternativas *@
+        <h2>@exercicioFoco.Titulo</h2>
+        <h4>@exercicioFoco.Enunciado</h4>
+        <p> @exercicioFoco.Tipo</p>
+
+        <form asp-action="ResponderSequencia" method="post">
+
+            <input type="hidden" name="indice" value="@indice" />
+
+            <input type="hidden" name="acertos" value="@acertos" />
+            <input type="hidden" name="erros" value="@erros" />
 
 
-    @if (idExercicio != null && exercicioFoco.ExercicioId == idExercicio)
-    {
-        if (resposta == true)
-        {
-            <div class="alert alert-success" role="alert">
-                Resposta correta!
-            </div>
-        }
-        else
-        {
-            <div class="alert alert-danger" role="alert">
-                Resposta incorreta!
-            </div>
-
-
-            <div class="form-group hide">
-                <label for="pergunta">Deseja ver a resposta correta?</label>
-                <div id="pergunta" class="form-control">
-                    <button id="sim" onclick="mostrarResposta()">Sim</button>
-                    <button id="nao" onclick="recarregarPagina()">Não</button>
+            @foreach (var alternativas in exercicioFoco.Alternativas)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="resposta" id="@alternativas.AlternativaId"
+                        value="@alternativas.Texto">
+                    <label class="form-check-label" for="@alternativas.AlternativaId">
+                        @alternativas.Texto
+                    </label>
                 </div>
-            </div>
-            <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
-                A resposta correta é: <span id="correta">@exercicioFoco.Resposta</span>
-            </div>
+            }
 
 
-            <div class="explicacaoMaterialApoio" style="display: none;">
-
-
-
-                @if (ViewBag.Explicacao == true || ViewBag.MaterialSuporte == true)
+            @if (idExercicio != null && exercicioFoco.ExercicioId == idExercicio)
+            {
+                if (resposta == true)
                 {
-
-                    if (ViewBag.Explicacao == true)
-                    {
-                        <div>
-                            <p>Explicação</p>
-                            <p>@exercicioFoco.Explicacao</p>
-                        </div>
-                    }
-                    if (ViewBag.MaterialSuporte == true)
-                    {
-                        <div>
-                            <p>Material de Apoio</p>
-                            <p>@exercicioFoco.MaterialSuporte</p>
-                        </div>
-                    }
+                    <div class="alert alert-success" role="alert">
+                        Resposta correta!
+                    </div>
                 }
                 else
                 {
-                    <div>
-                        <p>Não há explicação ou material de apoio para esta questão</p>
+                    <div class="alert alert-danger" role="alert">
+                        Resposta incorreta!
                     </div>
-                }
 
+
+                    <div class="form-group hide">
+                        <label for="pergunta">Deseja ver a resposta correta?</label>
+                        <div id="pergunta" class="form-control">
+                            <button id="sim" onclick="mostrarResposta()">Sim</button>
+                            <button id="nao" onclick="recarregarPagina()">Não</button>
+                        </div>
+                    </div>
+                    <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
+                        A resposta correta é: <span id="correta">@exercicioFoco.Resposta</span>
+                    </div>
+
+
+                    <div class="explicacaoMaterialApoio" style="display: none;">
+
+
+
+                        @if (ViewBag.Explicacao == true || ViewBag.MaterialSuporte == true)
+                        {
+
+                            if (ViewBag.Explicacao == true)
+                            {
+                                <div>
+                                    <p>Explicação</p>
+                                    <p>@exercicioFoco.Explicacao</p>
+                                </div>
+                            }
+                            if (ViewBag.MaterialSuporte == true)
+                            {
+                                <div>
+                                    <p>Material de Apoio</p>
+                                    <p>@exercicioFoco.MaterialSuporte</p>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>
+                                <p>Não há explicação ou material de apoio para esta questão</p>
+                            </div>
+                        }
+
+                    </div>
+
+
+
+                }
+            }
+
+
+
+
+            <input type="hidden" name="id" value="@exercicioFoco.ExercicioId" />
+            @* enviar *@
+
+            <div class="form-group">
+                <input type="submit" value="Enviar" class="btn btn-primary" />
             </div>
 
+        </form>
 
 
-        }
-    }
+        <form asp-action="ProximoExercicio" asp-controller="ListaExercicios" method="post">
+
+            <input type="hidden" name="indice" value="@indice" />
+            <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+            <input type="hidden" name="acertos" value="@acertos" />
+            <input type="hidden" name="erros" value="@erros" />
 
 
 
+            <div class="form-group">
+                <input type="submit" value="Próximo" class="btn btn-primary" />
+            </div>
 
-    <input type="hidden" name="id" value="@exercicioFoco.ExercicioId" />
-    @* enviar *@
+        </form>
 
-    <div class="form-group">
-        <input type="submit" value="Enviar" class="btn btn-primary" />
+        <form asp-action="VoltarExercicio" asp-controller="ListaExercicios" method="post">
+
+            <input type="hidden" name="indice" value="@indice" />
+            <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+            <input type="hidden" name="acertos" value="@acertos" />
+            <input type="hidden" name="erros" value="@erros" />
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Anterior" class="btn btn-primary" />
+            </div>
+        </form>
+
+
+        <form asp-action="SelecionarExercicio" asp-controller="ListaExercicios" method="post">
+            @foreach (var item in Model.Exercicios)
+            {
+
+                <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+                <input type="submit" value="@Model.Exercicios.IndexOf(item)" name="indice" class="btn btn-primary" />
+            }
+
+            <input type="hidden" name="acertos" value="@acertos" />
+            <input type="hidden" name="erros" value="@erros" />
+        </form>
+
+        <form asp-action="Registrar" asp-controller="ListaRegistros">
+            <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+            <input type="hidden" name="acertos" value="@acertos" />
+            <input type="hidden" name="erros" value="@erros" />
+            <input type="submit" value="Registrar" class="btn btn-primary" />
+        </form>
     </div>
 
-</form>
 
+    <section class="topicos-lista">
+        <div>
+            <ul id="menu">
+                @foreach (var item in Model.TopicoListas)
+                {
+                    <li><a href="#" data-content="@item.Conteudo">@item.Titulo</a></li>
+                }
+            </ul>
+            <div id="conteudo" style="display: none;"></div>
 
-<form asp-action="ProximoExercicio" asp-controller="ListaExercicios" method="post">
-
-    <input type="hidden" name="indice" value="@indice" />
-    <input type="hidden" name="id" value="@Model.ListaExercicioId" />
-    <input type="hidden" name="acertos" value="@acertos" />
-    <input type="hidden" name="erros" value="@erros" />
-
-
-
-    <div class="form-group">
-        <input type="submit" value="Próximo" class="btn btn-primary" />
-    </div>
-
-</form>
-
-<form asp-action="VoltarExercicio" asp-controller="ListaExercicios" method="post">
-
-    <input type="hidden" name="indice" value="@indice" />
-    <input type="hidden" name="id" value="@Model.ListaExercicioId" />
-    <input type="hidden" name="acertos" value="@acertos" />
-    <input type="hidden" name="erros" value="@erros" />
+        </div>
+    </section>
 
 
 
-    <div class="form-group">
-        <input type="submit" value="Anterior" class="btn btn-primary" />
-    </div>
-</form>
-
-
-<form asp-action="SelecionarExercicio" asp-controller="ListaExercicios" method="post">
-    @foreach (var item in Model.Exercicios)
-    {
-
-        <input type="hidden" name="id" value="@Model.ListaExercicioId" />
-        <input type="submit" value="@Model.Exercicios.IndexOf(item)" name="indice" class="btn btn-primary" />
-    }
-
-    <input type="hidden" name="acertos" value="@acertos" />
-    <input type="hidden" name="erros" value="@erros" />
-</form>
-
-<form asp-action="Registrar" asp-controller="ListaRegistros">
-    <input type="hidden" name="id" value="@Model.ListaExercicioId" />
-    <input type="hidden" name="acertos" value="@acertos" />
-    <input type="hidden" name="erros" value="@erros" />
-    <input type="submit" value="Registrar" class="btn btn-primary" />
-</form>
 </div>
 
-  <section class="topicos-lista">
-                    <div>
-    @foreach (var item in Model.TopicoListas)
-    {
-        <h5>@item.Titulo</h5>
-        <p>@item.Conteudo</p>
-    }
-                    </div>
-    </section>
-    </div>
+
 
 @* js script *@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -229,4 +238,24 @@
     function recarregarPagina() {
         $(".hide").hide();
     }
+
+// Seleciona todos os links do menu
+var links = document.querySelectorAll("#menu a");
+
+// Adiciona um evento de clique para cada link
+for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function(e) {
+        // Previne o comportamento padrão do link
+        e.preventDefault();
+        // Seleciona o elemento que mostra o conteúdo
+        var conteudo = document.getElementById("conteudo");
+        // Altera o conteúdo de acordo com o atributo data-content do link clicado
+        conteudo.innerHTML = this.dataset.content;
+        // Altera o estilo do elemento para mostrar o conteúdo
+        conteudo.style.display = "block";
+    });
+}
+
+
+
 </script>
