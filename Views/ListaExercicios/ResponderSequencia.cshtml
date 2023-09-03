@@ -31,6 +31,8 @@
 
     var erros = ViewBag.Erros;
 
+    var indiceContagem = indice + 1;
+
 }
 
 <div class="lista">
@@ -38,18 +40,10 @@
 
     <div class="lista-exercicios">
 
-
-
-        <h1>Exercicio @indice de @contagemExercicios</h1>
-        <h1>@acertos</h1>
-        <h1>@erros</h1>
-
-
         @* Exercicios com alternativas *@
-        <h2>@exercicioFoco.Titulo</h2>
-        <h4>@exercicioFoco.Enunciado</h4>
-        <p> @exercicioFoco.Tipo</p>
-
+        <h1 class="text-primary">Exercicio @indiceContagem de @contagemExercicios</h1>
+        <h3>@exercicioFoco.Titulo</h3>
+        <h5>@exercicioFoco.Enunciado</h5>
         <form asp-action="ResponderSequencia" method="post">
 
             <input type="hidden" name="indice" value="@indice" />
@@ -89,7 +83,6 @@
                         <label for="pergunta">Deseja ver a resposta correta?</label>
                         <div id="pergunta" class="form-control">
                             <button id="sim" onclick="mostrarResposta()">Sim</button>
-                            <button id="nao" onclick="recarregarPagina()">Não</button>
                         </div>
                     </div>
                     <div id="resposta-correta" class="alert alert-info" role="alert" style="display: none;">
@@ -139,41 +132,46 @@
             <input type="hidden" name="id" value="@exercicioFoco.ExercicioId" />
             @* enviar *@
 
-            <div class="form-group">
-                <input type="submit" value="Enviar" class="btn btn-primary" />
+            <div class="form-group ">
+                <input type="submit" value="Enviar" class="btn btn-success" />
             </div>
 
         </form>
 
 
-        <form asp-action="ProximoExercicio" asp-controller="ListaExercicios" method="post">
-
-            <input type="hidden" name="indice" value="@indice" />
-            <input type="hidden" name="id" value="@Model.ListaExercicioId" />
-            <input type="hidden" name="acertos" value="@acertos" />
-            <input type="hidden" name="erros" value="@erros" />
+        <div class="d-flex flex-row bd-highlight mb-1 mt-1 gap-1">
 
 
 
-            <div class="form-group">
-                <input type="submit" value="Próximo" class="btn btn-primary" />
-            </div>
+            <form asp-action="VoltarExercicio" asp-controller="ListaExercicios" method="post">
 
-        </form>
-
-        <form asp-action="VoltarExercicio" asp-controller="ListaExercicios" method="post">
-
-            <input type="hidden" name="indice" value="@indice" />
-            <input type="hidden" name="id" value="@Model.ListaExercicioId" />
-            <input type="hidden" name="acertos" value="@acertos" />
-            <input type="hidden" name="erros" value="@erros" />
+                <input type="hidden" name="indice" value="@indice" />
+                <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+                <input type="hidden" name="acertos" value="@acertos" />
+                <input type="hidden" name="erros" value="@erros" />
 
 
 
-            <div class="form-group">
-                <input type="submit" value="Anterior" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <input type="submit" value="Anterior" class="btn btn-primary" />
+                </div>
+            </form>
+
+            <form asp-action="ProximoExercicio" asp-controller="ListaExercicios" method="post">
+
+                <input type="hidden" name="indice" value="@indice" />
+                <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+                <input type="hidden" name="acertos" value="@acertos" />
+                <input type="hidden" name="erros" value="@erros" />
+
+
+
+                <div class="form-group">
+                    <input type="submit" value="Próximo" class="btn btn-primary" />
+                </div>
+
+            </form>
+        </div>
 
 
         <form asp-action="SelecionarExercicio" asp-controller="ListaExercicios" method="post">
@@ -181,32 +179,68 @@
             {
 
                 <input type="hidden" name="id" value="@Model.ListaExercicioId" />
-                <input type="submit" value="@Model.Exercicios.IndexOf(item)" name="indice" class="btn btn-primary" />
+                var indices = (int.Parse(Model.Exercicios.IndexOf(item).ToString()) + 1).ToString("00");
+
+                @* <input type="submit" value="@Model.Exercicios.IndexOf(item)" name="indice" class="btn btn-primary" /> *@
+
+                @* <input type="hidden" value="@Model.Exercicios.IndexOf(item)" name="indice"/> *@
+
+                <button type="submit" name="indice" value="@Model.Exercicios.IndexOf(item)"
+                    class="btn btn-primary">@indices</button>
+
+                @* se o indice do exercicio for giual ao @Model.Exercicios.IndexOf(item) deixar o botao amarelo *@
+                @if (Model.IndiceExercicio == Model.Exercicios.IndexOf(item))
+                {
+                    <style>
+                        button[value="@Model.Exercicios.IndexOf(item)"] {
+                            background-color: #00923f;
+                        }
+                    </style>
+                }
+
             }
 
             <input type="hidden" name="acertos" value="@acertos" />
             <input type="hidden" name="erros" value="@erros" />
         </form>
 
-        <form asp-action="Registrar" asp-controller="ListaRegistros">
-            <input type="hidden" name="id" value="@Model.ListaExercicioId" />
-            <input type="hidden" name="acertos" value="@acertos" />
-            <input type="hidden" name="erros" value="@erros" />
-            <input type="submit" value="Registrar" class="btn btn-primary" />
-        </form>
+
+
+        <div class="mt-1" id="conteudo" style="display: none;"></div>
+
     </div>
 
 
     <section class="topicos-lista">
         <div>
-            <ul id="menu">
-                @foreach (var item in Model.TopicoListas)
-                {
-                    <li><a href="#" data-content="@item.Conteudo">@item.Titulo</a></li>
-                }
-            </ul>
-            <div id="conteudo" style="display: none;"></div>
 
+
+            <h3 class="text-primary">Controle de Respostas</h3>
+            <h4 class="text-success">Acertos: @acertos</h4>
+            <h4 class="text-danger">Erros: @erros</h4>
+
+            <div class="mt-1">
+                <form asp-action="Registrar" asp-controller="ListaRegistros">
+                    <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+                    <input type="hidden" name="acertos" value="@acertos" />
+                    <input type="hidden" name="erros" value="@erros" />
+                    <input type="submit" value="Finalizar" class="btn btn-primary" />
+                </form>
+            </div>
+
+
+            <div class="mt-1">
+                <h3 class="text-primary">Material de Apoio</h3>
+                <ul id="menu">
+                    @foreach (var item in Model.TopicoListas)
+                    {
+                        <li><a href="#" data-content="@item.Conteudo">@item.Titulo</a></li>
+                    }
+                </ul>
+
+                @* <div id="conteudo" style="display: none;"></div> *@
+
+            </div>
         </div>
     </section>
 
@@ -234,27 +268,27 @@
         $(".hide").hide();
     }
 
-    // função para recarregar a página
-    function recarregarPagina() {
-        $(".hide").hide();
+
+
+    // Seleciona todos os links do menu
+    var links = document.querySelectorAll("#menu a");
+
+    // Adiciona um evento de clique para cada link
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function (e) {
+            // Previne o comportamento padrão do link
+            e.preventDefault();
+            // Seleciona o elemento que mostra o conteúdo
+            var conteudo = document.getElementById("conteudo");
+            // Altera o conteúdo de acordo com o atributo data-content do link clicado
+            //conteudo.innerHTML = this.dataset.content;
+            // Altera o conteúdo de acordo com o atributo data-content do link clicado
+            conteudo.innerHTML = "<h2 class = 'text-primary'>" + this.innerText + "</h2>" + this.dataset.content;
+
+            // Altera o estilo do elemento para mostrar o conteúdo
+            conteudo.style.display = "block";
+        });
     }
-
-// Seleciona todos os links do menu
-var links = document.querySelectorAll("#menu a");
-
-// Adiciona um evento de clique para cada link
-for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener("click", function(e) {
-        // Previne o comportamento padrão do link
-        e.preventDefault();
-        // Seleciona o elemento que mostra o conteúdo
-        var conteudo = document.getElementById("conteudo");
-        // Altera o conteúdo de acordo com o atributo data-content do link clicado
-        conteudo.innerHTML = this.dataset.content;
-        // Altera o estilo do elemento para mostrar o conteúdo
-        conteudo.style.display = "block";
-    });
-}
 
 
 

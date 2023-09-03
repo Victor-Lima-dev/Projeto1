@@ -280,10 +280,20 @@ namespace ResolverQuestao.Controllers
             //adicionar na listaExercicio os topicos da listaViewModel
             listaExercicio.TopicoListas = topicos;
 
+            //atualizar os outros atributos
+            listaExercicio.Titulo = listaViewModel.ListaExercicio.Titulo;
+            listaExercicio.Tipo = listaViewModel.ListaExercicio.Tipo;
+            listaExercicio.Descricao = listaViewModel.ListaExercicio.Descricao;
+            listaExercicio.MaterialSuporte = listaViewModel.ListaExercicio.MaterialSuporte;
+            
+
+
 
             var exerciciosSelecionados = listaViewModel.ExerciciosSelecionados;
 
             var exerciciosSelecionadosEdit = listaViewModel.ExerciciosSelecionadosEdit;
+
+
 
             //fazer um foreach em que adiciona todos os exerciciosSelecioanadosEdit em exercicios Selecionados
             foreach (var item in exerciciosSelecionadosEdit)
@@ -690,14 +700,54 @@ namespace ResolverQuestao.Controllers
 
             var exerciciosFiltrados = exerciciosUsuario.Where(e => e.Materia == materia).ToList();
             listaViewModel.Exercicios = exerciciosFiltrados;
-    //lista de todos os topicos
+            //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
             return View("Create", listaViewModel);
         }
 
 
-    
 
+        //criar exercicio com json get
+        [HttpGet("CreateExercicioJson")]
+        public IActionResult CreateExercicioJson()
+        {
+            return View();
+        }
+
+
+    
+        //criar exercicio com Json
+        [HttpPost("CreateExercicioJson")]
+        public IActionResult CreateExercicioJson(string json, string tipo, string materia)
+        {
+            //criar um exercicio
+            var exercicio = new Exercicio();
+
+            //pegar o json e transformar em um objeto
+            exercicio = Newtonsoft.Json.JsonConvert.DeserializeObject<Exercicio>(json);
+
+            exercicio.Tipo = tipo;
+            exercicio.Materia = materia;
+            exercicio.ExercicioId = 0;
+            
+            //zerar os ids das alternativas
+
+            foreach (var item in exercicio.Alternativas)
+            {
+                item.AlternativaId = 0;
+                item.ExercicioId = 0;
+            }
+
+
+            //adicionar o id do usuario logado
+            exercicio.UsuarioId = User.Identity.Name;
+
+            //adicionar o exercicio no banco
+            _context.Exercicios.Add(exercicio);
+            _context.SaveChanges();
+
+            return RedirectToAction("CreateExercicioJson");
+        }
         
 
      
