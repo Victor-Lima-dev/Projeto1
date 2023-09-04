@@ -1,6 +1,54 @@
 @model List<ListaRegistro>
 
+    @{
+        var tipos = new List<string>();
+        foreach (var item in Model)
+        {
+            tipos.Add(item.TituloLista);
+        }
+
+    var materias = Model.Select(r => r.ListaExercicio.Tipo).Distinct().ToList();
+
+
+
+    }
+
+     <div class="input-group">
+                <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+                <select class="form-control" id="tipo" name="tipo" onchange="window.location.href=this.value">
+                    <option value="">Procurar por Tipo</option>
+                    @foreach (var tipo in tipos.Distinct())
+                    {
+                        <option value="@Url.Action("ProcurarPorTipo", "ListaRegistros", new {tipo = tipo})"> @tipo
+                        </option>
+                    }
+                </select>
+            </div> 
+
+             <div class="input-group">
+                <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+                <select class="form-control" id="materia" name="materia" onchange="window.location.href=this.value">
+                    <option value="">Procurar por Materia</option>
+                    @foreach (var materia in materias.Distinct())
+                    {
+                        <option value="@Url.Action("procurarPorMateria", "ListaRegistros", new {materia = materia})"> @materia
+                        </option>
+                    }
+                </select>
+            </div> 
 <div>
+
+    @* selecionar por data *@
+
+    <form asp-action="ProcurarPorData" method="get">
+        <div class="input-group">
+            <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+            <input type="date" class="form-control" id="data" name="data" />
+            <input type="submit" value="Procurar" class="btn btn-primary" />
+        </div>
+    </form>
+
+      <a asp-action="Index" class="btn btn-primary">Limpar Pesquisa</a>
     @foreach (var item in Model)
     {
         <div>
@@ -20,6 +68,15 @@
             <p>
                 @item.DataRegistro
             </p>
+
+            @{
+                var aproveitamento = (item.Acertos * 100) / (item.Acertos + item.Erros);
+            }
+
+            <P>
+                Aproveitamento
+                @aproveitamento%
+            </P>
 
         </div>
 

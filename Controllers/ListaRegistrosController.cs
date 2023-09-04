@@ -42,6 +42,79 @@ namespace ResolverQuestao.Controllers
             return View(registrosUsuario);
         }
 
+        //HTTP GET ProcurarPorTipo
+
+        [HttpGet("procurarPorTipo")]
+        public IActionResult ProcurarPorTipo(string tipo)
+        {
+            var listaExercicios = _context.ListaExercicios.ToList();
+            var registros = _context.ListaRegistros.ToList();
+
+            //pegar o id do usuario logado
+            var usuarioId = User.Identity.Name;
+
+            //pegar os registros do usuario logado
+            var registrosUsuario = registros.FindAll(registro => registro.UsuarioId == usuarioId);
+
+            //pegar os registros do tipo passado
+            var registrosTipo = registrosUsuario.FindAll(registro => registro.TituloLista == tipo);
+
+            //invertendo a lista para mostrar os ultimos registros primeiro
+            registrosTipo.Reverse();
+
+            return View("Index", registrosTipo);
+        }
+
+         //HTTP ProcurarPorData
+        [HttpGet("procurarPorData")]
+        public IActionResult ProcurarPorData(DateTime data)
+        {
+            var listaExercicios = _context.ListaExercicios.ToList();
+            var registros = _context.ListaRegistros.ToList();
+
+            //pegar o id do usuario logado
+            var usuarioId = User.Identity.Name;
+
+            //pegar os registros do usuario logado
+            var registrosUsuario = registros.FindAll(registro => registro.UsuarioId == usuarioId);
+
+            //pegar os registros da data passada, comparar só com o dia, mes e ano, nao comparar com a hora
+            var registrosData = registrosUsuario.FindAll(registro => registro.DataRegistro.Day == data.Day && registro.DataRegistro.Month == data.Month && registro.DataRegistro.Year == data.Year).ToList();
+
+            
+            //invertendo a lista para mostrar os ultimos registros primeiro
+            registrosData.Reverse();
+
+            return View("Index", registrosData);
+        }
+
+       [HttpGet("procurarPorMateria")]
+       public IActionResult ProcurarPorMateria(string materia)
+       {
+              var listaExercicios = _context.ListaExercicios.ToList();
+              var registros = _context.ListaRegistros.ToList();
+    
+              //pegar o id do usuario logado
+              var usuarioId = User.Identity.Name;
+    
+              //pegar os registros do usuario logado
+              var registrosUsuario = registros.FindAll(registro => registro.UsuarioId == usuarioId);
+    
+              //pegar os registros da materia passada
+              var registrosMateria = registrosUsuario.FindAll(registro => registro.ListaExercicio.Tipo == materia);
+    
+              //invertendo a lista para mostrar os ultimos registros primeiro
+              registrosMateria.Reverse();
+    
+              return View("Index", registrosMateria);
+
+
+
+  
+       }
+
+
+
         //HTTP POST Registrar
         [HttpPost("registrar")]
         public IActionResult Registrar(int id, int acertos, int erros)
@@ -78,12 +151,12 @@ namespace ResolverQuestao.Controllers
         public IActionResult Delete(int id)
         {
             var registro = _context.ListaRegistros.Find(id);
-
             _context.ListaRegistros.Remove(registro);
             _context.SaveChanges();
-
             return RedirectToAction("Index", "ListaRegistros");
         }
+
+       
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
