@@ -16,7 +16,7 @@
      <div class="input-group">
                 <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
                 <select class="form-control" id="tipo" name="tipo" onchange="window.location.href=this.value">
-                    <option value="">Procurar por Tipo</option>
+                    <option value="">Procurar por Lista</option>
                     @foreach (var tipo in tipos.Distinct())
                     {
                         <option value="@Url.Action("ProcurarPorTipo", "ListaRegistros", new {tipo = tipo})"> @tipo

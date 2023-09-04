@@ -133,10 +133,6 @@ namespace ResolverQuestao.Controllers
         [HttpPost("Edit/{id}")]
         public IActionResult Edit(Exercicio exercicio, int id)
         {
-          
-
-    
-
 
             var alternativas = exercicio.Alternativas.ToList();
 
@@ -251,7 +247,7 @@ namespace ResolverQuestao.Controllers
         [HttpGet("ProcurarPorTipo")]
         public IActionResult ProcurarPorTipo(string tipo)
         {
-           //pegar a lista de exercicios do usuario
+            //pegar a lista de exercicios do usuario
             var exercicios = _context.Exercicios.ToList();
 
             //pegar os exercicios do usuario logado
@@ -264,7 +260,7 @@ namespace ResolverQuestao.Controllers
             var exerciciosTipo = exerciciosUsuario.Where(e => e.Tipo == tipo).ToList();
 
             return View("Index", exerciciosTipo);
-           
+
         }
 
 

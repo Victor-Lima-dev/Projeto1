@@ -28,6 +28,30 @@ namespace ResolverQuestao.Controllers
             _context = context;
         }
 
+        public static List<Alternativa> EmbaralharAlternativas(List<Alternativa> alternativas)
+        {
+            // Cria uma nova lista para armazenar as alternativas embaralhadas
+            List<Alternativa> embaralhadas = new List<Alternativa>();
+
+            // Cria um objeto da classe Random para gerar números aleatórios
+            Random random = new Random();
+
+            // Enquanto a lista original não estiver vazia
+            while (alternativas.Count > 0)
+            {
+                // Escolhe um índice aleatório entre 0 e o tamanho da lista original
+                int indice = random.Next(alternativas.Count);
+
+                // Adiciona a alternativa correspondente à lista embaralhada
+                embaralhadas.Add(alternativas[indice]);
+
+                // Remove a alternativa da lista original para evitar repetições
+                alternativas.RemoveAt(indice);
+            }
+
+            // Retorna a lista embaralhada
+            return embaralhadas;
+        }
 
         //HTTP GET - INDEX
         [HttpGet("Index")]
@@ -40,6 +64,7 @@ namespace ResolverQuestao.Controllers
             //pegar as listas do usuario logado
             var listasUsuario = new List<ListaExercicio>();
             listasUsuario = listas.Where(l => l.UsuarioId == User.Identity.Name).ToList();
+
 
 
             return View(listasUsuario);
@@ -250,7 +275,7 @@ namespace ResolverQuestao.Controllers
 
             //verificar nos itens dos topicos, se houver algum cujo conteudo e titulo estiverem vazios é para excluir
             var topicos = listaViewModel.TopicoListas;
-            
+
             foreach (var item in topicos)
             {
                 if (item.Conteudo == "" || item.Titulo == "")
@@ -276,7 +301,7 @@ namespace ResolverQuestao.Controllers
 
 
 
-            
+
             //adicionar na listaExercicio os topicos da listaViewModel
             listaExercicio.TopicoListas = topicos;
 
@@ -285,7 +310,7 @@ namespace ResolverQuestao.Controllers
             listaExercicio.Tipo = listaViewModel.ListaExercicio.Tipo;
             listaExercicio.Descricao = listaViewModel.ListaExercicio.Descricao;
             listaExercicio.MaterialSuporte = listaViewModel.ListaExercicio.MaterialSuporte;
-            
+
 
 
 
@@ -300,7 +325,7 @@ namespace ResolverQuestao.Controllers
             {
                 exerciciosSelecionados.Add(item);
             }
-            
+
 
 
             //limpar a lista de exercicios
@@ -367,6 +392,15 @@ namespace ResolverQuestao.Controllers
             {
                 ViewBag.MaterialSuporte = true;
             }
+
+
+            // Para cada lista de exercícios, percorre cada exercício
+            foreach (Exercicio exercicio in listaExercicio.Exercicios)
+            {
+                // Embaralha as alternativas do exercício atual
+                exercicio.Alternativas = EmbaralharAlternativas(exercicio.Alternativas);
+            }
+
 
             return View(listaExercicio);
         }
@@ -490,6 +524,13 @@ namespace ResolverQuestao.Controllers
             //pegar todos os topicos
             var topicos = _context.TopicoListas.ToList();
 
+            // Para cada lista de exercícios, percorre cada exercício
+            foreach (Exercicio exercicio in listaExercicio.Exercicios)
+            {
+                // Embaralha as alternativas do exercício atual
+                exercicio.Alternativas = EmbaralharAlternativas(exercicio.Alternativas);
+            }
+
             return View(listaExercicio);
         }
 
@@ -497,7 +538,7 @@ namespace ResolverQuestao.Controllers
         public IActionResult ResponderSequencia(int id, string resposta, int indice, int acertos, int erros)
         {
 
-                //lista de todos os topicos
+            //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
 
             //procurar o exercicio
@@ -558,6 +599,12 @@ namespace ResolverQuestao.Controllers
             ViewBag.Acertos = acertos;
             ViewBag.Erros = erros;
 
+            // Para cada lista de exercícios, percorre cada exercício
+            foreach (Exercicio exercicios in listaExercicio.Exercicios)
+            {
+                // Embaralha as alternativas do exercício atual
+                exercicios.Alternativas = EmbaralharAlternativas(exercicios.Alternativas);
+            }
 
 
             return View(listaExercicio);
@@ -579,8 +626,14 @@ namespace ResolverQuestao.Controllers
             //redirecionar para o exercicio com o proximo indice
             ViewBag.Acertos = acertos;
 
-                //lista de todos os topicos
+            //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
+            // Para cada lista de exercícios, percorre cada exercício
+            foreach (Exercicio exercicio in listaExercicio.Exercicios)
+            {
+                // Embaralha as alternativas do exercício atual
+                exercicio.Alternativas = EmbaralharAlternativas(exercicio.Alternativas);
+            }
 
             return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice, acertos = acertos, erros = erros });
         }
@@ -598,8 +651,14 @@ namespace ResolverQuestao.Controllers
 
             //redirecionar para o exercicio com o proximo indice
             ViewBag.Acertos = acertos;
-                //lista de todos os topicos
+            //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
+            // Para cada lista de exercícios, percorre cada exercício
+            foreach (Exercicio exercicio in listaExercicio.Exercicios)
+            {
+                // Embaralha as alternativas do exercício atual
+                exercicio.Alternativas = EmbaralharAlternativas(exercicio.Alternativas);
+            }
             return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = proximoIndice, acertos = acertos, erros = erros });
         }
 
@@ -614,14 +673,22 @@ namespace ResolverQuestao.Controllers
                                         .FirstOrDefault(l => l.ListaExercicioId == id);
 
             //redirecionar para o exercicio com o proximo indice
-                //lista de todos os topicos
+            //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
+
+            // Para cada lista de exercícios, percorre cada exercício
+            foreach (Exercicio exercicio in listaExercicio.Exercicios)
+            {
+                // Embaralha as alternativas do exercício atual
+                exercicio.Alternativas = EmbaralharAlternativas(exercicio.Alternativas);
+            }
+
 
             return RedirectToAction("ResponderSequencia", new { id = listaExercicio.ListaExercicioId, indice = indice, acertos = acertos, erros = erros });
         }
 
 
-        
+
 
         //metodo para procurar por tipo
         [HttpGet("ProcurarPorTipo")]
@@ -647,7 +714,7 @@ namespace ResolverQuestao.Controllers
 
             //pegar as listas com o tipo
             var listasPorTipo = listasUsuario.Where(l => l.Tipo == tipo).ToList();
-                //lista de todos os topicos
+            //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
 
             return View("Index", listasPorTipo);
@@ -675,7 +742,7 @@ namespace ResolverQuestao.Controllers
 
 
             listaViewModel.Exercicios = exerciciosFiltrados;
-                //lista de todos os topicos
+            //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
 
             return View("Create", listaViewModel);
@@ -715,7 +782,7 @@ namespace ResolverQuestao.Controllers
         }
 
 
-    
+
         //criar exercicio com Json
         [HttpPost("CreateExercicioJson")]
         public IActionResult CreateExercicioJson(string json, string tipo, string materia)
@@ -729,7 +796,7 @@ namespace ResolverQuestao.Controllers
             exercicio.Tipo = tipo;
             exercicio.Materia = materia;
             exercicio.ExercicioId = 0;
-            
+
             //zerar os ids das alternativas
 
             foreach (var item in exercicio.Alternativas)
@@ -748,9 +815,9 @@ namespace ResolverQuestao.Controllers
 
             return RedirectToAction("CreateExercicioJson");
         }
-        
 
-     
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

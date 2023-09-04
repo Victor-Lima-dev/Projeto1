@@ -108,9 +108,6 @@ namespace ResolverQuestao.Controllers
     
               return View("Index", registrosMateria);
 
-
-
-  
        }
 
 
