@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
+    <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.5" />
+    <PackageReference Include="Azure.Core" Version="1.35.0" />
     <PackageReference Include="FirebaseAdmin" Version="2.4.0" />
     <PackageReference Include="FirebaseAdminAuthentication.DependencyInjection" Version="1.1.0" />
     <PackageReference Include="FirebaseAuthentication.net" Version="4.0.2" />
@@ -24,7 +26,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="OpenAI" Version="1.7.2" />
+    <PackageReference Include="OpenAI.ChatGPT" Version="2.8.0" />
+    <PackageReference Include="OpenAI.ChatGPT.AspNetCore" Version="2.8.0" />
+    <PackageReference Include="OpenAiClient" Version="1.0.0" />
+    <PackageReference Include="OpenAIClient.Core" Version="1.0.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

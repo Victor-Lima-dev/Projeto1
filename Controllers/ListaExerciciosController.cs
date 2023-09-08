@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using ResolverQuestao.Context;
 using ResolverQuestao.Models.ViewModels;
 
 using ResolverQuestao.Models;
 using Microsoft.AspNetCore.Authorization;
+using Azure.AI.OpenAI;
+using Azure;
 
 namespace ResolverQuestao.Controllers
 {
@@ -776,8 +772,14 @@ namespace ResolverQuestao.Controllers
 
         //criar exercicio com json get
         [HttpGet("CreateExercicioJson")]
-        public IActionResult CreateExercicioJson()
+        public IActionResult CreateExercicioJson(string textoBase)
         {
+            if (textoBase == null)
+            {
+                textoBase = "";
+            }
+
+            ViewBag.TextoBase = textoBase;
             return View();
         }
 
@@ -787,6 +789,7 @@ namespace ResolverQuestao.Controllers
         [HttpPost("CreateExercicioJson")]
         public IActionResult CreateExercicioJson(string json, string tipo, string materia)
         {
+
             //criar um exercicio
             var exercicio = new Exercicio();
 
@@ -816,8 +819,23 @@ namespace ResolverQuestao.Controllers
             return RedirectToAction("CreateExercicioJson");
         }
 
+        //GPT
+        [HttpPost("GPT")]
+        public async Task<IActionResult> GPTAsync(string textoBase)
+        {
+            var Worker = new Worker();
 
+            var texto = await Worker.GerarGPTAsync(textoBase);
 
+            //enviar o texto para a view
+
+            return RedirectToAction("CreateExercicioJson", new { textoBase = texto });
+
+        }
+
+       
+
+      
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

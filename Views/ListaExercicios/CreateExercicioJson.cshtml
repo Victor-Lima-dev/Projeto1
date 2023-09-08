@@ -1,8 +1,13 @@
+@{
+    var textoBase = ViewBag.TextoBase;
+}
+
+
 <form asp-action="CreateExercicioJson" method="post">
 
     <div>
         <p>JSON</p>
-        <textarea name="json" type="text">
+        <textarea name="json" type="text" >@textoBase
     </textarea>
     </div>
 
@@ -16,9 +21,17 @@
         <input name="tipo" type="text" />
     </div>
 
-
+   
     <button type="submit">Enviar</button>
 
 
 
 </form>
+
+ <form asp-action="GPT" method="post">
+        <div>
+            <p>textoBase</p>
+            <input name="textoBase" type="text"/>
+              <button type="submit">f</button>
+        </div>
+    </form>
