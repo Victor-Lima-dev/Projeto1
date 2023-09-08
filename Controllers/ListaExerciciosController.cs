@@ -772,15 +772,32 @@ namespace ResolverQuestao.Controllers
 
         //criar exercicio com json get
         [HttpGet("CreateExercicioJson")]
-        public IActionResult CreateExercicioJson(string textoBase)
+        public async Task<IActionResult> CreateExercicioJsonAsync(string textoBase)
         {
+            var exercicios = _context.Exercicios.ToList();
+            
             if (textoBase == null)
             {
                 textoBase = "";
+                ViewBag.TextoBase = textoBase;
+                return View();
             }
+            
+            else
+            {
+               
+                var Worker = new Worker();
+                
+                var texto = await Worker.GerarGPTAsync(textoBase);
+        
+                var exercicio = Newtonsoft.Json.JsonConvert.DeserializeObject<Exercicio>(texto);
+        
 
-            ViewBag.TextoBase = textoBase;
-            return View();
+            ViewBag.TextoBase = texto;
+            return View(exercicio);
+            }
+            
+    
         }
 
 
@@ -823,13 +840,17 @@ namespace ResolverQuestao.Controllers
         [HttpPost("GPT")]
         public async Task<IActionResult> GPTAsync(string textoBase)
         {
-            var Worker = new Worker();
+      
 
-            var texto = await Worker.GerarGPTAsync(textoBase);
+            var texto = textoBase;        
 
-            //enviar o texto para a view
 
             return RedirectToAction("CreateExercicioJson", new { textoBase = texto });
+            
+
+          
+
+
 
         }
 
