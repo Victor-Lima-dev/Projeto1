@@ -1,65 +1,37 @@
-@model Exercicio
-
 @{
     var textoBase = ViewBag.TextoBase;
 }
 
-<!-- Coloque seu código HTML aqui -->
+
 <form asp-action="CreateExercicioJson" method="post">
 
-    <div class="form-group">
-        <label for="json">JSON</label>
-        <textarea name="json" type="text" class="form-control" id="json">@textoBase
+    <div>
+        <p>JSON</p>
+        <textarea name="json" type="text" >@textoBase
     </textarea>
     </div>
 
-    <div class="form-group">
-        <label for="materia">Materia</label>
-        <input name="materia" type="text" class="form-control" id="materia" />
+    <div>
+        <p>Materia</p>
+        <input name="materia" type="text" />
     </div>
 
-    <div class="form-group">
-        <label for="tipo">Tipo</label>
-        <input name="tipo" type="text" class="form-control" id="tipo" />
+    <div>
+        <p>Tipo</p>
+        <input name="tipo" type="text" />
     </div>
 
-
-    <button type="submit" class="btn btn-primary">Enviar</button>
+   
+    <button type="submit">Enviar</button>
 
 
 
 </form>
 
-<form asp-action="GPT" method="post">
-    <div class="form-group">
-        <label for="textoBase">Texto Base</label>
-        <textarea name="textoBase" type="text" class="form-control" id="textoBase">
-    </textarea>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </div>
-</form>
-
-
-@if(Model == null) {
-    <h1>Modelo nulo</h1>
-} else {
-
-    <h1 class="text-center">@Model.Titulo</h1>
-    <p>@Model.Enunciado</p>
-
-    <form asp-action="ResolverQuestao" method="post">
-
-        <div class="form-group">
-            @foreach (var item in Model.Alternativas)
-            {
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="resposta" id="@item.AlternativaId" value="@item.Texto" checked>
-                    <label class="form-check-label" for="@item.AlternativaId">
-                        @item.Texto
-                    </label>
-                </div>
-            }
+ <form asp-action="GPT" method="post">
+        <div>
+            <p>textoBase</p>
+            <input name="textoBase" type="text"/>
+              <button type="submit">f</button>
         </div>
-
     </form>
-}

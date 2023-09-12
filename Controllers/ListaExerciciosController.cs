@@ -774,8 +774,8 @@ namespace ResolverQuestao.Controllers
         [HttpGet("CreateExercicioJson")]
         public async Task<IActionResult> CreateExercicioJsonAsync(string textoBase)
         {
-            var exercicios = _context.Exercicios.ToList();
-            
+            //incluir as alternativas
+            var exercicios = _context.Exercicios.Include(e => e.Alternativas).ToList();
             if (textoBase == null)
             {
                 textoBase = "";
@@ -786,12 +786,12 @@ namespace ResolverQuestao.Controllers
             else
             {
                
-                var Worker = new Worker();
+                 var Worker = new Worker();
                 
-                var texto = await Worker.GerarGPTAsync(textoBase);
+                 var texto = await Worker.GerarGPTAsync(textoBase);
         
-                var exercicio = Newtonsoft.Json.JsonConvert.DeserializeObject<Exercicio>(texto);
-        
+                 var exercicio = Newtonsoft.Json.JsonConvert.DeserializeObject<Exercicio>(texto);
+
 
             ViewBag.TextoBase = texto;
             return View(exercicio);

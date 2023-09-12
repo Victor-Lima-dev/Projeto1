@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ciVwF46S+2uZtSLa5TbK8hpTuoyvo3UZOYJ8RLAfs5tD4kvYS9T8V7mOQf5Gm+R5qrsGdSf5sNAK4V6oteUCqA==",
+  "dgSpecHash": "WRxN1eR7x7nfbZWxuwHzAc2xW3KZjE4TMvK6wWAbFW6zmAaYNmOL9LIQIyLEnpSuyOupYe6QtULpkmGPpdYQLA==",
   "success": true,
   "projectFilePath": "C:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\ResolverQuestao.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,8 @@
     "C:\\Users\\vlima06\\.nuget\\packages\\jsonschema.net.generation\\3.3.0\\jsonschema.net.generation.3.3.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\libuv\\1.10.0\\libuv.1.10.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\litedb\\4.1.4\\litedb.4.1.4.nupkg.sha512",
+    "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnet.webpages.data\\3.2.9\\microsoft.aspnet.webpages.data.3.2.9.nupkg.sha512",
+    "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnet.webpages.webdata\\3.2.9\\microsoft.aspnet.webpages.webdata.3.2.9.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnetcore\\2.0.2\\microsoft.aspnetcore.2.0.2.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -138,6 +140,7 @@
     "C:\\Users\\vlima06\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+    "C:\\Users\\vlima06\\.nuget\\packages\\scottplot\\4.1.67\\scottplot.4.1.67.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\sharpyaml\\2.1.0\\sharpyaml.2.1.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\swaggerprovider\\1.0.1\\swaggerprovider.1.0.1.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
@@ -197,5 +200,26 @@
     "C:\\Users\\vlima06\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\webapiclient.jit\\1.1.4\\webapiclient.jit.1.1.4.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.AspNet.WebPages.Data 3.2.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.AspNet.WebPages.Data",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.AspNet.WebPages.WebData 3.2.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.AspNet.WebPages.WebData",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

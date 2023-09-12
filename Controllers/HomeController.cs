@@ -7,6 +7,8 @@ using ResolverQuestao.Context;
 using ResolverQuestao.Models;
 using ResolverQuestao.Models.ViewModels;
 
+using System;
+
 namespace ResolverQuestao.Controllers;
 
 public class HomeController : Controller
@@ -26,43 +28,104 @@ public class HomeController : Controller
     [Authorize]
     public IActionResult Index()
     {
-        var exercicios = _context.Exercicios.ToList();
+        var todasListas = _context.ListaExercicios.ToList();
 
-        //pegar o id do usuario logado
+        var todosRegistros = _context.ListaRegistros.ToList();
+
+        var todosExercicios = _context.Exercicios.ToList();
+
+        var homeViewModel = new HomeViewModel();
 
         var usuarioLogado = User.Identity.Name;
 
-        //contar quantos exercicios o usuario logado tem
-        var contagemExercicios = exercicios.Where(e => e.UsuarioId == usuarioLogado).Count();
+        var listaRegistros = _context.ListaRegistros.Where(x => x.UsuarioId == usuarioLogado).ToList();
 
-        //pegar a lista de exercicios do usuario logado
-        var ExerciciosUsuario = exercicios.Where(e => e.UsuarioId == usuarioLogado).ToList();
+        //se o usuario nao tiver nenhum registro, retorna a view com o viewmodel vazio
 
-        //enviar o numero em uma viewBag
-        ViewBag.ContagemExercicios = contagemExercicios;
-
-        var listas = _context.ListaExercicios.ToList();
-
-        //contar as listas do usuario logado
-
-        var contagemListas = listas.Where(l => l.UsuarioId == usuarioLogado).Count();
-
-        //pegar as listas de exercicios do usuario logado
-
-        var ListasUsuario = listas.Where(l => l.UsuarioId == usuarioLogado).ToList();
-
-        //criar a view model ListaExerciciosViewModel
-
-        var listaExercicioHomeViewModel = new ListaExercicioHomeViewModel
+        if (listaRegistros.Count == 0)
         {
-            ListaExercicios = ListasUsuario,
-            Exercicios = ExerciciosUsuario
-        };
+            //enviar uma viewBag mostrando que nao tem nehuma lista respondida
 
-        //enviar o numero em uma viewBag
-        ViewBag.ContagemListas = contagemListas;
-        
-        return View(listaExercicioHomeViewModel);
+            ViewBag.NenhumaListaRespondida = true;
+            return View(homeViewModel);
+        }
+
+
+
+        var listaExerciciosRespondidos = new List<ListaExercicio>();
+
+        foreach (var item in listaRegistros)
+        {
+            listaExerciciosRespondidos.Add(item.ListaExercicio);
+        }
+
+        int quantidadeQuestoesCorretas = 0;
+
+        foreach (var item in listaRegistros)
+        {
+            quantidadeQuestoesCorretas += item.Acertos;
+        }
+
+        int quantidadeQuestoesErradas = 0;
+
+        foreach (var item in listaRegistros)
+        {
+            quantidadeQuestoesErradas += item.Erros;
+        }
+
+        var quantidadeQuestoesRespondidas = quantidadeQuestoesCorretas + quantidadeQuestoesErradas;
+
+        var aproveitamento = quantidadeQuestoesCorretas * 100 / quantidadeQuestoesRespondidas;
+
+        homeViewModel.Aproveitamento = aproveitamento.ToString() + "%";
+
+        homeViewModel.QuantidadeQuestoesRespondidas = quantidadeQuestoesRespondidas.ToString();
+
+
+        var quantidadeMateriasRespondidas = 0;
+
+        var materiasRespondidas = new List<string>();
+
+        foreach (var item in listaRegistros)
+        {
+            materiasRespondidas.Add(item.ListaExercicio.Tipo);
+        }
+
+        quantidadeMateriasRespondidas = materiasRespondidas.Distinct().Count();
+
+        homeViewModel.QuantidadeMateriasRespondidas = quantidadeMateriasRespondidas.ToString();
+
+        var listaRegistroOrdenadaAproveitamento = listaRegistros.OrderByDescending(x => x.Acertos * 100 / (x.Acertos + x.Erros)).ToList();
+
+        var dataAgora = DateTime.Now;
+
+        var listaRegistroOrdenadaData = listaRegistros.OrderByDescending(x => x.DataRegistro).ToList();
+
+        homeViewModel.ListaOrdenadaPorData = listaRegistroOrdenadaData;
+
+        var melhorListaRespondida = listaRegistros.OrderByDescending(x => x.Acertos * 100 / (x.Acertos + x.Erros)).ThenByDescending(x => x.DataRegistro).First();
+
+        var melhorListaExercicio = listaExerciciosRespondidos.FirstOrDefault(x => x.ListaExercicioId == melhorListaRespondida.ListaExercicioId);
+
+        var melhorListaRespondidaAproveitamento = melhorListaRespondida.Acertos * 100 / (melhorListaRespondida.Acertos + melhorListaRespondida.Erros);
+
+        homeViewModel.MelhorListaRespondida = melhorListaExercicio;
+
+        homeViewModel.MelhorListaRespondidaAproveitamento = melhorListaRespondidaAproveitamento.ToString() + "%";
+
+        var piorListaRespondida = listaRegistros.OrderBy(x => x.Acertos * 100 / (x.Acertos + x.Erros)).ThenBy(x => x.DataRegistro).First();
+
+        var piorListaRespondidaAproveitamento = piorListaRespondida.Acertos * 100 / (piorListaRespondida.Acertos + piorListaRespondida.Erros);
+
+        var piorListaExercicio = listaExerciciosRespondidos.FirstOrDefault(x => x.ListaExercicioId == piorListaRespondida.ListaExercicioId);
+
+        homeViewModel.PiorListaRespondida = piorListaExercicio;
+
+        homeViewModel.PiorListaRespondidaAproveitamento = piorListaRespondidaAproveitamento.ToString() + "%";
+
+
+
+        return View(homeViewModel);
     }
 
     public IActionResult Privacy()
