@@ -23,6 +23,18 @@ namespace ResolverQuestao.Models.ViewModels
 
         public List<ListaRegistro> ListaOrdenadaPorData { get; set; } = new List<ListaRegistro>();
 
+        public string PiorMateria { get; set; } = "";
+
+        public string MelhorMateria { get; set; } = "";
+
+        public string AproveitamentoMelhorMateria { get; set; } = "";
+
+        public string QuantidadeQuestoesMelhorMateria { get; set; } = "";
+
+        public string AproveitamentoPiorMateria { get; set; } = "";
+
+        public string QuantidadeQuestoesPiorMateria { get; set; } = "";
+
       
     }
 }

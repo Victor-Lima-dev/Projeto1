@@ -281,3 +281,37 @@ body
   gap: 1rem;
   margin: .5rem 0;
 }
+
+.home-section{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.home-section--info
+{
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+ 
+}
+
+.home-section--info-indicador{
+ 
+  width: 20rem;
+
+}
+
+.home-section--geral
+{
+
+  width: 70%;
+  
+}
+
+.home-section--geral-itens
+{
+  display: flex;
+  
+  justify-content: space-evenly;
+}

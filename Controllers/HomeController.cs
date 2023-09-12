@@ -123,6 +123,110 @@ public class HomeController : Controller
 
         homeViewModel.PiorListaRespondidaAproveitamento = piorListaRespondidaAproveitamento.ToString() + "%";
 
+        //agora vamos pegar a melhor e a pior materia
+
+        var listaMaterias = new List<string>();
+
+        foreach (var item in listaExerciciosRespondidos)
+        {
+            listaMaterias.Add(item.Tipo);
+        }
+
+        var listaMateriasDistinct = listaMaterias.Distinct().ToList();
+
+        var listaMateriasRespondidas = new List<string>();
+
+        foreach (var item in listaRegistros)
+        {
+            listaMateriasRespondidas.Add(item.ListaExercicio.Tipo);
+        }
+
+        var listaMateriasRespondidasDistinct = listaMateriasRespondidas.Distinct().ToList();
+
+        var listaMateriasNaoRespondidas = new List<string>();
+
+        foreach (var item in listaMateriasDistinct)
+        {
+            if (!listaMateriasRespondidasDistinct.Contains(item))
+            {
+                listaMateriasNaoRespondidas.Add(item);
+            }
+        }
+
+        var listaMateriasRespondidasAproveitamento = new List<int>();
+
+        foreach (var item in listaMateriasRespondidasDistinct)
+        {
+            var listaRegistrosMateria = listaRegistros.Where(x => x.ListaExercicio.Tipo == item).ToList();
+
+            var quantidadeQuestoesCorretasMateria = 0;
+
+            foreach (var registro in listaRegistrosMateria)
+            {
+                quantidadeQuestoesCorretasMateria += registro.Acertos;
+            }
+
+            var quantidadeQuestoesErradasMateria = 0;
+
+            foreach (var registro in listaRegistrosMateria)
+            {
+                quantidadeQuestoesErradasMateria += registro.Erros;
+            }
+
+            var quantidadeQuestoesRespondidasMateria = quantidadeQuestoesCorretasMateria + quantidadeQuestoesErradasMateria;
+
+            var aproveitamentoMateria = quantidadeQuestoesCorretasMateria * 100 / quantidadeQuestoesRespondidasMateria;
+
+            listaMateriasRespondidasAproveitamento.Add(aproveitamentoMateria);
+        }
+
+        homeViewModel.MelhorMateria = listaMateriasRespondidasDistinct[listaMateriasRespondidasAproveitamento.IndexOf(listaMateriasRespondidasAproveitamento.Max())];
+
+        homeViewModel.PiorMateria = listaMateriasRespondidasDistinct[listaMateriasRespondidasAproveitamento.IndexOf(listaMateriasRespondidasAproveitamento.Min())];
+
+        var quantidadeAcertosMelhorMateria = 0;
+
+        var quantidadeTotalQuestoesMelhorMateria = 0;
+
+        var quantidadeAcertosPiorMateria = 0;
+
+          var quantidadeTotalQuestoesPiorMateria = 0;
+
+        foreach (var item in listaRegistros)
+        {
+            if (item.ListaExercicio.Tipo == homeViewModel.MelhorMateria)
+            {
+                quantidadeAcertosMelhorMateria += item.Acertos;
+                quantidadeTotalQuestoesMelhorMateria += item.Acertos + item.Erros;
+
+            }
+        }
+
+        foreach (var item in listaRegistros)
+        {
+            if (item.ListaExercicio.Tipo == homeViewModel.PiorMateria)
+            {
+                quantidadeAcertosPiorMateria += item.Acertos;
+                quantidadeTotalQuestoesPiorMateria += item.Acertos + item.Erros;
+
+            }
+        }
+
+        var aproveitamentoMelhorMateria = quantidadeAcertosMelhorMateria * 100 / quantidadeTotalQuestoesMelhorMateria;
+
+        var aproveitamentoPiorMateria = quantidadeAcertosPiorMateria * 100 / quantidadeTotalQuestoesPiorMateria;
+
+        homeViewModel.AproveitamentoMelhorMateria = aproveitamentoMelhorMateria.ToString() + "%";
+
+        homeViewModel.AproveitamentoPiorMateria = aproveitamentoPiorMateria.ToString() + "%";
+
+        homeViewModel.QuantidadeQuestoesMelhorMateria = quantidadeTotalQuestoesMelhorMateria.ToString();
+
+        homeViewModel.QuantidadeQuestoesPiorMateria = quantidadeTotalQuestoesPiorMateria.ToString();
+
+
+
+
 
 
         return View(homeViewModel);

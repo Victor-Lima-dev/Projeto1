@@ -23,5 +23,7 @@ namespace ResolverQuestao.Models
 
         public ListaExercicio ListaExercicio { get; set; }
 
+        
+
     }
 }

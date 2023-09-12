@@ -1,30 +1,62 @@
-﻿
-@model ResolverQuestao.Models.ViewModels.HomeViewModel
+﻿@model ResolverQuestao.Models.ViewModels.HomeViewModel
 
-@if (ViewBag.NenhumaListaRespondida == true )
+@if (ViewBag.NenhumaListaRespondida == true)
 {
     <div>
         <h1>Nenhuma Lista Respondida</h1>
     </div>
 }
+<section class="home-section">
 
-<div>
-    <h1>Números Gerais</h1>
-    <p>Aproveitamento @Model.Aproveitamento</p>
-    <p>Quantidade de Questões Respondidas @Model.QuantidadeQuestoesRespondidas</p>
-    <p>Matérias Respondidas @Model.QuantidadeMateriasRespondidas</p>
-</div>
+    <div class="home-section--geral">
 
-<div>
-    <h1>Melhor Lista</h1>
-    <p>Titulo: <span> @Model.MelhorListaRespondida.Titulo </span></p>
-    <p>Materia: <span>@Model.MelhorListaRespondida.Tipo </span></p>   
-    <p>Aproveitamento nessa lista: @Model.MelhorListaRespondidaAproveitamento </span></p>
-</div>
-<div>
-    <h1>Pior Lista</h1>
-    <p>Titulo: <span>@Model.PiorListaRespondida.Titulo </span></p>
-    <p>Materia: <span>@Model.PiorListaRespondida.Tipo </span></p>
-    <p>Aproveitamento nessa lista: <span>@Model.PiorListaRespondidaAproveitamento</span></p>
-</div>
+        <div>
+            <h1>Números Gerais</h1>
+            <p>Aproveitamento @Model.Aproveitamento</p>
+            <p>Quantidade de Questões Respondidas @Model.QuantidadeQuestoesRespondidas</p>
+            <p>Matérias Respondidas @Model.QuantidadeMateriasRespondidas</p>
+        </div>
+        <div>
+            <p>O Melhor jeito é ir com calma e ter consistencia, se falhou hoje tudo bem, o importante é voltar amanhã
+                se Hoje voce ta tentando novamente, parabéns, é isso que a gente precisa, o futuro vai chegar e a
+                consistencia
+                é o melhor caminho que podemos seguir
+            </p>
+            <div class="home-section--geral-itens">
+                <a asp-controller="Exercicios" asp-action="Index">Exercicios</a>
+                <a asp-controller="ListaExercicios" asp-action="Index">Listas de Exercicios</a>
+                <a asp-controller="ListaRegistros" asp-action="Index">Histórico</a>
+            </div>
+        </div>
+    </div>
+    <div class="home-section--info">
 
+
+        <div class="home-section--info-indicador">
+            <h1>Melhor Lista</h1>
+            <p>Titulo: <span> @Model.MelhorListaRespondida.Titulo </span></p>
+            <p>Materia: <span>@Model.MelhorListaRespondida.Tipo </span></p>
+            <p>Aproveitamento nessa lista: @Model.MelhorListaRespondidaAproveitamento </span></p>
+        </div>
+        <div class="home-section--info-indicador">
+            <h1>Pior Lista</h1>
+            <p>Titulo: <span>@Model.PiorListaRespondida.Titulo </span></p>
+            <p>Materia: <span>@Model.PiorListaRespondida.Tipo </span></p>
+            <p>Aproveitamento nessa lista: <span>@Model.PiorListaRespondidaAproveitamento</span></p>
+        </div>
+
+        <div class="home-section--info-indicador">
+            <h1>Melhor Materia</h1>
+            <p>Materia: <span>@Model.MelhorMateria</span></p>
+            <p>Aproveitamento nessa materia: <span>@Model.AproveitamentoMelhorMateria</span></p>
+            <p>Quantidade de Questões <span>@Model.QuantidadeQuestoesMelhorMateria</span></p>
+        </div>
+        <div class="home-section--info-indicador">
+            <h1>Pior Materia</h1>
+            <p>Materia: <span>@Model.PiorMateria</span></p>
+            <p>Aproveitamento nessa materia: <span>@Model.AproveitamentoPiorMateria</span></p>
+            <p>Quantidade de Questões <span>@Model.QuantidadeQuestoesPiorMateria</span></p>
+        </div>
+    </div>
+
+</section>
