@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-    <link rel="stylesheet" href="~/ResolverQuestao.styles.css"  asp-append-version="true" />
+    <link rel="stylesheet" href="~/ResolverQuestao.styles.css" asp-append-version="true" />
 
     <link rel="icon" type="image/x-icon" href="~/teste.ico" sizes="32x32">
 
@@ -50,7 +50,7 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <a class=" nav-link nav-container-item">Hi @User.Identity.Name!</a>
+                            <a class=" nav-link nav-container-item"  asp-controller="Perfil" asp-action="EditarPerfil"  >Hi @User.Identity.Name!</a>
 
                             <a class="nav-link text-dark nav-container-item" asp-area="" asp-controller="Usuarios"
                                 asp-action="logout">Logout</a>
@@ -79,11 +79,11 @@
             <div class="home-main">
 
 
-                
-                <section class="home-main-section1">
-                @RenderBody()
 
-                </section> 
+                <section class="home-main-section1">
+                    @RenderBody()
+
+                </section>
 
 
             </div>

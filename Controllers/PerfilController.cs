@@ -33,12 +33,22 @@ namespace ResolverQuestao.Controllers
         {
             var usuarioLogadoId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            var usuario = new UsuarioBancoDados
+
+            //verificar se o usuario já tem um perfil
+
+            var usuario = _context.UsuarioBancoDados.FirstOrDefault(u => u.UsuarioGuidId == Guid.Parse(usuarioLogadoId));
+
+            if (usuario != null)
+            {
+                return RedirectToAction("EditarPerfil");
+            }
+
+            var usuarioBase = new UsuarioBancoDados
             {
                 UsuarioGuidId = Guid.Parse(usuarioLogadoId)
             };
 
-            return View(usuario);
+            return View(usuarioBase);
         }
 
         [HttpPost("CriarPerfil")]
@@ -52,6 +62,55 @@ namespace ResolverQuestao.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet("EditarPerfil")]
+        public IActionResult EditarPerfil()
+        {    
+            
+
+            Guid id = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+
+            var usuario = _context.UsuarioBancoDados.FirstOrDefault(u => u.UsuarioGuidId == id);
+
+            //verificar se o usuario existe
+
+            if (usuario == null)
+            {
+                return RedirectToAction("CriarPerfil");
+            }
+            return View(usuario);
+        }
+
+        [HttpPost("EditarPerfil")]
+        public async Task<IActionResult> EditarPerfil(UsuarioBancoDados usuario)
+        {
+            _context.Update(usuario);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet("DetalhesPerfil")]
+
+        public IActionResult DetalhesPerfil()
+        {
+            Guid id = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var usuario = _context.UsuarioBancoDados.FirstOrDefault(u => u.UsuarioGuidId == id);
+
+            //verificar se o usuario existe
+
+            if (usuario == null)
+            {
+                return RedirectToAction("CriarPerfil");
+            }
+
+            
+
+            return View(usuario);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

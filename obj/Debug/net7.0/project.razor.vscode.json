@@ -24140,6 +24140,16 @@
       "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\Perfil\\CriarPerfil.cshtml",
       "TargetPath": "Views\\Perfil\\CriarPerfil.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\Perfil\\EditarPerfil.cshtml",
+      "TargetPath": "Views\\Perfil\\EditarPerfil.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\Perfil\\DetalhesPerfil.cshtml",
+      "TargetPath": "Views\\Perfil\\DetalhesPerfil.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }
