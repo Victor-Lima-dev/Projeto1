@@ -63,6 +63,8 @@ namespace ResolverQuestao.Controllers
 
 
 
+
+
             return View(listasUsuario);
         }
 
@@ -782,22 +784,22 @@ namespace ResolverQuestao.Controllers
                 ViewBag.TextoBase = textoBase;
                 return View();
             }
-            
+
             else
             {
-               
-                 var Worker = new Worker();
-                
-                 var texto = await Worker.GerarGPTAsync(textoBase);
-        
-                 var exercicio = Newtonsoft.Json.JsonConvert.DeserializeObject<Exercicio>(texto);
+
+                var Worker = new Worker();
+
+                var texto = await Worker.GerarGPTAsync(textoBase);
+
+                var exercicio = Newtonsoft.Json.JsonConvert.DeserializeObject<Exercicio>(texto);
 
 
-            ViewBag.TextoBase = texto;
-            return View(exercicio);
+                ViewBag.TextoBase = texto;
+                return View(exercicio);
             }
-            
-    
+
+
         }
 
 
@@ -840,23 +842,23 @@ namespace ResolverQuestao.Controllers
         [HttpPost("GPT")]
         public async Task<IActionResult> GPTAsync(string textoBase)
         {
-      
 
-            var texto = textoBase;        
+
+            var texto = textoBase;
 
 
             return RedirectToAction("CreateExercicioJson", new { textoBase = texto });
-            
 
-          
+
+
 
 
 
         }
 
-       
 
-      
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

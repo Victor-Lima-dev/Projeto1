@@ -1,0 +1,40 @@
+@model UsuarioBancoDados
+
+<form asp-action="CriarPerfil" method="post">
+
+    <div>
+        <label for="">Nome</label>
+        <input asp-for="Nome" type="text" />
+    </div>
+
+    <div>
+        <label for="">Email</label>
+        <input asp-for="Email" type="text" />
+    </div>
+
+    <div>
+        <label for="">Profissao</label>
+        <input asp-for="Profissao" type="text" />
+    </div>
+
+    <div>
+        <label for="">Objetivo</label>
+        <input asp-for="Objetivo" type="text" />
+    </div>
+
+    @* inputhidden *@
+
+
+        <input asp-for="UsuarioGuidId" type="hidden" value="@Model.UsuarioGuidId" />
+    
+
+@* submit *@
+
+    <div>
+        <input type="submit" value="Criar Perfil" />
+    </div>
+
+
+
+
+</form>

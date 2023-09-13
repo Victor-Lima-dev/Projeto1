@@ -1,37 +1,73 @@
+@model Exercicio
+
 @{
     var textoBase = ViewBag.TextoBase;
 }
 
-
 <form asp-action="CreateExercicioJson" method="post">
 
-    <div>
-        <p>JSON</p>
-        <textarea name="json" type="text" >@textoBase
+    <div class="form-group">
+        <label for="json">JSON</label>
+        <textarea name="json" type="text" class="form-control" id="json">@textoBase
     </textarea>
     </div>
 
-    <div>
-        <p>Materia</p>
-        <input name="materia" type="text" />
+    <div class="form-group">
+        <label for="materia">Materia</label>
+        <input name="materia" type="text" class="form-control" id="materia" />
     </div>
 
-    <div>
-        <p>Tipo</p>
-        <input name="tipo" type="text" />
+    <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <input name="tipo" type="text" class="form-control" id="tipo" />
     </div>
 
-   
-    <button type="submit">Enviar</button>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
 
 
 
 </form>
 
- <form asp-action="GPT" method="post">
-        <div>
-            <p>textoBase</p>
-            <input name="textoBase" type="text"/>
-              <button type="submit">f</button>
-        </div>
-    </form>
+<form asp-action="GPT" method="post">
+    <div class="form-group">
+        <label for="textoBase">Texto Base</label>
+        <textarea name="textoBase" type="text" class="form-control" id="textoBase">
+    </textarea>
+        <button type="submit" class="btn btn-primary">Gerar</button>
+    </div>
+</form>
+
+
+@if (Model == null)
+{
+    <h1>Modelo nulo</h1>
+}
+else
+{
+
+    <h1 class="text-center">@Model.Titulo</h1>
+    <p>@Model.Enunciado</p>
+
+    <div class="form-group">
+        @foreach (var item in Model.Alternativas)
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="resposta" id="@item.AlternativaId" value="@item.Texto"
+                    checked>
+                <label class="form-check-label" for="@item.AlternativaId">
+                    @item.Texto
+                </label>
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <p>Resposta Correta: @Model.Resposta</p>
+    </div>
+
+    <div class="form-group">
+        <p>Explicação: @Model.Explicacao</p>
+    </div>
+
+}

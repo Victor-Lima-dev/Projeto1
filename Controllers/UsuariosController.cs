@@ -16,6 +16,7 @@ using ResolverQuestao.Models;
 
 namespace ResolverQuestao.Controllers
 {
+    
     [Route("[controller]")]
     public class UsuariosController : Controller
     {
@@ -103,13 +104,18 @@ namespace ResolverQuestao.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Login");
+                //logar o usuario
+                await _signInManager.SignInAsync(user, false);
+                
+
+                return RedirectToAction("CriarPerfil", "Perfil");
             }
 
             return View(usuario);
 
-
         }
+
+        
 
 
         //HTTP Post LOUGOUT
