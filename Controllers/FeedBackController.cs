@@ -42,7 +42,19 @@ namespace ResolverQuestao.Controllers
                                         .ThenInclude(e => e.Alternativas)
                                         .FirstOrDefault(l => l.ListaExercicioId == id);
 
+            if(listaExercicio == null)
+            {
+                return NotFound();
+            }
+
+
+
             var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == exercicioId);
+
+            if(exercicio == null)
+            {
+                return NotFound();
+            }
 
             var feedBack = new FeedBack
             {
@@ -51,8 +63,8 @@ namespace ResolverQuestao.Controllers
                 Exercicio = exercicio
             };
 
-            // _context.FeedBacks.Add(feedBack);
-            // _context.SaveChanges();
+            _context.FeedBacks.Add(feedBack);
+            _context.SaveChanges();
 
             
             return RedirectToAction("ResponderSequencia","ListaExercicios", new { id = listaExercicio.ListaExercicioId, indice = indice, acertos = acertos, erros = erros });

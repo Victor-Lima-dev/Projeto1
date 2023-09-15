@@ -15,5 +15,13 @@ namespace ResolverQuestao.Models
 
         public Exercicio Exercicio { get; set; }
 
+        public Boolean Avaliada { get; set; } = false;
+
+        public string? Avaliacao { get; set; }
+
+        public Boolean Resolvida { get; set; } = false;
+
+        public string? Solucao { get; set; }
+
     }
 }
