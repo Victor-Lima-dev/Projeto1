@@ -24,5 +24,7 @@ namespace ResolverQuestao.Context
         public DbSet<TopicoLista> TopicoListas { get; set; }
 
         public DbSet<UsuarioBancoDados> UsuarioBancoDados { get; set; }
+
+        public DbSet<FeedBack> FeedBacks { get; set; }
     }
 }

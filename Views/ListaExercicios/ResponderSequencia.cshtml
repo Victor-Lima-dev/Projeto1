@@ -139,6 +139,16 @@
         </form>
 
 
+            <form asp-controller="Feedback" asp-action="Registrar">
+                <input type="hidden" name="exercicioId" value="@exercicioFoco.ExercicioId" />
+                <input type="hidden" name="id" value="@Model.ListaExercicioId" />
+                <input type="hidden" name="acertos" value="@acertos" />
+                <input type="hidden" name="erros" value="@erros" />
+                <input type="hidden" name="indice" value="@indice"/>
+                <input type="text" name= "descricao" placeholder="Deixe seu feedback aqui" class="form-control" />
+                <input type="submit" value="Feedback" class="btn btn-primary" />
+            </form>
+
         <div class="d-flex flex-row bd-highlight mb-1 mt-1 gap-1">
 
 

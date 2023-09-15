@@ -1,5 +1,3 @@
-using FirebaseAdmin;
-using Google.Apis.Auth.OAuth2;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ResolverQuestao.Context;
@@ -19,8 +17,8 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Usuarios/Login");
 
-
 builder.Services.AddMemoryCache();
+
 builder.Services.AddSession();
 
 
