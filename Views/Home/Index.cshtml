@@ -16,45 +16,23 @@
             <p>Quantidade de Questões Respondidas @Model.QuantidadeQuestoesRespondidas</p>
             <p>Matérias Respondidas @Model.QuantidadeMateriasRespondidas</p>
         </div>
-        <div>
             <p><strong>Ir com calma e ter consistência é o melhor jeito de alcançar seus objetivos.</strong> Se você falhou hoje, não se
                 preocupe, o importante é não desistir e tentar novamente amanhã. Se você está aqui hoje, parabéns, você
                 está no caminho certo. O futuro vai chegar e a consistência vai te recompensar.
             </p>
-            <div class="home-section--geral-itens">
-                <a asp-controller="Exercicios" asp-action="Index">Exercicios</a>
-                <a asp-controller="ListaExercicios" asp-action="Index">Listas de Exercicios</a>
-                <a asp-controller="ListaRegistros" asp-action="Index">Histórico</a>
-            </div>
+    
         </div>
     </div>
     <div class="home-section--info">
-
-
-        <div class="home-section--info-indicador">
-            <h1>Melhor Lista</h1>
-            <p>Titulo: <span> @Model.MelhorListaRespondida.Titulo </span></p>
-            <p>Materia: <span>@Model.MelhorListaRespondida.Tipo </span></p>
-            <p>Aproveitamento nessa lista: @Model.MelhorListaRespondidaAproveitamento </span></p>
-        </div>
-        <div class="home-section--info-indicador">
-            <h1>Pior Lista</h1>
-            <p>Titulo: <span>@Model.PiorListaRespondida.Titulo </span></p>
-            <p>Materia: <span>@Model.PiorListaRespondida.Tipo </span></p>
-            <p>Aproveitamento nessa lista: <span>@Model.PiorListaRespondidaAproveitamento</span></p>
-        </div>
-
         <div class="home-section--info-indicador">
             <h1>Melhor Materia</h1>
-            <p>Materia: <span>@Model.MelhorMateria</span></p>
-            <p>Aproveitamento nessa materia: <span>@Model.AproveitamentoMelhorMateria</span></p>
-            <p>Quantidade de Questões <span>@Model.QuantidadeQuestoesMelhorMateria</span></p>
+            <p><strong><span>@Model.MelhorMateria</span></strong></p>
+            <p><span>@Model.AproveitamentoMelhorMateria de acertos em @Model.QuantidadeQuestoesMelhorMateria Questões</span></p>
         </div>
         <div class="home-section--info-indicador">
             <h1>Pior Materia</h1>
-            <p>Materia: <span>@Model.PiorMateria</span></p>
-            <p>Aproveitamento nessa materia: <span>@Model.AproveitamentoPiorMateria</span></p>
-            <p>Quantidade de Questões <span>@Model.QuantidadeQuestoesPiorMateria</span></p>
+            <p><strong><span>@Model.PiorMateria</span></strong></p>
+            <p><span>@Model.AproveitamentoPiorMateria</span> de acertos em @Model.QuantidadeQuestoesPiorMateria Questões </p>
         </div>
     </div>
 

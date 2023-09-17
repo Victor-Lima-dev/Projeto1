@@ -24,9 +24,15 @@ namespace ResolverQuestao.Controllers
             _context = context;
         }
 
+    [HttpGet("Index")]
         public IActionResult Index()
         {
-            return View();
+            var exercicios = _context.Exercicios.ToList();
+            var listaExercicios = _context.ListaExercicios.ToList();
+            var feedbacks = _context.FeedBacks.ToList();
+
+            
+            return View(feedbacks);
         }
 
 
@@ -46,9 +52,6 @@ namespace ResolverQuestao.Controllers
             {
                 return NotFound();
             }
-
-
-
             var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == exercicioId);
 
             if(exercicio == null)
@@ -69,6 +72,61 @@ namespace ResolverQuestao.Controllers
             
             return RedirectToAction("ResponderSequencia","ListaExercicios", new { id = listaExercicio.ListaExercicioId, indice = indice, acertos = acertos, erros = erros });
             
+        }
+
+        //HTTP Post ("Avaliar")
+
+        [HttpPost("Avaliar")]
+        public IActionResult Avaliar(int id, string avaliacao)
+        {
+            
+            //procurar o feedback com id
+
+            var feedBack = _context.FeedBacks.FirstOrDefault(f => f.FeedBackId == id);
+
+            if(feedBack == null)
+            {
+                return NotFound();
+            }
+
+            feedBack.Avaliada = true;
+
+            feedBack.Avaliacao = avaliacao;
+
+            _context.FeedBacks.Update(feedBack);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        //HTTP Post ("Resolver")
+        [HttpPost("Resolver")]
+        public IActionResult Resolver(int id, string solucao)
+        {
+            //procurar o feedback com id
+
+            var feedBack = _context.FeedBacks.FirstOrDefault(f => f.FeedBackId == id);
+
+            if(feedBack == null)
+            {
+                return NotFound();
+            }
+
+            ///verificar se a avaliacao é true, se nao forn marcar como verdadeira
+            ///
+            if(feedBack.Avaliada == false)
+            {
+                feedBack.Avaliada = true;
+            }
+
+            feedBack.Resolvida = true;
+
+            feedBack.Solucao = solucao;
+
+            _context.FeedBacks.Update(feedBack);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

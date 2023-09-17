@@ -1,73 +1,130 @@
-﻿@model Exercicio
+﻿<!DOCTYPE html>
+<html lang="en">
 
-@{
-    var textoBase = ViewBag.TextoBase;
-}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CodeX</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-<form asp-action="CreateExercicioJson" method="post">
+    <link rel="stylesheet" href="~/ResolverQuestao.styles.css" asp-append-version="true" />
 
-    <div class="form-group">
-        <label for="json">JSON</label>
-        <textarea name="json" type="text" class="form-control" id="json">@textoBase
-    </textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="materia">Materia</label>
-        <input name="materia" type="text" class="form-control" id="materia" />
-    </div>
-
-    <div class="form-group">
-        <label for="tipo">Tipo</label>
-        <input name="tipo" type="text" class="form-control" id="tipo" />
-    </div>
+    <link rel="icon" type="image/x-icon" href="~/teste.ico" sizes="32x32">
 
 
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <script src="https://kit.fontawesome.com/001d53005b.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CodeX</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ">
+                    <ul class="navbar-nav  nav-container">
+                        <li class="nav-item ">
+                            <a class="nav-link text-dark nav-container-item" asp-area="" asp-controller="Home"
+                                asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark nav-container-item" asp-area="" asp-controller="Exercicios"
+                                asp-action="Index">Exercicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark nav-container-item" asp-area=""
+                                asp-controller="ListaExercicios" asp-action="Index">Listas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark nav-container-item" asp-area="" asp-controller="ListaRegistros"
+                                asp-action="Index">Histórico</a>
+                        </li>
+                    </ul>
+
+                    <div class="nav-container-login">
+
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a class=" nav-link nav-container-item"  asp-controller="Perfil" asp-action="EditarPerfil"  >Hi @User.Identity.Name!</a>
+
+                            <a class="nav-link text-dark nav-container-item" asp-area="" asp-controller="Usuarios"
+                                asp-action="logout">Logout</a>
+                        }
+
+                        else
+                        {
+
+                            <a class="nav-link text-dark nav-container-item" asp-area="" asp-controller="Usuarios"
+                                asp-action="Registrar">Registrar</a>
+                            <a class="nav-link text-dark nav-container-item" asp-area="" asp-controller="Usuarios"
+                                asp-action="Login">Login</a>
+                        }
+
+
+                    </div>
 
 
 
-</form>
-
-<form asp-action="GPT" method="post">
-    <div class="form-group">
-        <label for="textoBase">Texto Base</label>
-        <textarea name="textoBase" type="text" class="form-control" id="textoBase">
-    </textarea>
-        <button type="submit" class="btn btn-primary">Gerar</button>
-    </div>
-</form>
-
-
-@if (Model == null)
-{
-    <h1>Modelo nulo</h1>
-}
-else
-{
-
-    <h1 class="text-center">@Model.Titulo</h1>
-    <p>@Model.Enunciado</p>
-
-    <div class="form-group">
-        @foreach (var item in Model.Alternativas)
-        {
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="resposta" id="@item.AlternativaId" value="@item.Texto"
-                    checked>
-                <label class="form-check-label" for="@item.AlternativaId">
-                    @item.Texto
-                </label>
+                </div>
             </div>
-        }
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="home-main">
+
+
+
+                <section class="home-main-section1">
+                    @RenderBody()
+
+                </section>
+
+
+            </div>
+
+
+
+
+
+
+
+        </main>
     </div>
 
-    <div class="form-group">
-        <p>Resposta Correta: @Model.Resposta</p>
-    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - ResolverQuestao - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
 
-    <div class="form-group">
-        <p>Explicação: @Model.Explicacao</p>
-    </div>
+</html>
 
-}
+ <ul class="menu-lateral-ul">
+                        <li class="menu-lateral-item ">
+                            <a class="menu-lateral-item-link" asp-area="" asp-controller="Home"
+                                asp-action="Index">Home</a>
+                        </li>
+                        <li class="menu-lateral-item">
+                            <a class="menu-lateral-item-link" asp-area="" asp-controller="Exercicios"
+                                asp-action="Index">Exercicios</a>
+                        </li>
+                        <li class="menu-lateral-item">
+                            <a class="menu-lateral-item-link" asp-area=""
+                                asp-controller="ListaExercicios" asp-action="Index">Listas</a>
+                        </li>
+                        <li class="menu-lateral-item">
+                            <a class="menu-lateral-item-link" asp-area="" asp-controller="ListaRegistros"
+                                asp-action="Index">Histórico</a>
+                        </li>
+                    </ul>

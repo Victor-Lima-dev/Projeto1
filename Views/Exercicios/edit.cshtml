@@ -1,9 +1,13 @@
 @model Exercicio
 
+<div class = "container" >
+
+
 <h1>Editar Exercício</h1>
 
 
 <form asp-action="Edit" method="post">
+
     <div class="form-group">
         <input asp-for="ExercicioId" type="hidden" />
         <label asp-for="Titulo">Título</label>
@@ -94,6 +98,8 @@
 </form>
 
  <a asp-action="Index">Voltar</a>
+
+ </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

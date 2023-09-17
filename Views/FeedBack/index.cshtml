@@ -1,0 +1,66 @@
+@model List<FeedBack>
+
+
+@* foreach, mostrar todos os itens *@
+
+@foreach (var item in Model)
+
+{
+    <div class="feedbackIndex-container">
+        <div class="feedbackIndex-container-feedback">
+        <h4>No Exercicio</h4>
+        <p>@item.Exercicio.Titulo</p>
+        <a asp-controller="Exercicios" asp-action="Edit" asp-route-id="@item.Exercicio.ExercicioId">Editar esse exercicio</a>
+        <p>@item.Descricao</p>
+        <p>@item.Avaliacao</p>
+        <p>@item.Solucao</p>
+
+        <form asp-action="Avaliar" asp-controller="FeedBack" method="post">
+            <input type="hidden" name="id" value="@item.FeedBackId" />
+            <div>
+                <label for="avaliacao">Avaliação</label>
+                <input type="text" name="avaliacao" />
+            </div>
+            <input type="submit" value="Avaliar" />
+        </form>
+
+        <form asp-action="Resolver" asp-controller="FeedBack" method="post">
+            <input type="hidden" name="id" value="@item.FeedBackId" />
+            <div>
+                <label for="solucao">Solucao</label>
+                <input type="text" name="solucao" />
+            </div>
+            <input type="submit" value="Resolver" />
+        </form>
+        </div>
+
+<div class="feedbackIndex-container-feedback">
+        <h4>No Exercicio</h4>
+        <p>@item.Exercicio.Titulo</p>
+        <a asp-controller="Exercicios" asp-action="Edit" asp-route-id="@item.Exercicio.ExercicioId">Editar esse exercicio</a>
+        <p>@item.Descricao</p>
+        <p>@item.Avaliacao</p>
+        <p>@item.Solucao</p>
+
+        <form asp-action="Avaliar" asp-controller="FeedBack" method="post">
+            <input type="hidden" name="id" value="@item.FeedBackId" />
+            <div>
+                <label for="avaliacao">Avaliação</label>
+                <input type="text" name="avaliacao" />
+            </div>
+            <input type="submit" value="Avaliar" />
+        </form>
+
+        <form asp-action="Resolver" asp-controller="FeedBack" method="post">
+            <input type="hidden" name="id" value="@item.FeedBackId" />
+            <div>
+                <label for="solucao">Solucao</label>
+                <input type="text" name="solucao" />
+            </div>
+            <input type="submit" value="Resolver" />
+        </form>
+        </div>
+
+    </div>
+        
+   }
