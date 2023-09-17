@@ -129,6 +129,26 @@ namespace ResolverQuestao.Controllers
             return RedirectToAction("Index");
         }
 
+        //HTTP Post ("Deletar")
+
+        [HttpPost("Deletar")]
+        public IActionResult Deletar(int id)
+        {
+            //procurar o feedback com id
+
+            var feedBack = _context.FeedBacks.FirstOrDefault(f => f.FeedBackId == id);
+
+            if(feedBack == null)
+            {
+                return NotFound();
+            }
+
+            _context.FeedBacks.Remove(feedBack);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
