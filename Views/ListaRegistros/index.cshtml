@@ -49,9 +49,12 @@
     </form>
 
       <a asp-action="Index" class="btn btn-primary">Limpar Pesquisa</a>
+
+      <div class="historico">
+
     @foreach (var item in Model)
     {
-        <div>
+        <div class="registro">
             <h2>
                 @item.TituloLista
             </h2>
@@ -78,11 +81,15 @@
                 @aproveitamento%
             </P>
 
-        </div>
+        
 
         <form asp-action="Delete" method="post">
             <input type="hidden" name="id" value="@item.ListaRegistroId" />
             <input type="submit" value="Delete" class="btn btn-danger" />
         </form>
+
+        </div>
     }
-</div>
+
+
+      </div>

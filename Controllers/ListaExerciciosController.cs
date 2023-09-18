@@ -61,11 +61,29 @@ namespace ResolverQuestao.Controllers
             var listasUsuario = new List<ListaExercicio>();
             listasUsuario = listas.Where(l => l.UsuarioId == User.Identity.Name).ToList();
 
+            //criar uma lista de tipos, string
+
+            var tipos = new List<string>();
+
+            //adicionar os tipos das listas do usuario logado na lista de tipos
+            foreach (var item in listasUsuario)
+            {
+                tipos.Add(item.Tipo);
+            }
+
+            var novaViewModel = new IndexListaExercicioViewModel
+            {
+                ListaExercicios = listasUsuario,
+                ListasSelecionadas = listasUsuario,
+                Filtro = false,
+                Tipos = tipos
+            };
 
 
 
 
-            return View(listasUsuario);
+
+            return View(novaViewModel);
         }
 
         //HTTP GET - CREATE
@@ -690,13 +708,22 @@ namespace ResolverQuestao.Controllers
 
         //metodo para procurar por tipo
         [HttpGet("ProcurarPorTipo")]
-        public IActionResult ProcurarPorTipo(string tipo)
+        public IActionResult ProcurarPorTipo(string tipo, string verificador)
         {
             //pegar as listas do usuario logado
             var listas = new List<ListaExercicio>();
             listas = _context.ListaExercicios.Include(l => l.Exercicios).ToList();
 
+
+            var novaViewModel = new IndexListaExercicioViewModel
+            {
+                ListaExercicios = listas,
+                Filtro = true
+            };
+
             var listasUsuario = listas.Where(l => l.UsuarioId == User.Identity.Name).ToList();
+
+            var listaUsuarioViewModel = novaViewModel.ListaExercicios.Where(l => l.UsuarioId == User.Identity.Name).ToList();
 
             //verificar se o tipo é nulo
             if (tipo == null)
@@ -712,10 +739,26 @@ namespace ResolverQuestao.Controllers
 
             //pegar as listas com o tipo
             var listasPorTipo = listasUsuario.Where(l => l.Tipo == tipo).ToList();
+
+            var listasPorTipoViewModel = listaUsuarioViewModel.Where(l => l.Tipo == tipo).ToList();
             //lista de todos os topicos
             var topicos = _context.TopicoListas.ToList();
 
-            return View("Index", listasPorTipo);
+            novaViewModel.ListasSelecionadas = listasPorTipoViewModel;
+            novaViewModel.ListaExercicios = listaUsuarioViewModel;
+            var tipos = new List<string>();
+            
+            foreach (var item in  novaViewModel.ListaExercicios)
+            {
+                tipos.Add(item.Tipo);
+            }
+
+            novaViewModel.Tipos = tipos;
+            novaViewModel.Filtro = true;
+
+
+
+            return View("Index", novaViewModel);
         }
 
 

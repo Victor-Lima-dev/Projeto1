@@ -508,13 +508,142 @@ h1, h2, h3, h4
 
 .feedbackIndex-container
 {
-  gap: 1.5rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 .feedbackIndex-container-feedback
 {
   background: #e9ebed;
   padding: 1rem;
+  width: 25rem;
+  border-radius: 15px;
+}
+
+.registro
+{
+  width: 40%;
+  height: 20rem;
+  padding: 1rem;
+  background: #e9ebed;
+  border-radius: 15px;
+}
+
+.historico
+{
+  margin-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.caixa-pesquisa-item
+{
+  width: 10rem;
+
+  height: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-color: #258cfb;
+  color: #f4f5f6;
+
+  font-weight: 500;
+
+  text-decoration: none;
+  border-radius: 15px;
+  padding: .5rem;
+}
+
+.caixa-pesquisa
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0;
+  gap: 1rem;
+  transition: .5s;
+  
+}
+.caixa-pesquisa-item:hover
+{
+  cursor: pointer;
+  color: #e9ebed;
+  font-weight: bold;
+}
+
+.listaItens
+{
+ 
+  width: 20rem;
+  text-align: center;
+
+  border-radius: 15px;
+  background-color:#f4f5f6;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color: #258cfb;
+  font-weight: bold;
+
+  padding: 1rem;
+}
+
+.listaItens-box
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.listaItensIcones
+{
+  font-size: 1.5rem;
+
+}
+
+.listaItensTipo
+{
+
+  color: darkgray;
+  font-weight: bold;
+}
+
+.listaItensIcones-Box
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .7rem;
+}
+
+.navegacaobtt
+{
+  display: flex;
+
+}
+
+.navegacaobtt-b
+{
+  border-radius: 15px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.criarlista
+{
+
+  display: flex;
+  gap: .1rem;
+  font-size: 2rem;
 }

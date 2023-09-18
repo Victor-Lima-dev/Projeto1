@@ -40,6 +40,8 @@ namespace ResolverQuestao.Controllers
             registrosUsuario.Reverse();
 
             return View(registrosUsuario);
+
+      
         }
 
         //HTTP GET ProcurarPorTipo

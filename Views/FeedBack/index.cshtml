@@ -2,11 +2,11 @@
 
 
 @* foreach, mostrar todos os itens *@
-
+<div class="feedbackIndex-container">
 @foreach (var item in Model)
 
 {
-    <div class="feedbackIndex-container">
+    
         <div class="feedbackIndex-container-feedback">
         <h4>Exercicio</h4>
         <p>@item.Exercicio.Titulo</p>
@@ -41,6 +41,8 @@
         </div>
 
 
-    </div>
+
         
    }
+
+       </div>
