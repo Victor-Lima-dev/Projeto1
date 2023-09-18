@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WRxN1eR7x7nfbZWxuwHzAc2xW3KZjE4TMvK6wWAbFW6zmAaYNmOL9LIQIyLEnpSuyOupYe6QtULpkmGPpdYQLA==",
+  "dgSpecHash": "ECMxO3zZSt/Q+fUGB/MYDCtIVMKLtFaAeOZkNtZTIfi8tOsja4ma3I/2yrCtLCTr9FxN+Jhyj6LYhS8sro3TFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\ResolverQuestao.csproj",
   "expectedPackageFiles": [
@@ -26,8 +26,6 @@
     "C:\\Users\\vlima06\\.nuget\\packages\\jsonschema.net.generation\\3.3.0\\jsonschema.net.generation.3.3.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\libuv\\1.10.0\\libuv.1.10.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\litedb\\4.1.4\\litedb.4.1.4.nupkg.sha512",
-    "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnet.webpages.data\\3.2.9\\microsoft.aspnet.webpages.data.3.2.9.nupkg.sha512",
-    "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnet.webpages.webdata\\3.2.9\\microsoft.aspnet.webpages.webdata.3.2.9.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnetcore\\2.0.2\\microsoft.aspnetcore.2.0.2.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
@@ -200,26 +198,5 @@
     "C:\\Users\\vlima06\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\webapiclient.jit\\1.1.4\\webapiclient.jit.1.1.4.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'Microsoft.AspNet.WebPages.Data 3.2.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
-      "libraryId": "Microsoft.AspNet.WebPages.Data",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "O pacote 'Microsoft.AspNet.WebPages.WebData 3.2.9' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' em vez da estrutura de destino do projeto 'net7.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
-      "libraryId": "Microsoft.AspNet.WebPages.WebData",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }

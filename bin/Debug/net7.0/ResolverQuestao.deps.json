@@ -16,8 +16,6 @@
           "FirebaseAuthentication.net": "4.0.2",
           "FirebaseDatabase.net": "4.2.0",
           "Google.Apis.Auth": "1.61.0",
-          "Microsoft.AspNet.WebPages.Data": "3.2.9",
-          "Microsoft.AspNet.WebPages.WebData": "3.2.9",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.9",
           "Microsoft.EntityFrameworkCore": "7.0.9",
@@ -375,25 +373,6 @@
           "lib/netstandard2.0/LiteDB.dll": {
             "assemblyVersion": "4.1.4.0",
             "fileVersion": "4.1.4.0"
-          }
-        }
-      },
-      "Microsoft.AspNet.WebPages.Data/3.2.9": {
-        "runtime": {
-          "lib/net45/WebMatrix.Data.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.61129.10"
-          }
-        }
-      },
-      "Microsoft.AspNet.WebPages.WebData/3.2.9": {
-        "dependencies": {
-          "Microsoft.AspNet.WebPages.Data": "3.2.9"
-        },
-        "runtime": {
-          "lib/net45/WebMatrix.WebData.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.61129.10"
           }
         }
       },
@@ -2003,20 +1982,6 @@
       "sha512": "sha512-g4g9JlHzRBZl+Gd2UbiRdszZ7t8wozU2wX7+5xY5uE79tmcgcDhha+ubAP84G1VLbwQmhBGCzRfIx+epLmJciQ==",
       "path": "litedb/4.1.4",
       "hashPath": "litedb.4.1.4.nupkg.sha512"
-    },
-    "Microsoft.AspNet.WebPages.Data/3.2.9": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-D6QnqWJ+d8Xr+M957eEECnY7gUPJmR+FLfn+L0hoCWrXQjNNmMnxGt8IVqXQAPlWJaJjrq6Kwh+9Eu3NvtxZMA==",
-      "path": "microsoft.aspnet.webpages.data/3.2.9",
-      "hashPath": "microsoft.aspnet.webpages.data.3.2.9.nupkg.sha512"
-    },
-    "Microsoft.AspNet.WebPages.WebData/3.2.9": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Rrwovp6Ue75a3CckDF70NoEvURCW/Hjlqrn1BhRmPX8mNrAPyQFmve9+xYEopdo/cjRd65w7tkklpD9XCftBBg==",
-      "path": "microsoft.aspnet.webpages.webdata/3.2.9",
-      "hashPath": "microsoft.aspnet.webpages.webdata.3.2.9.nupkg.sha512"
     },
     "Microsoft.AspNetCore/2.0.2": {
       "type": "package",
