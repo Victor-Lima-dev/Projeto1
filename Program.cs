@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ResolverQuestao.Context;
+using ResolverQuestao.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,15 +12,25 @@ string mySqlConnectionStr = builder.Configuration.GetConnectionString("DefaultCo
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql (mySqlConnectionStr, ServerVersion. AutoDetect (mySqlConnectionStr)));
 
+builder.Services.AddScoped<ISeedUserInitial, SeedUserInitial>();
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/Usuarios/Login");
 
+builder.Services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "/Usuarios/AcessoNegado");
+
 builder.Services.AddMemoryCache();
 
 builder.Services.AddSession();
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequirePadrao", policy => policy.RequireRole("Admin", "SuperUser", "User"));
+    options.AddPolicy("RequireSuperUser", policy => policy.RequireRole( "SuperUser", "Admin"));
+});
 
 
 
@@ -38,6 +49,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+await CriarPerfisUsuariosAsync(app);
+
 app.UseSession();
 
 
@@ -53,3 +66,20 @@ app.Run();
 
 
 
+async Task CriarPerfisUsuariosAsync (WebApplication app)
+{
+   var scopedFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
+
+    using (var scope = scopedFactory.CreateScope())
+    {
+         var seedUserInitial = scope.ServiceProvider.GetService<ISeedUserInitial>();
+    
+         await seedUserInitial.SeedRolesAsync();
+    
+         await seedUserInitial.SeedRolesAsync();
+    
+         await seedUserInitial.SeedUsersAsync();
+    }
+
+
+}

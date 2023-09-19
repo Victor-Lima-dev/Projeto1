@@ -703,7 +703,6 @@ justify-content: center;
 
 .feedbackIndex-textos
 {
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;

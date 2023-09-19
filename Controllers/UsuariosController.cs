@@ -115,6 +115,14 @@ namespace ResolverQuestao.Controllers
 
         }
 
+        //HTTP GET Acesso Negado
+
+        [HttpGet("acessoNegado")]
+        public IActionResult AcessoNegado()
+        {
+            return View();
+        }
+
         
 
 

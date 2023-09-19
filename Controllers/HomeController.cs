@@ -8,6 +8,7 @@ using ResolverQuestao.Models;
 using ResolverQuestao.Models.ViewModels;
 
 using System;
+using System.Security.Claims;
 
 namespace ResolverQuestao.Controllers;
 
@@ -227,6 +228,9 @@ public class HomeController : Controller
 
 
 
+        //verificar o role do usuario logado
+
+     
 
 
         return View(homeViewModel);
@@ -234,6 +238,11 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
+        //pegar o id do usuario logado
+
+          var usuarioLogadoId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+
         return View();
     }
 

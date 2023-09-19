@@ -10,7 +10,7 @@ using Azure;
 
 namespace ResolverQuestao.Controllers
 {
-    [Authorize]
+ 
     [Route("[controller]")]
     public class ListaExerciciosController : Controller
     {
@@ -814,7 +814,7 @@ namespace ResolverQuestao.Controllers
         }
 
 
-
+          [Authorize (Policy = "RequireSuperUser")]
         //criar exercicio com json get
         [HttpGet("CreateExercicioJson")]
         public async Task<IActionResult> CreateExercicioJsonAsync(string textoBase)
@@ -846,7 +846,7 @@ namespace ResolverQuestao.Controllers
         }
 
 
-
+        [Authorize (Policy = "RequireSuperUser")]
         //criar exercicio com Json
         [HttpPost("CreateExercicioJson")]
         public IActionResult CreateExercicioJson(string json, string tipo, string materia)

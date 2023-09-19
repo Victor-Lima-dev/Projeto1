@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ResolverQuestao.Context;
 using ResolverQuestao.Models;
@@ -9,6 +10,7 @@ using ResolverQuestao.Models;
 namespace ResolverQuestao.Controllers
 {
     [ApiController]
+  
     [Route("api/[controller]")]
     public class GPTController : ControllerBase
     {
