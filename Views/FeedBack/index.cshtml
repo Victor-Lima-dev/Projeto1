@@ -1,5 +1,8 @@
 @model List<FeedBack>
 
+<div class="container">
+
+
 
 @* foreach, mostrar todos os itens *@
 <div class="feedbackIndex-container">
@@ -8,12 +11,18 @@
 {
     
         <div class="feedbackIndex-container-feedback">
-        <h4>Exercicio</h4>
-        <p>@item.Exercicio.Titulo</p>
-        <a asp-controller="Exercicios" asp-action="Edit" asp-route-id="@item.Exercicio.ExercicioId">Editar esse exercicio</a>
-        <p>@item.Descricao</p>
-        <p>@item.Avaliacao</p>
-        <p>@item.Solucao</p>
+            <div class="feedbackIndex-textos">
+
+        <h2>@item.Exercicio.Titulo</h2>
+        <a asp-controller="Exercicios" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Exercicio.ExercicioId">Editar esse exercicio</a>
+        <p>Descricao: @item.Descricao</p>
+        <p>Avaliação: @item.Avaliacao</p>
+        <p>Solução: @item.Solucao</p>
+            </div>
+
+        <div class="feedbackIndex-Forms">
+
+                <div class="forms-form">
 
         <form asp-action="Avaliar" asp-controller="FeedBack" method="post">
             <input type="hidden" name="id" value="@item.FeedBackId" />
@@ -21,22 +30,28 @@
                 <label for="avaliacao">Avaliação</label>
                 <input type="text" name="avaliacao" />
             </div>
-            <input type="submit" value="Avaliar" />
+            <input type="submit" class="btn btn-primary" value="Avaliar" />
         </form>
+</div>
 
+<div class="forms-form">
         <form asp-action="Resolver" asp-controller="FeedBack" method="post">
             <input type="hidden" name="id" value="@item.FeedBackId" />
             <div>
                 <label for="solucao">Solucao</label>
                 <input type="text" name="solucao" />
             </div>
-            <input type="submit" value="Resolver" />
+            <input type="submit" class="btn btn-primary" value="Resolver" />
         </form>
+</div>
+
+<div class="forms-form">
         <form asp-action="Deletar" asp-controller="FeedBack" method="post">
             <input type="hidden" name="id" value="@item.FeedBackId" />
-            <input type="submit" value="Deletar" />
+            <input type="submit" class="btn btn-danger" value="Deletar" />
         </form>
-
+        </div>
+        </div>
 
         </div>
 
@@ -44,5 +59,7 @@
 
         
    }
+
+       </div>
 
        </div>

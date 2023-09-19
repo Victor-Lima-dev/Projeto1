@@ -13,6 +13,8 @@
 
     }
 
+    <div class="container">
+
      <div class="input-group">
                 <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
                 <select class="form-control" id="tipo" name="tipo" onchange="window.location.href=this.value">
@@ -50,14 +52,16 @@
 
       <a asp-action="Index" class="btn btn-primary">Limpar Pesquisa</a>
 
-      <div class="historico">
+      <div class="listaItens-box">
 
+
+      
     @foreach (var item in Model)
     {
-        <div class="registro">
-            <h2>
+        <div class="registroItens">
+            <h4>
                 @item.TituloLista
-            </h2>
+            </h4>
             <p>
                 Acertos
                 @item.Acertos
@@ -68,7 +72,7 @@
                 @item.Erros
             </p>
 
-            <p>
+            <p class="listaItensTipo">
                 @item.DataRegistro
             </p>
 
@@ -76,11 +80,25 @@
                 var aproveitamento = (item.Acertos * 100) / (item.Acertos + item.Erros);
             }
 
-            <P>
+            @if (aproveitamento < 75)
+            {
+
+            <P style="color: red !important;">
+            
                 Aproveitamento
                 @aproveitamento%
             </P>
 
+            }
+
+            else
+            {
+                  <P style="color: green !important;">
+            
+                Aproveitamento
+                @aproveitamento%
+            </P>
+            }
         
 
         <form asp-action="Delete" method="post">
@@ -90,6 +108,8 @@
 
         </div>
     }
+  </div>
 
 
       </div>
+</div>
