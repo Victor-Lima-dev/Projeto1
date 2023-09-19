@@ -24,6 +24,6 @@ ARG USE_FFMPEG
 WORKDIR /app
 COPY --from=build /out ./
 
-ENV ENV_PROJECT_NAME "./ResolverQuestao"
+ENV ENV_PROJECT_NAME "./ResolverQuestao.dll"
 
 CMD $ENV_PROJECT_NAME
