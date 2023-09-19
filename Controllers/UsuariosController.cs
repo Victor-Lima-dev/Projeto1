@@ -102,6 +102,10 @@ namespace ResolverQuestao.Controllers
             var user = new IdentityUser() { UserName = usuario.Username };
             var result = await _userManager.CreateAsync(user, usuario.Password);
 
+            //atribuir a role de User para o usuario
+
+            await _userManager.AddToRoleAsync(user, "User");
+
             if (result.Succeeded)
             {
                 //logar o usuario

@@ -82,53 +82,52 @@ namespace ResolverQuestao.Services
 
             //procurar todos os usuarios e atribuir a marca de User
 
-            var users = _userManager.Users.ToList();
+            // var users = _userManager.Users.ToList();
 
-            foreach (var user in users)
-            {
-                if (await _userManager.IsInRoleAsync(user, "User"))
-                {
-                    continue;
-                }
-                else
-                {
-                    await _userManager.AddToRoleAsync(user, "User");
-                }
-            }
+            // foreach (var user in users)
+            // {
+            //     if (await _userManager.IsInRoleAsync(user, "User"))
+            //     {
+            //         continue;
+            //     }
+            //     else
+            //     {
+            //         await _userManager.AddToRoleAsync(user, "User");
+            //     }
+            // }
 
 
-            if (await _userManager.FindByEmailAsync(" vitinholol@vitinholol ") == null)
+            // if (await _userManager.FindByEmailAsync(" vitinholol@vitinholol ") == null)
 
-            {
-                //criar um novo usuario
+            // {
+            //     //criar um novo usuario
 
-                var user = new IdentityUser
-                {
-                    UserName = "vitinholol@vitinholol",
+            //     var user = new IdentityUser
+            //     {
+            //         UserName = "vitinholol@vitinholol",
 
-                    Email = "vitinholol@vitinholol",
+            //         Email = "vitinholol@vitinholol",
 
-                    EmailConfirmed = true,
-                    NormalizedEmail = "vitinholol@vitinholol".ToUpper(),
+            //         EmailConfirmed = true,
+            //         NormalizedEmail = "vitinholol@vitinholol".ToUpper(),
 
-                    NormalizedUserName = "vitinholol@vitinholol".ToUpper(),
+            //         NormalizedUserName = "vitinholol@vitinholol".ToUpper(),
 
-                    LockoutEnabled = true,
+            //         LockoutEnabled = true,
 
-                    SecurityStamp = Guid.NewGuid().ToString()
-                };
+            //         SecurityStamp = Guid.NewGuid().ToString()
+            //     };
 
-                //criar o usuario com a senha Vitinholol5@
+            //     //criar o usuario com a senha Vitinholol5@
 
-                var result = await _userManager.CreateAsync(user, "Vitinholol5@");
+            //     var result = await _userManager.CreateAsync(user, "Vitinholol5@");
 
-                if (result.Succeeded)
-                {
-                    await _userManager.AddToRoleAsync(user, "Admin");
-                }
+            //     if (result.Succeeded)
+            //     {
+            //         await _userManager.AddToRoleAsync(user, "Admin");
+            //     }
 
-                Console.WriteLine("Usuario criado com sucesso");
-            }
+            // }
 
         }
     }

@@ -1,0 +1,24 @@
+@model List<ResolverQuestao.Areas.Admin.Models.Usuario>
+
+ 
+@foreach (var item in Model)
+{
+
+
+
+    <h4>
+    @item.UserName
+    </h4>
+
+    <p>
+        @item.Role
+    </p>
+
+    <form method="post" asp-area="Admin" asp-controller="Admin" asp-action="DefinirRole" >
+        <input type="hidden" name="Id" value="@item.Id" />
+        <input type="submit" value="DefinirRole" /> </form>
+
+    <form method="post" asp-area="Admin" asp-controller="Admin" asp-action="DeletarUsuario" >
+        <input type="hidden" name="Id" value="@item.Id" />
+        <input type="submit" value="Apagar" /> </form>
+}

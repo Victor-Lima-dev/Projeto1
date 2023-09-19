@@ -128,3 +128,4 @@ C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\Re
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\ScottPlot.dll
+C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\obj\Debug\net7.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css

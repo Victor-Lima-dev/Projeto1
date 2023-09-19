@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CodeX</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/ResolverQuestao.styles.css" asp-append-version="true" />
+
+    <link rel="icon" type="image/x-icon" href="~/teste.ico" sizes="32x32">
+
+
+    <script src="https://kit.fontawesome.com/001d53005b.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <div class="menu-logo">
+                <a class="menu-logo-item" asp-area="" asp-controller="Home"
+                                asp-action="Index"> <i class="fa-solid fa-school"></i></a>
+            </div>
+            <div class="menu-input">
+                <a class="menu-input-item" asp-area="" asp-controller="Home"
+                                asp-action="Index"> <i class="fa-solid fa-server"></i> Estudo Web</a>
+            </div>
+
+            <div class="menu-login">
+
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="menu-login-nome" asp-controller="Perfil" asp-action="EditarPerfil"> <i class="fa-solid fa-user"></i>  Hi @User.Identity.Name!  </a>
+
+                    <a class="menu-login-logout" asp-area="" asp-controller="Usuarios" asp-action="logout"> <i class="fa-solid fa-right-from-bracket"></i> Logout  </a>
+                }
+
+                else
+                {
+
+                    <a class="menu-login-nome" asp-area="" asp-controller="Usuarios" asp-action="Registrar">Registrar</a>
+                    <a class="menu-login-logout" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
+                }
+
+
+            </div>
+        </div>
+    </header>
+    <main class="principal">
+        <section class="menu-lateral">
+            <ul class="menu-lateral-ul">
+                        <li class="menu-lateral-item ">
+                            <a class="menu-lateral-item-link" asp-area="" asp-controller="Home"
+                                asp-action="Index"><i class="fa-solid fa-house"></i>Home</a>
+                        </li>
+                        <li class="menu-lateral-item">
+                            <a class="menu-lateral-item-link" asp-area="" asp-controller="Exercicios"
+                                asp-action="Index"><i class="fa-solid fa-pencil"></i> Exercicios</a>
+                        </li>
+                        <li class="menu-lateral-item">
+                            <a class="menu-lateral-item-link" asp-area=""
+                                asp-controller="ListaExercicios" asp-action="Index"> <i class="fa-solid fa-list"></i> Listas</a>
+                        </li>
+                        <li class="menu-lateral-item">
+                            <a class="menu-lateral-item-link" asp-area="" asp-controller="ListaRegistros"
+                                asp-action="Index"><i class="fa-solid fa-rotate-left"></i> Histórico</a>
+                        </li>
+                        <li class="menu-lateral-item">
+                            <a class="menu-lateral-item-link" asp-area="" asp-controller="FeedBack"
+                                asp-action="Index"><i class="fa-solid fa-comment"></i>FeedBacks</a>
+                        </li>
+                        <li class="menu-lateral-item">
+                            <a class="menu-lateral-item-link" asp-area="" asp-controller="ListaExercicios"
+                                asp-action="CreateExercicioJson"><i class="fa-solid fa-robot"></i>Assistente</a>
+                        </li>
+                    </ul>
+        </section>
+
+        <section class="renderizado">
+            @RenderBody()
+        </section>
+
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
