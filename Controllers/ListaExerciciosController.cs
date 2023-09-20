@@ -11,6 +11,7 @@ using Azure;
 namespace ResolverQuestao.Controllers
 {
  
+    [Authorize]
     [Route("[controller]")]
     public class ListaExerciciosController : Controller
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -12,6 +13,7 @@ using ResolverQuestao.Models;
 namespace ResolverQuestao.Controllers
 {
     [Route("[controller]")]
+    [Authorize]
     public class FeedBackController : Controller
     {
         private readonly ILogger<FeedBackController> _logger;
