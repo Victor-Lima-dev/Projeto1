@@ -148,14 +148,8 @@ you want me to help you study for the college exam, providing a question based o
 
                   
                 }
-
-               
-
             }
-
             return resposta;
         }
-
-
     }
 }

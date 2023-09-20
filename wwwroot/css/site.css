@@ -686,8 +686,7 @@ h1, h2, h3, h4
   height: 100%;
   justify-content: center;
   text-align: center;
-  color: red;
-
+  font-weight: bold;
 }
 
 .feedbackIndex-textos > p
@@ -695,4 +694,9 @@ h1, h2, h3, h4
   text-align: justify;
   height: 100%;
   display: flex;
+}
+
+.feedbacks > h1
+{
+  text-align: center;
 }

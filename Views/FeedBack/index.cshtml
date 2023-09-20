@@ -1,14 +1,17 @@
 @model List<FeedBack>
 
-<div class="container">
+<div class="container feedbacks">
 
-
+<h1>Histórico de FeedBacks</h1>
 
 @* foreach, mostrar todos os itens *@
 <div class="feedbackIndex-container">
 @foreach (var item in Model)
 
 {
+
+
+
     
         <div class="feedbackIndex-container-feedback">
             <div class="feedbackIndex-textos">
@@ -17,21 +20,113 @@
         <p>@item.Descricao</p>
         <div class="avaliacao">
 
-        <p>Nota: Nao Avaliada</p>
-        <p>Nota: Nao Avaliada</p>
+
+        @if (item.Avaliada == false)
+        {
+        <p style="color: red;">Não Avaliada e </p>
+        }
+        else{
+        <p style="color: green;">Avaliada e </p>
+        }
+
+        @if (item.Resolvida == false)
+        {
+        <p style="color: red;">Não Resolvida</p>
+
+        }
+
+        else{
+        <p style="color: green;" >Resolvida</p>
+        }
+        
         </div>
             </div>
 
 
     <div class="listaItensIcones-Box">
-    <a asp-action="Edit"><i class="fa-solid fa-pen-to-square listaItensIcones"></i></a>
-    <a asp-action="Details"><i class="fa-solid fa-expand listaItensIcones"></i></a>
-    <a asp-action="Delete"><i class="fa-solid fa-trash-can listaItensIcones"></i></a>
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#avaliarModel">
+<i class="fa-solid fa-arrows-to-eye"></i>
+</button>
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#resolverModal">
+<i class="fa-solid fa-check"></i>
+</button>
+
     </div>
 
         </div>
+<!-- Modal avaliar-->
+<div class="modal fade" id="avaliarModel" tabindex="-1" aria-labelledby="avaliarModelLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Avaliar</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
 
+      <div class="modal-body">
+        <form asp-action="Avaliar"  method="post">
+
+            @* input hidden id *@
+            <input type="hidden" name="id" value="@item.FeedBackId" />
+
+      @* avaliação *@
+        <div class="mb-3">
+        <label for="avaliacao" class="form-label">Avaliação</label>
+        <textarea class="form-control" id="avaliacao" name="avaliacao" rows="3"></textarea>
+        </div>
+        @* fim - avaliação *@
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+@* fim modal 1 *@
+<!-- Modal Resolver-->
+<div class="modal fade" id="resolverModal" tabindex="-1" aria-labelledby="resolverModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="resolverModalLabel">Resolver Problema</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+
+      <div class="modal-body">
+        <form asp-action="Resolver"  method="post">
+
+            @* input hidden id *@
+            <input type="hidden" name="id" value="@item.FeedBackId" />
+
+      @* avaliação *@
+        <div class="mb-3">
+        <label for="solucao" class="form-label">Avaliação</label>
+        <textarea class="form-control" id="solucao" name="solucao" rows="3"></textarea>
+        </div>
+        @* fim - avaliação *@
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Finalizar</button>
+      </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+@* fim modal 1 *@
 
         
    }
@@ -39,3 +134,5 @@
        </div>
 
        </div>
+
+
