@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ResolverQuestao.Context;
 using ResolverQuestao.Models;
+using ResolverQuestao.Models.ViewModels;
 
 namespace ResolverQuestao.Controllers
 {
@@ -33,9 +34,81 @@ namespace ResolverQuestao.Controllers
             var listaExercicios = _context.ListaExercicios.ToList();
             var feedbacks = _context.FeedBacks.ToList();
 
+            var tipos = new List<string>();
+
+            foreach(var exercicio in exercicios)
+            {
+                if(!tipos.Contains(exercicio.Tipo))
+                {
+                    tipos.Add(exercicio.Tipo);
+                }
+            }
+
+            //criar a view model
+
+            var viewModel = new FeedBackIndexViewModel
+            {
+                FeedBacks = feedbacks,
+                Tipos = tipos,
+                FeedBacksSelecionados = feedbacks
+              
+            };
+
             
-            return View(feedbacks);
+            return View(viewModel);
         }
+
+
+        //HTTP Post ("Filtrar")
+
+        [HttpGet("Filtrar")]
+
+        public IActionResult Filtrar(string filtro, string tipo)
+        {
+            var viewModel = new FeedBackIndexViewModel();
+            var tipos = new List<string>();
+            var exercicios = _context.Exercicios.ToList();
+
+            var feedBacks = _context.FeedBacks.ToList();
+
+            foreach(var exercicio in exercicios)
+            {
+                if(!tipos.Contains(exercicio.Tipo))
+                {
+                    tipos.Add(exercicio.Tipo);
+                }
+            }  
+
+        //usar o tipo para filtrar os exercicios
+
+        var exerciciosFiltrados = _context.Exercicios.Where(e => e.Tipo == tipo).ToList();
+
+        //criar uma lista de feedbacks somente com os exercicios filtrados
+
+        var feedbacksFiltrados = new List<FeedBack>();
+
+        foreach(var exercicio in exerciciosFiltrados)
+        {
+            foreach(var feedback in feedBacks)
+            {
+                if(feedback.ExercicioId == exercicio.ExercicioId)
+                {
+                    feedbacksFiltrados.Add(feedback);
+                }
+            }
+        }
+
+        //colocar na view model
+
+        viewModel.FeedBacks = feedBacks;
+
+        viewModel.Tipos = tipos;
+
+        viewModel.FeedBacksSelecionados = feedbacksFiltrados;
+
+            return View("Index", viewModel);
+        }
+
 
 
         //HTTP Post ("Registrar")

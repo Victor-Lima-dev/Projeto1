@@ -1,18 +1,23 @@
-@model List<FeedBack>
+@model ResolverQuestao.Models.ViewModels.FeedBackIndexViewModel
 
 <div class="container feedbacks">
 
 <h1>Histórico de FeedBacks</h1>
-
+       
+            <div class="caixa-pesquisa">
+        <a asp-action="Create" class="caixa-pesquisa-item criarlista"><i class="fa-solid fa-plus"></i></a>
+    @foreach (var tipo in Model.Tipos.Distinct())
+    {
+        
+                <a asp-action="Filtrar" asp-route-tipo="@tipo" value="@tipo" class="caixa-pesquisa-item">@tipo</a>     
+               
+    }
+        </div>
 @* foreach, mostrar todos os itens *@
 <div class="feedbackIndex-container">
-@foreach (var item in Model)
+@foreach (var item in Model.FeedBacksSelecionados)
 
 {
-
-
-
-    
         <div class="feedbackIndex-container-feedback">
             <div class="feedbackIndex-textos">
         <h4>@item.Exercicio.Titulo</h4>
