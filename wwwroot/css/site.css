@@ -700,3 +700,52 @@ h1, h2, h3, h4
 {
   text-align: center;
 }
+
+.enunciado
+{
+  text-align: justify;
+  color: black;
+  font-weight: normal;
+
+}
+
+.botaoAssistente
+{
+  background: #e9ebed;
+  color: #258cfb;
+  
+  font-weight: bolder;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: none;
+
+
+    width: 20rem;
+    text-align: center;
+    
+  transition: .5s;
+
+   
+}
+
+.botaoAssistente:hover
+{
+/* espaçamento */
+
+border: 1px solid #258cfb;
+
+
+}
+
+.assistente
+{
+  display: flex;
+  flex-direction: column;
+
+
+  padding: 1rem;
+
+  border-radius: 15px;
+
+  gap: 1rem;
+}

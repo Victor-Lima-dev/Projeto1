@@ -3,41 +3,37 @@
 @{
     var textoBase = ViewBag.TextoBase;
 }
+<div class="">
+<form asp-action="GPT" asp-controller="ListaExercicios" method="post">
 
-<form asp-action="CreateExercicioJson" method="post">
+    <div class="assistente">
+
+
+
+    <h1 class="text-center"> <i class="fa-solid fa-robot"></i> Criar o Exercicio com GPT </h1>
+
 
     <div class="form-group">
-        <label for="json">JSON</label>
-        <textarea name="json" type="text" class="form-control" id="json">@textoBase
-    </textarea>
-    </div>
-
-    <div class="form-group">
-        <label for="materia">Materia</label>
+        <h4 for="materia">Materia</h4>
         <input name="materia" type="text" class="form-control" id="materia" />
     </div>
 
     <div class="form-group">
-        <label for="tipo">Tipo</label>
+        <h4 for="tipo">Tipo</h4>
         <input name="tipo" type="text" class="form-control" id="tipo" />
     </div>
 
-
-    <button type="submit" class="btn btn-primary">Enviar</button>
-
-
-
-</form>
-
-<form asp-action="GPT" method="post">
-    <div class="form-group">
-        <label for="textoBase">Texto Base</label>
+  
+        <h4 for="textoBase">Texto Base</h4>
         <textarea name="textoBase" type="text" class="form-control" id="textoBase">
     </textarea>
-        <button type="submit" class="btn btn-primary">Gerar</button>
-    </div>
-</form>
 
+        <button type="submit" class=" botaoAssistente">Gerar e Adicionar o Exercicio</button>
+   
+    </div>
+
+</form>
+    </div>
 
 @if (Model == null)
 {

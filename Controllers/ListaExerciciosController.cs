@@ -10,7 +10,7 @@ using Azure;
 
 namespace ResolverQuestao.Controllers
 {
- 
+
     [Authorize]
     [Route("[controller]")]
     public class ListaExerciciosController : Controller
@@ -748,8 +748,8 @@ namespace ResolverQuestao.Controllers
             novaViewModel.ListasSelecionadas = listasPorTipoViewModel;
             novaViewModel.ListaExercicios = listaUsuarioViewModel;
             var tipos = new List<string>();
-            
-            foreach (var item in  novaViewModel.ListaExercicios)
+
+            foreach (var item in novaViewModel.ListaExercicios)
             {
                 tipos.Add(item.Tipo);
             }
@@ -815,7 +815,7 @@ namespace ResolverQuestao.Controllers
         }
 
 
-          [Authorize (Policy = "RequireSuperUser")]
+        [Authorize(Policy = "RequireSuperUser")]
         //criar exercicio com json get
         [HttpGet("CreateExercicioJson")]
         public async Task<IActionResult> CreateExercicioJsonAsync(string textoBase)
@@ -847,7 +847,7 @@ namespace ResolverQuestao.Controllers
         }
 
 
-        [Authorize (Policy = "RequireSuperUser")]
+        [Authorize(Policy = "RequireSuperUser")]
         //criar exercicio com Json
         [HttpPost("CreateExercicioJson")]
         public IActionResult CreateExercicioJson(string json, string tipo, string materia)
@@ -879,19 +879,56 @@ namespace ResolverQuestao.Controllers
             _context.Exercicios.Add(exercicio);
             _context.SaveChanges();
 
+
             return RedirectToAction("CreateExercicioJson");
         }
 
         //GPT
         [HttpPost("GPT")]
-        public async Task<IActionResult> GPTAsync(string textoBase)
+        public async Task<IActionResult> GPT(string textoBase, string tipo, string materia)
         {
 
+            if (textoBase == null)
+            {
+                textoBase = "";
+                ViewBag.TextoBase = textoBase;
+                return View("CreateExercicioJson");
+            }
 
-            var texto = textoBase;
+            else
+            {
+
+                var Worker = new Worker();
+
+                var texto = await Worker.GerarGPTAsync(textoBase);
+
+                var exercicio = Newtonsoft.Json.JsonConvert.DeserializeObject<Exercicio>(texto);
+
+                exercicio.Tipo = tipo;
+                exercicio.Materia = materia;
+                exercicio.ExercicioId = 0;
+
+                //zerar os ids das alternativas
+
+                foreach (var item in exercicio.Alternativas)
+                {
+                    item.AlternativaId = 0;
+                    item.ExercicioId = 0;
+                }
 
 
-            return RedirectToAction("CreateExercicioJson", new { textoBase = texto });
+                //adicionar o id do usuario logado
+                exercicio.UsuarioId = User.Identity.Name;
+
+                //adicionar o exercicio no banco
+                _context.Exercicios.Add(exercicio);
+                _context.SaveChanges();
+
+
+
+                ViewBag.TextoBase = texto;
+                return  View("CreateExercicioJson", exercicio);
+            }
 
 
 

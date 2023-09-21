@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Logging;
 using ResolverQuestao.Context;
 using ResolverQuestao.Models;
+using ResolverQuestao.Models.ViewModels;
 
 namespace ResolverQuestao.Controllers
 {
@@ -42,7 +43,25 @@ namespace ResolverQuestao.Controllers
             //inverter lista
             exerciciosUsuario.Reverse();
 
-            return View(exerciciosUsuario);
+            var tipos = new List<string>();
+
+            foreach (var exercicio in exerciciosUsuario)
+            {
+                if (!tipos.Contains(exercicio.Tipo))
+                {
+                    tipos.Add(exercicio.Tipo);
+                }
+            }
+
+
+            var viewModel = new IndexExerciciosViewModel
+            {
+                Exercicios = exerciciosUsuario,
+                Tipos = tipos
+            };
+
+
+            return View(viewModel);
         }
 
 
@@ -259,7 +278,24 @@ namespace ResolverQuestao.Controllers
             //pegar os exercicios do tipo selecionado
             var exerciciosTipo = exerciciosUsuario.Where(e => e.Tipo == tipo).ToList();
 
-            return View("Index", exerciciosTipo);
+              var tipos = new List<string>();
+
+            foreach (var exercicio in exerciciosUsuario)
+            {
+                if (!tipos.Contains(exercicio.Tipo))
+                {
+                    tipos.Add(exercicio.Tipo);
+                }
+            }
+
+
+            var viewModel = new IndexExerciciosViewModel
+            {
+                Exercicios = exerciciosTipo,
+                Tipos = tipos
+            };
+
+            return View("Index", viewModel);
 
         }
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ResolverQuestao.Context;
 using ResolverQuestao.Models;
+using ResolverQuestao.Models.ViewModels;
 
 namespace ResolverQuestao.Controllers
 {
@@ -41,6 +42,8 @@ namespace ResolverQuestao.Controllers
             //invertendo a lista para mostrar os ultimos registros primeiro
             registrosUsuario.Reverse();
 
+
+  
             return View(registrosUsuario);
 
       

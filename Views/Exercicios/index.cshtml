@@ -1,12 +1,6 @@
-@model List<Exercicio>
+@model ResolverQuestao.Models.ViewModels.IndexExerciciosViewModel
 
-    @{
-        var tipos = new List<string>();
-        foreach (var item in Model)
-        {
-            tipos.Add(item.Tipo);
-        }
-    }
+
 
 <div class="container">
 
@@ -21,7 +15,7 @@
                 <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
                 <select class="form-control" id="tipo" name="tipo" onchange="window.location.href=this.value">
                     <option value="">Procurar por Tipo</option>
-                    @foreach (var tipo in tipos.Distinct())
+                    @foreach (var tipo in Model.Tipos.Distinct())
                     {
                         <option value="@Url.Action("ProcurarPorTipo", "Exercicios", new {tipo = tipo})"> @tipo
                         </option>
@@ -30,27 +24,31 @@
             </div>
         </div>
     </div>
-    <a asp-action="Index" class="btn btn-primary">Limpar Pesquisa</a>
 
-
-    @foreach (var item in Model)
+<div class="listaItens-box">
+    @foreach (var item in Model.Exercicios)
     {
-        <ul class="list-group">
-            <div class="icones-container">
+        <div class="listaItens">
 
-                <li class="list-group-item lista-item">@item.Titulo</li>
-                <li class="list-group-item icones-container-tipo ">@item.Tipo</li>
+            <p>@item.Titulo</p>
+            
+            <p class="enunciado">@item.Enunciado</p>
+            <p class="listaItensTipo">@item.Tipo</p>
 
-                <div class="icones-container-icones">
-                    <a asp-action="ResolverQuestao" asp-route-id="@item.ExercicioId"><i class="fa-solid fa-check"></i></a>
-                    <a asp-action="Edit" asp-route-id="@item.ExercicioId"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a asp-action="Details" asp-route-id="@item.ExercicioId"><i class="fa-solid fa-expand"></i></a>
-                    <a asp-action="Delete" asp-route-id="@item.ExercicioId"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
+            <div class="listaItensIcones-Box">
+                <a asp-action="ResponderSequencia" asp-route-id="@item.ExercicioId"><i
+                        class="fa-solid fa-fire-flame-curved listaItensIcones listaItensIcones"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.ExercicioId"><i
+                        class="fa-solid fa-pen-to-square listaItensIcones"></i></a>
+                <a asp-action="Details" asp-route-id="@item.ExercicioId"><i
+                        class="fa-solid fa-expand listaItensIcones"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.ExercicioId"><i
+                        class="fa-solid fa-trash-can listaItensIcones"></i></a>
+
             </div>
-
-
-        </ul>
+        </div>
     }
+
+</div>
 
 </div>
