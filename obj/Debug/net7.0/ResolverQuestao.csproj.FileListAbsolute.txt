@@ -91,24 +91,20 @@ C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/Re
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/Microsoft.Extensions.Configuration.Binder.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/Microsoft.Extensions.Hosting.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/Microsoft.Win32.SystemEvents.dll
-C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/OpenAI_API.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/OpenAI.ChatGpt.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/OpenAI.ChatGpt.AspNetCore.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/OpenAI.ChatGpt.Modules.StructuredResponse.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/OpenAI.ChatGpt.Modules.Translator.dll
-C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/OpenAiClient.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/System.Configuration.ConfigurationManager.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/System.Drawing.Common.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/System.Memory.Data.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/System.Security.Cryptography.ProtectedData.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/System.Windows.Extensions.dll
-C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/WebApiClient.JIT.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/es/JsonSchema.Net.resources.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Drawing.Common.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
-C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/bin/Debug/net7.0/ScottPlot.dll
 C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/obj/Debug/net7.0/scopedcss/Areas/Admin/Views/Shared/_Layout.cshtml.rz.scp.css
 /workspaces/Projeto1/bin/Debug/net7.0/appsettings.Development.json
 /workspaces/Projeto1/bin/Debug/net7.0/appsettings.json
@@ -277,14 +273,11 @@ C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\Re
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\MySqlConnector.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\Newtonsoft.Json.dll
-C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\OpenAI_API.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\OpenAI.ChatGpt.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\OpenAI.ChatGpt.AspNetCore.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\OpenAI.ChatGpt.Modules.StructuredResponse.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\OpenAI.ChatGpt.Modules.Translator.dll
-C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\OpenAIClient.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
-C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\ScottPlot.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\System.Drawing.Common.dll
@@ -295,7 +288,6 @@ C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\Re
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\System.Security.Permissions.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\System.Windows.Extensions.dll
-C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\WebApiClient.JIT.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\es\JsonSchema.Net.resources.dll
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\runtimes\linux-arm\native\libuv.so
 C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\bin\Debug\net7.0\runtimes\linux-arm64\native\libuv.so

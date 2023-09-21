@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eSgjj+9Wyg4gJTkQG6USeWFxWRdtebfbRS3YpEIzWYGm5iVhBpWoOEdariGot/UImQaiQQAGeCo4bafMzZyrFg==",
+  "dgSpecHash": "tkL8jYIpdkYMcsupMVFUu6d7S+Ad1HWv6x+81UNVBBTHiTAAZ2sZrqaxg4YgTn10w57vrCVrhX9jYr7OvbCe5w==",
   "success": true,
   "projectFilePath": "C:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\ResolverQuestao.csproj",
   "expectedPackageFiles": [
@@ -111,14 +111,11 @@
     "C:\\Users\\vlima06\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\mysqlconnector\\2.2.5\\mysqlconnector.2.2.5.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
-    "C:\\Users\\vlima06\\.nuget\\packages\\openai\\1.7.2\\openai.1.7.2.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\openai.chatgpt\\2.8.0\\openai.chatgpt.2.8.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\openai.chatgpt.aspnetcore\\2.8.0\\openai.chatgpt.aspnetcore.2.8.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\openai.chatgpt.modules.structuredresponse\\2.8.0\\openai.chatgpt.modules.structuredresponse.2.8.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\openai.chatgpt.modules.translator\\2.8.0\\openai.chatgpt.modules.translator.2.8.0.nupkg.sha512",
-    "C:\\Users\\vlima06\\.nuget\\packages\\openaiclient.core\\1.0.0\\openaiclient.core.1.0.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
-    "C:\\Users\\vlima06\\.nuget\\packages\\scottplot\\4.1.67\\scottplot.4.1.67.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
@@ -149,8 +146,7 @@
     "C:\\Users\\vlima06\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\vlima06\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\vlima06\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
-    "C:\\Users\\vlima06\\.nuget\\packages\\webapiclient.jit\\1.1.4\\webapiclient.jit.1.1.4.nupkg.sha512"
+    "C:\\Users\\vlima06\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
   ],
   "logs": []
 }

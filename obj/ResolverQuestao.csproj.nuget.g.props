@@ -18,7 +18,6 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\7.0.9\build\net6.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\7.0.9\build\net6.0\Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgWebApiClient_JIT Condition=" '$(PkgWebApiClient_JIT)' == '' ">C:\Users\vlima06\.nuget\packages\webapiclient.jit\1.1.4</PkgWebApiClient_JIT>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\vlima06\.nuget\packages\microsoft.entityframeworkcore.tools\7.0.9</PkgMicrosoft_EntityFrameworkCore_Tools>
   </PropertyGroup>
 </Project>

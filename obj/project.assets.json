@@ -1990,24 +1990,6 @@
           }
         }
       },
-      "OpenAI/1.7.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
-          "Microsoft.Extensions.Http": "2.1.0",
-          "Newtonsoft.Json": "13.0.3"
-        },
-        "compile": {
-          "lib/netstandard2.0/OpenAI_API.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/OpenAI_API.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "OpenAI.ChatGPT/2.8.0": {
         "type": "package",
         "compile": {
@@ -2062,20 +2044,6 @@
           "lib/net7.0/OpenAI.ChatGpt.Modules.Translator.dll": {}
         }
       },
-      "OpenAIClient.Core/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Http": "2.2.0",
-          "Newtonsoft.Json": "13.0.3",
-          "WebApiClient.JIT": "1.1.4"
-        },
-        "compile": {
-          "lib/netstandard2.0/OpenAIClient.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/OpenAIClient.dll": {}
-        }
-      },
       "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
         "type": "package",
         "dependencies": {
@@ -2089,23 +2057,6 @@
         },
         "runtime": {
           "lib/net7.0/Pomelo.EntityFrameworkCore.MySql.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "ScottPlot/4.1.67": {
-        "type": "package",
-        "dependencies": {
-          "System.Drawing.Common": "4.7.2",
-          "System.Numerics.Vectors": "4.5.0"
-        },
-        "compile": {
-          "lib/net6.0/ScottPlot.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/ScottPlot.dll": {
             "related": ".xml"
           }
         }
@@ -2616,26 +2567,6 @@
           "runtimes/win/lib/net7.0/System.Windows.Extensions.dll": {
             "assetType": "runtime",
             "rid": "win"
-          }
-        }
-      },
-      "WebApiClient.JIT/1.1.4": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Caching.Memory": "2.1.0",
-          "Microsoft.Extensions.Http": "2.1.0",
-          "Microsoft.Extensions.Logging.Abstractions": "2.1.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "2.1.0",
-          "Newtonsoft.Json": "9.0.1"
-        },
-        "compile": {
-          "lib/netcoreapp2.1/WebApiClient.JIT.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/WebApiClient.JIT.dll": {
-            "related": ".xml"
           }
         }
       }
@@ -4838,21 +4769,6 @@
         "packageIcon.png"
       ]
     },
-    "OpenAI/1.7.2": {
-      "sha512": "veUa6xE+8ThjNLBCM75ZOOE0y72UNB/OQMsodOy+hTajZKV8So7s0dwx8x0kMqjgaiLMxC2grKGdQ+CVBl98sA==",
-      "type": "package",
-      "path": "openai/1.7.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "lib/netstandard2.0/OpenAI_API.dll",
-        "lib/netstandard2.0/OpenAI_API.xml",
-        "nuget_logo.png",
-        "openai.1.7.2.nupkg.sha512",
-        "openai.nuspec"
-      ]
-    },
     "OpenAI.ChatGPT/2.8.0": {
       "sha512": "M4jt1n9F4vCibgmjG4Z/Q5mZSNUrPmFY/0eHOE9YtzA8f7s1u14zXi+jZgUSMi8mxRLDJXKTapxMP/hG7Jcszg==",
       "type": "package",
@@ -4907,18 +4823,6 @@
         "openai.chatgpt.modules.translator.nuspec"
       ]
     },
-    "OpenAIClient.Core/1.0.0": {
-      "sha512": "M1s2BymOtkYp+RC/BnikScR5WMzpAkQ6sn+DrbnJBFyryl8HMvFII6zlwvriWC61J/cm9mHAS96jFoCwVb064g==",
-      "type": "package",
-      "path": "openaiclient.core/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/netstandard2.0/OpenAIClient.dll",
-        "openaiclient.core.1.0.0.nupkg.sha512",
-        "openaiclient.core.nuspec"
-      ]
-    },
     "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
       "sha512": "Qk5WB/skSZet5Yrz6AN2ywjZaB1pxfAmvQ+5I4khTkLwwIamI4QJoH2NphCWLFQL+2ar8HvsNCTmwYk0qhqL0w==",
       "type": "package",
@@ -4934,26 +4838,6 @@
         "lib/net7.0/Pomelo.EntityFrameworkCore.MySql.xml",
         "pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
         "pomelo.entityframeworkcore.mysql.nuspec"
-      ]
-    },
-    "ScottPlot/4.1.67": {
-      "sha512": "Gdfr4NlbAPJ612JJ0FaF6uKJuO7aThtdgXo8wQ7BmSi65x10RxEux57CiijeMWAEwjx9p9tlFlqE/mjVBc+Luw==",
-      "type": "package",
-      "path": "scottplot/4.1.67",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "icon.ico",
-        "icon.png",
-        "lib/net462/ScottPlot.dll",
-        "lib/net462/ScottPlot.xml",
-        "lib/net6.0/ScottPlot.dll",
-        "lib/net6.0/ScottPlot.xml",
-        "lib/netstandard2.0/ScottPlot.dll",
-        "lib/netstandard2.0/ScottPlot.xml",
-        "scottplot.4.1.67.nupkg.sha512",
-        "scottplot.nuspec"
       ]
     },
     "System.Buffers/4.5.0": {
@@ -6271,32 +6155,6 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "WebApiClient.JIT/1.1.4": {
-      "sha512": "uTAXUdt3iUhURhB6Wlk6ccEEYHXmysYSz/VN/KO++VsJ9czTaeMEGOxjfvp10OnH+IMWbDIs9hvDdfdEXCnSkQ==",
-      "type": "package",
-      "path": "webapiclient.jit/1.1.4",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "analyzers/dotnet/cs/WebApiClient.Analyzers.deps.json",
-        "analyzers/dotnet/cs/WebApiClient.Analyzers.dll",
-        "lib/net45/WebApiClient.JIT.dll",
-        "lib/net45/WebApiClient.JIT.xml",
-        "lib/net46/WebApiClient.JIT.dll",
-        "lib/net46/WebApiClient.JIT.xml",
-        "lib/netcoreapp2.1/WebApiClient.JIT.dll",
-        "lib/netcoreapp2.1/WebApiClient.JIT.xml",
-        "lib/netstandard1.3/WebApiClient.JIT.dll",
-        "lib/netstandard1.3/WebApiClient.JIT.xml",
-        "lib/netstandard2.0/WebApiClient.JIT.dll",
-        "lib/netstandard2.0/WebApiClient.JIT.xml",
-        "tools/install.ps1",
-        "tools/uninstall.ps1",
-        "webapiclient.jit.1.1.4.nupkg.sha512",
-        "webapiclient.jit.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -6314,12 +6172,9 @@
       "Microsoft.EntityFrameworkCore >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.9",
-      "OpenAI >= 1.7.2",
       "OpenAI.ChatGPT >= 2.8.0",
       "OpenAI.ChatGPT.AspNetCore >= 2.8.0",
-      "OpenAIClient.Core >= 1.0.0",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0",
-      "ScottPlot >= 4.1.67",
       "System.Configuration.ConfigurationManager >= 7.0.0"
     ]
   },
@@ -6418,10 +6273,6 @@
             "target": "Package",
             "version": "[7.0.9, )"
           },
-          "OpenAI": {
-            "target": "Package",
-            "version": "[1.7.2, )"
-          },
           "OpenAI.ChatGPT": {
             "target": "Package",
             "version": "[2.8.0, )"
@@ -6430,17 +6281,9 @@
             "target": "Package",
             "version": "[2.8.0, )"
           },
-          "OpenAIClient.Core": {
-            "target": "Package",
-            "version": "[1.0.0, )"
-          },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
             "version": "[7.0.0, )"
-          },
-          "ScottPlot": {
-            "target": "Package",
-            "version": "[4.1.67, )"
           },
           "System.Configuration.ConfigurationManager": {
             "target": "Package",

@@ -27,13 +27,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="OpenAI" Version="1.7.2" />
+   
     <PackageReference Include="OpenAI.ChatGPT" Version="2.8.0" />
     <PackageReference Include="OpenAI.ChatGPT.AspNetCore" Version="2.8.0" />
-   
-    <PackageReference Include="OpenAIClient.Core" Version="1.0.0" />
+
+
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
-    <PackageReference Include="ScottPlot" Version="4.1.67" />
+   
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
   </ItemGroup>
 
