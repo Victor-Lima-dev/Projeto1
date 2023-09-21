@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   codex:
-   image: codex
+   image: vitinholol/codex
    container_name: codex
    restart: always
    ports:
