@@ -1,0 +1,751 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+/* variaveis */
+
+:root{
+  --var-color-nav: #f4f5f6;
+  --var-color-nav2:#f4f5f6;
+  --var-color-main: #f4f5f6;
+
+}
+
+body
+{
+  background: var(--var-color-nav);
+}
+
+
+
+
+/* navbar */
+
+.nav-container
+{
+  background: var(--var-color-nav) !important;
+  border-radius: 50px;
+}
+
+.nav-container-item
+{
+  font-size: 1.1rem;
+  
+  padding: .5rem;
+  margin: 0 .1rem ;
+
+  width: 8rem;
+
+  border-radius: 50px;
+  
+
+  text-align: center;
+
+
+  /* tempo de animação */
+
+  transition: all .5s ease-in-out;
+
+
+}
+
+.nav-container-item:hover
+{
+  background: var(--var-color-nav2);
+  
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-container
+  {
+    border-radius: 0px;
+  }
+  .nav-container-login
+  {
+    border-radius: 0px;
+  }
+}
+
+.nav-container-login{
+
+  display: flex;
+ text-align: center;
+ background: var(--var-color-nav);
+  border-radius: 50px;
+}
+
+.nav-container-login > a
+{
+  width: 8rem;
+}
+
+/* navbar */
+
+/* main */
+
+.home-main-section1
+{
+  box-shadow: 0 0 0.5rem 0.1rem rgb(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 20px;
+  background: var(--var-color-main);
+  /* width: 70%; */
+  width: 100%;
+}
+
+
+/* .home-main-section2
+{
+  box-shadow: 0 0 0.5rem 0.1rem rgb(0, 0, 0, 0.1);
+  width: 30%;
+  background: var(--var-color-main);
+  padding: 1rem;
+  border-radius: 20px;
+  height: max-content;
+}  */
+
+.lista-exercicios
+{
+ 
+  padding: 1rem;
+  border-radius: 20px;
+  background: #e9ebed;
+   width: 70%;
+}
+
+.lista
+{
+  display: flex;
+  gap: 1rem;
+}
+
+.topicos-lista
+{
+ 
+  width: 30%;
+  background: #e9ebed;
+  padding: 1rem;
+  border-radius: 20px;
+  height: max-content;
+
+} 
+
+.home-main
+{
+  display: flex;
+}
+
+.home-main-section2-usuario
+{
+  /* colocar a primeira letra maiuscula */
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.home-main-section2-metricas
+{
+  display: flex;
+  text-align: center;
+  
+}
+
+.home-main-section2-metricas-container
+{
+  width: 50%;
+}
+
+.home-main{
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .home-main
+  {
+    flex-direction: column;
+    /* alterar a ordem  */
+  }
+  .home-main-section1
+  {
+    width: 100%;
+    order: 1;
+  }
+  .home-main-section2
+  {
+    width: 100%;
+  }
+}
+/* main */
+
+/* home */
+.home
+{
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+}
+/* home */
+
+.form-container {
+  width: 80% !important;
+  margin: 0 auto !important;
+}
+
+.icones-container
+{
+  display: flex;
+
+}
+
+.lista-item{
+  /* width: 70%; */
+  flex: 3;
+}
+
+.icones-container-icones
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* width: 20%; */
+  font-size: 1.5rem;
+  flex: 1;
+}
+
+.icones-container-tipo{
+  width: 10%;
+  flex: 1;
+  font-weight: bold;
+  color: darkgray;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 768px) {
+  .icones-container-icones
+  {
+    margin: 0 .5rem;
+  }
+}
+
+.criar-exercicio
+{
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.form-pesquisa
+{
+  display: flex;
+  gap: 1rem;
+}
+
+.form-pesquisa-input
+{
+  flex: 2;
+}
+
+.details-container
+{
+  display: flex;
+
+  gap: 1rem;
+  margin: .5rem 0;
+}
+/* home */
+.home-section{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home-section--info
+{
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+ 
+}
+
+
+.home-section--info-indicador{
+ 
+  flex : 1;
+
+}
+
+.home-section--geral
+{
+
+}
+
+.home-section--geral-itens
+{
+  display: flex;
+  
+  justify-content: space-evenly;
+}
+
+.home-section--info-indicador, .home-section--geral{
+  background: #e9ebed;
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+/* A partir daqui é o novo layoute */
+
+/* segunda cor #e9ebed */
+
+.menu 
+{
+  background: #f4f5f6;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.menu-input, .menu-login, .menu-logo
+{
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  padding-inline: 1rem;
+  border-radius: 15px;
+
+  font-weight: bold;
+  font-size: 1.1rem;
+
+}
+
+.menu-login
+{
+  width: 30%;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.menu-login-nome, .menu-login-logout
+{
+  background: #e9ebed;
+  width: 50%;
+  height: 3rem;
+  border-radius: 15px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.menu-logo-item, .menu-input-item
+{
+  text-decoration: none;
+}
+
+.menu-input
+{
+  width: 30%;
+  background: #e9ebed;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.menu-logo
+{
+  background: #e9ebed;
+}
+
+/* menu lateral */
+.principal
+{
+  display: flex;
+
+  justify-content: space-between;
+ 
+}
+
+.menu-lateral
+{
+  background: #f4f5f6;
+
+
+  border-radius: 15px;
+
+}
+
+
+.menu-lateral-ul
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 2rem;
+  border-radius: 15px;
+  gap: 1rem;
+  
+}
+.menu-lateral-item-link
+{
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+  padding: 2rem;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+
+}
+
+.menu-lateral-item{
+  list-style: none;
+  width: 100%;
+
+  border-radius: 15px;
+  height: 60px;
+  transition: .5s;
+
+  background: #e9ebed;
+  display: flex;
+  align-items: center;
+
+}
+
+.menu-lateral-item:hover
+{
+
+  cursor: pointer;
+  font-weight: bolder;
+  /* separar as letras */
+}
+
+
+.renderizado
+{
+  padding: 1rem;
+  border-radius: 15px;
+  width: auto;
+  width: 84%;
+
+}
+
+/* selecionar todos os h */
+
+h1, h2, h3, h4
+{
+  color: #258cfb !important;
+  font-weight: bold;
+
+}
+
+.menu-logo-item, .menu-input-item, .menu-login-nome, .menu-login-logout
+{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+
+.container{
+  background: #e9ebed;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+.responder-lista-controles-feedback
+{
+  display: flex;
+}
+
+.responder-lista-indice
+{
+  display: flex;
+  gap: .1rem;
+  flex-wrap: wrap;
+}
+
+#icone
+{
+  cursor: pointer;
+  font-size: 2rem ;
+}
+
+.feedbackIndex-container
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.feedbackIndex-container-feedback
+{
+  background: #f4f5f6;
+  padding: 1rem;
+  width: 20rem;
+  border-radius: 15px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 23rem;
+
+}
+
+.registro
+{
+  width: 40%;
+  height: 20rem;
+  padding: 1rem;
+  background: #e9ebed;
+  border-radius: 15px;
+}
+
+.historico
+{
+  margin-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.caixa-pesquisa-item
+{
+  width: 10rem;
+
+  height: 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-color: #258cfb;
+  color: #f4f5f6;
+
+  font-weight: 500;
+
+  text-decoration: none;
+  border-radius: 15px;
+  padding: .5rem;
+}
+
+.caixa-pesquisa
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0;
+  gap: 1rem;
+  transition: .5s;
+  
+}
+.caixa-pesquisa-item:hover
+{
+  cursor: pointer;
+  color: #e9ebed;
+  font-weight: bold;
+}
+
+.listaItens, .registroItens
+{
+ 
+  width: 20rem;
+  text-align: center;
+
+  border-radius: 15px;
+  background-color:#f4f5f6;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color: #258cfb;
+  font-weight: bold;
+
+  padding: 1rem;
+}
+
+.listaItens-box
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.listaItensIcones
+{
+  font-size: 1.5rem;
+
+}
+
+.listaItensTipo
+{
+
+  color: darkgray;
+  font-weight: bold;
+}
+
+.listaItensIcones-Box
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .7rem;
+}
+
+.navegacaobtt
+{
+  display: flex;
+
+}
+
+.navegacaobtt-b
+{
+  border-radius: 15px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.criarlista
+{
+
+  display: flex;
+  gap: .1rem;
+  font-size: 2rem;
+}
+
+.registroItens
+{
+  color: black;
+  font-weight: 600;
+}
+
+
+.feedbackIndex-textos
+{
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+
+  
+  height: 100%;
+ 
+}
+
+.feedbackIndex-textos > h4
+{
+  text-align: center;
+
+  height: 100%;
+
+}
+
+.avaliacao {
+  display: flex;
+  gap: .5rem;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+.feedbackIndex-textos > p
+{
+  text-align: justify;
+  height: 100%;
+  display: flex;
+}
+
+.feedbacks > h1
+{
+  text-align: center;
+}
+
+.enunciado
+{
+  text-align: justify;
+  color: black;
+  font-weight: normal;
+
+}
+
+.botaoAssistente
+{
+  background: #e9ebed;
+  color: #258cfb;
+  
+  font-weight: bolder;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: none;
+
+
+    width: 20rem;
+    text-align: center;
+    
+  transition: .5s;
+
+   
+}
+
+.botaoAssistente:hover
+{
+/* espaçamento */
+
+border: 1px solid #258cfb;
+
+
+}
+
+.assistente
+{
+  display: flex;
+  flex-direction: column;
+
+
+  padding: 1rem;
+
+  border-radius: 15px;
+
+  gap: 1rem;
+}
