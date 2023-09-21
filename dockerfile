@@ -26,5 +26,7 @@ COPY --from=build /out ./
 
 EXPOSE 80
 
+RUN chmod +x ResolverQuestao.dll
+
 
 ENTRYPOINT ["dotnet", "ResolverQuestao.dll"]
