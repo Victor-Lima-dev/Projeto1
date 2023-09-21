@@ -112,10 +112,6 @@
               "target": "Package",
               "version": "[1.0.0, )"
             },
-            "OpenAiClient": {
-              "target": "Package",
-              "version": "[1.0.0, )"
-            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[7.0.0, )"
