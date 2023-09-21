@@ -7,7 +7,10 @@ services:
    restart: always
    ports:
     - 8002:80
+   user: root
    build: 
+    
+
     context: .
   
 

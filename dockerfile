@@ -24,6 +24,7 @@ ARG USE_FFMPEG
 WORKDIR /app
 COPY --from=build /out ./
 
-ENV ENV_PROJECT_NAME "./ResolverQuestao.dll"
+EXPOSE 80
 
-CMD $ENV_PROJECT_NAME
+
+ENTRYPOINT ["dotnet", "ResolverQuestao.dll"]
