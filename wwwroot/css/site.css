@@ -749,3 +749,103 @@ border: 1px solid #258cfb;
 
   gap: 1rem;
 }
+
+.menu-hidden
+{
+  display: none;
+}
+
+/* a partir daqui vamos fazer um design para o mobile */
+
+/* media queries */
+
+@media(max-width: 768px) {
+  .principal
+  {
+    flex-direction: column;
+  }
+  .menu-lateral > ul
+  {
+    display: none;
+  }
+  .renderizado
+  {
+    width: 100%;
+  }
+  .menu-mobile
+  {
+ 
+    background-color: #f4f5f6;
+    padding: .1rem;;
+
+  }
+
+  .menu-lateral-ul
+  {
+   
+    padding: 0;
+  }
+
+
+  .menu-logo, .menu-login
+  {
+    display: none;
+  }
+
+  .menu-input, .menu-login
+  {
+    width: auto;
+  }
+
+  .menu-hidden, .menu-input
+  {
+    font-size: 2.5rem;
+  
+  }
+
+  .menu-hidden
+{
+  display: block;
+}
+
+/* agora vamos fazer a index de listaExercicios */
+
+.listaItens, .registroItens
+{
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+/* agora vai ser para responder a lista */
+
+.lista
+{
+
+  flex-direction: column-reverse;
+}
+
+.topicos-lista, .lista-exercicios
+{
+  width: 100%;
+}
+
+.topicos-lista
+{
+ 
+  display: flex;
+}
+
+.topicos-lista-div
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+}
+
+
+

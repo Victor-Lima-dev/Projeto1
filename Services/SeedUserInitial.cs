@@ -97,37 +97,37 @@ namespace ResolverQuestao.Services
             // }
 
 
-            // if (await _userManager.FindByEmailAsync(" vitinholol@vitinholol ") == null)
+            if (await _userManager.FindByEmailAsync(" vitinholol@vitinholol ") == null)
 
-            // {
-            //     //criar um novo usuario
+            {
 
-            //     var user = new IdentityUser
-            //     {
-            //         UserName = "vitinholol@vitinholol",
 
-            //         Email = "vitinholol@vitinholol",
+                var user = new IdentityUser
+                {
+                    UserName = "vitinholol@vitinholol",
 
-            //         EmailConfirmed = true,
-            //         NormalizedEmail = "vitinholol@vitinholol".ToUpper(),
+                    Email = "vitinholol@vitinholol",
 
-            //         NormalizedUserName = "vitinholol@vitinholol".ToUpper(),
+                    EmailConfirmed = true,
+                    NormalizedEmail = "vitinholol@vitinholol".ToUpper(),
 
-            //         LockoutEnabled = true,
+                    NormalizedUserName = "vitinholol@vitinholol".ToUpper(),
 
-            //         SecurityStamp = Guid.NewGuid().ToString()
-            //     };
+                    LockoutEnabled = true,
 
-            //     //criar o usuario com a senha Vitinholol5@
+                    SecurityStamp = Guid.NewGuid().ToString()
+                };
 
-            //     var result = await _userManager.CreateAsync(user, "Vitinholol5@");
 
-            //     if (result.Succeeded)
-            //     {
-            //         await _userManager.AddToRoleAsync(user, "Admin");
-            //     }
 
-            // }
+                var result = await _userManager.CreateAsync(user, "Vitinholol5@");
+
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, "Admin");
+                }
+
+            }
 
         }
     }
