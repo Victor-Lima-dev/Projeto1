@@ -11,7 +11,7 @@ namespace ResolverQuestao.Models
         public int AlternativaId { get; set; }
 
 
-        [Required(ErrorMessage = "O título é obrigatório.")]
+     
         public string Texto { get; set; }
 
      

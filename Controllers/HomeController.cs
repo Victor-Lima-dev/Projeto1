@@ -9,6 +9,7 @@ using ResolverQuestao.Models.ViewModels;
 
 using System;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace ResolverQuestao.Controllers;
 
@@ -238,9 +239,23 @@ public class HomeController : Controller
 
     public IActionResult Privacy()
     {
-        //pegar o id do usuario logado
+        //copiar todas as listas
 
-          var usuarioLogadoId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var todasListas = _context.ListaExercicios.ToList();
+
+        //copiar todos os exercicios
+
+        var todosExercicios = _context.Exercicios.ToList();
+
+        //copiar todas as alternativas
+
+        var todasAlternativas = _context.Alternativas.ToList();
+
+        //usar o include para pegar nas listas os exercicios e as alternativas
+
+        var listaExercicios = _context.ListaExercicios.Include(x => x.Exercicios).ThenInclude(x => x.Alternativas).ToList();
+
+      
 
 
         return View();

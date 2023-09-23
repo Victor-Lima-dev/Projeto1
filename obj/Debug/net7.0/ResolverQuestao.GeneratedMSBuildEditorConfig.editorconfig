@@ -9,141 +9,141 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ResolverQuestao
 build_property.RootNamespace = ResolverQuestao
-build_property.ProjectDir = c:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\
+build_property.ProjectDir = C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao
+build_property.MSBuildProjectDirectory = C:\Users\vlima06\OneDrive - JACTO\Área de Trabalho\Simples\Teste 1\Projeto 1\ResolverQuestao
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/Admin/Index.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/Shared/Error.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/_ViewStart.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/create.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpY2lvc1xjcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/details.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpY2lvc1xkZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/edit.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpY2lvc1xlZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/index.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpY2lvc1xpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/ResolverQuestao.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Exercicios/ResolverQuestao.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhlcmNpY2lvc1xSZXNvbHZlclF1ZXN0YW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/FeedBack/index.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/FeedBack/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmVlZEJhY2tcaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Home/Index.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Home/Privacy.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/create.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGFFeGVyY2ljaW9zXGNyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/CreateExercicioJson.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/CreateExercicioJson.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGFFeGVyY2ljaW9zXENyZWF0ZUV4ZXJjaWNpb0pzb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/details.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGFFeGVyY2ljaW9zXGRldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/edit.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGFFeGVyY2ljaW9zXGVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/index.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGFFeGVyY2ljaW9zXGluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/ResponderLista.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/ResponderLista.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGFFeGVyY2ljaW9zXFJlc3BvbmRlckxpc3RhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/ResponderSequencia.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaExercicios/ResponderSequencia.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGFFeGVyY2ljaW9zXFJlc3BvbmRlclNlcXVlbmNpYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaRegistros/index.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/ListaRegistros/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGFSZWdpc3Ryb3NcaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Perfil/CriarPerfil.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Perfil/CriarPerfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsXENyaWFyUGVyZmlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Perfil/DetalhesPerfil.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Perfil/DetalhesPerfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsXERldGFsaGVzUGVyZmlsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Perfil/EditarPerfil.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Perfil/EditarPerfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsXEVkaXRhclBlcmZpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/Error.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Usuarios/acessoNegado.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Usuarios/acessoNegado.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcYWNlc3NvTmVnYWRvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Usuarios/login.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Usuarios/login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NcbG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Usuarios/registrar.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Usuarios/registrar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb3NccmVnaXN0cmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/_ViewImports.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/_ViewStart.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/Shared/_Layout.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Areas/Admin/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-3kl9o4mhqb
 
-[c:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/_Layout.cshtml]
+[C:/Users/vlima06/OneDrive - JACTO/Área de Trabalho/Simples/Teste 1/Projeto 1/ResolverQuestao/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-g7jzfjwjgk
