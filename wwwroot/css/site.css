@@ -854,4 +854,13 @@ border: 1px solid #258cfb;
 }
 
 
+.fechar-menu
+{
 
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  align-items: center;
+  padding-inline: 1rem;
+  padding-top: 1rem;
+}
