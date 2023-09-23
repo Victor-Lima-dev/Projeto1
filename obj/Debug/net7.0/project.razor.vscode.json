@@ -24127,11 +24127,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\ListaRegistros\\index.cshtml",
-      "TargetPath": "Views\\ListaRegistros\\index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\Perfil\\CriarPerfil.cshtml",
       "TargetPath": "Views\\Perfil\\CriarPerfil.cshtml",
       "FileKind": "mvc"
@@ -24189,6 +24184,11 @@
     {
       "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\vlima06\\OneDrive - JACTO\\Área de Trabalho\\Simples\\Teste 1\\Projeto 1\\ResolverQuestao\\Views\\ListaRegistros\\index.cshtml",
+      "TargetPath": "Views\\ListaRegistros\\index.cshtml",
       "FileKind": "mvc"
     }
   ]

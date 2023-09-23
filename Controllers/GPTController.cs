@@ -27,30 +27,40 @@ namespace ResolverQuestao.Controllers
         [HttpGet("Index")]
         public async Task<IActionResult> Index()
         {
-            var listaExercicios = _context.ListaExercicios.Include(le => le.Exercicios).ToList();
+            var listaExercicios = _context.ListaExercicios.Include(le => le.Exercicios).Include(le => le.Exercicios).ThenInclude(e => e.Alternativas).ToList();
             var listaJson = JsonConvert.SerializeObject(listaExercicios, new JsonSerializerSettings()
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
-            return Ok(listaJson);
+
+           
+            var listaRegistroJson = _context.ListaRegistros.ToList();
+
+            var registrosJson = JsonConvert.SerializeObject(listaRegistroJson, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            });
+
+
+
+            return Ok(registrosJson);
         }
 
 
         [HttpPost("ListaExercicios")]
-        public async Task<IActionResult> ListaExercicios(List<ListaExercicio> listas)
+        public async Task<IActionResult> ListaExercicios(List<ListaRegistro> listas)
         {
-
 
             //adicionar as listas de exercicios no banco de dados
 
             foreach (var item in listas)
             {
-                _context.ListaExercicios.Add(item);
+                _context.ListaRegistros.Add(item);
             }
 
-            //salvar as alteraçoes no banco de dados
-
             await _context.SaveChangesAsync();
+    
+
      
             return Ok();
         }

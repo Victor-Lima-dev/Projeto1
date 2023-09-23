@@ -21,7 +21,7 @@ namespace ResolverQuestao.Models
 
         public string TituloLista { get; set; }
 
-        public ListaExercicio ListaExercicio { get; set; }
+        public ListaExercicio ListaExercicio { get; set; } = new ListaExercicio();
 
         
 
