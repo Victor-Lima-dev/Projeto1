@@ -109,11 +109,6 @@ Uma base de dados sem redundância é aquela que não armazena mais informação
   ""Materia"": null
 }
 ###FIM EXEMPLO###
-####TEXTO BASE:
-
-
-
-####FIM DO TEXTO BASE
 
 ##UMA POSSIVEL QUESTAO PARA ESSE TEXTO BASE É:###
 ###
@@ -122,7 +117,7 @@ you want me to help you study for the college exam, providing a question based o
 ###
 ##TEXT IN BRAZILIAN PORTUGUESE##
 ###
-####YOU REMEMBER THE MODEL? SINCE YOU UNDERSTOOD, MAKE THE QUESTION BASED ON THE TEXT BASE, I TRUST THAT YOU UNDERSTOOD, YOU CAN MAKE THE QUESTION FOLLOWING THE MODEL, NOT TEXT BASE IN ANWSER####
+####YOU REMEMBER THE MODEL? SINCE YOU UNDERSTOOD, MAKE THE QUESTION BASED ON THE TEXT BASE, I TRUST THAT YOU UNDERSTOOD, YOU CAN MAKE THE QUESTION FOLLOWING THE MODEL, NOT TEXT BASE IN ANWSER, Remember the model we are using, do not forget to create the question and put the correct answer in one of the alternatives. This is very important and I trust that you will succeed, stay calm and create the question following the model, without forgetting to put the correct answer in one of the alternatives####
 "),
         new ChatMessage(ChatRole.Assistant, "Sim, irei enviar a resposta em formato JSON, Seguindo o modelo que você indicar. Modelo A resposta deve seguir o seguinte modelo JSON:"),
         new ChatMessage(ChatRole.User, pergunta),

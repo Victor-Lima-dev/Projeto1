@@ -872,6 +872,29 @@ namespace ResolverQuestao.Controllers
             }
 
 
+            var respostaCorreta = exercicio.Resposta;
+
+            //verificar se a resposta correta é uma das alternativas
+
+            var alternativas = exercicio.Alternativas;
+
+            var alternativaCorreta = alternativas.FirstOrDefault(a => a.Texto == respostaCorreta);
+
+            if (alternativaCorreta == null)
+            {
+                var novaAlternativa = new Alternativa
+                {
+                    Texto = respostaCorreta,
+                    ExercicioId = 0,
+                    AlternativaId = 0
+                };
+
+                alternativas.Add(novaAlternativa);
+
+                exercicio.Alternativas = alternativas;
+            }
+
+
             //adicionar o id do usuario logado
             exercicio.UsuarioId = User.Identity.Name;
 
