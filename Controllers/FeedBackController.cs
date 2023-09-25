@@ -187,8 +187,7 @@ namespace ResolverQuestao.Controllers
                 return NotFound();
             }
 
-            ///verificar se a avaliacao é true, se nao forn marcar como verdadeira
-            ///
+          
             if(feedBack.Avaliada == false)
             {
                 feedBack.Avaliada = true;

@@ -19,16 +19,15 @@
 
 {
         <div class="feedbackIndex-container-feedback">
-            <div class="feedbackIndex-textos">
+          <div class="feedbackIndex-textos">
         <h4>@item.Exercicio.Titulo</h4>
         <a asp-controller="Exercicios" class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Exercicio.ExercicioId">Editar esse exercicio</a>
         <p>@item.Descricao</p>
         <div class="avaliacao">
-
-
         @if (item.Avaliada == false)
         {
         <p style="color: red;">Não Avaliada e </p>
+              
         }
         else{
         <p style="color: green;">Avaliada e </p>
@@ -42,7 +41,9 @@
 
         else{
         <p style="color: green;" >Resolvida</p>
+ 
         }
+
         
         </div>
             </div>
@@ -50,10 +51,10 @@
 
     <div class="listaItensIcones-Box">
     <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#avaliarModel">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#avaliarModel-@item.FeedBackId">
 <i class="fa-solid fa-arrows-to-eye"></i>
 </button>
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#resolverModal">
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#resolverModal-@item.FeedBackId">
 <i class="fa-solid fa-check"></i>
 </button>
 
@@ -61,7 +62,7 @@
 
         </div>
 <!-- Modal avaliar-->
-<div class="modal fade" id="avaliarModel" tabindex="-1" aria-labelledby="avaliarModelLabel" aria-hidden="true">
+<div class="modal fade" id="avaliarModel-@item.FeedBackId" tabindex="-1" aria-labelledby="avaliarModelLabel-@item.FeedBackId" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -97,7 +98,7 @@
 
 @* fim modal 1 *@
 <!-- Modal Resolver-->
-<div class="modal fade" id="resolverModal" tabindex="-1" aria-labelledby="resolverModalLabel" aria-hidden="true">
+<div class="modal fade" id="resolverModal-@item.FeedBackId" tabindex="-1" aria-labelledby="resolverModalLabel-@item.FeedBackId" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -133,8 +134,8 @@
 
 @* fim modal 1 *@
 
-        
-   }
+}  
+   
 
        </div>
 
