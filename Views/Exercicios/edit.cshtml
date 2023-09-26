@@ -65,13 +65,13 @@
                 {
 
                 @* id das alternativas, hidden *@
-                    <input type="hidden" name="Alternativas[@index].AlternativaId"
-                                value="@alternativa.AlternativaId"/>
+                      <input type="hidden" name="Alternativas[@index].AlternativaId"
+                                value="@alternativa.AlternativaId"/>  
                         
                     <tr>
                         <td><input type="text" name="Alternativas[@index].Texto"
-                                value="@alternativa.Texto" class="form-control" /></td>
-                    @Html.ValidationMessageFor(model => model.Alternativas[index].Texto)
+                                value="@alternativa.Texto" class="form-control"/></td>
+              
 
                         <td><button type="button" class="btn btn-danger" onclick="removerAlternativa(this)">Remover</button>
                         </td>
@@ -117,6 +117,9 @@ function adicionarAlternativa() {
     var tdTexto = $("<td></td>");
     // Cria uma variável chamada inputTexto que armazena um novo elemento HTML do tipo <input> com os atributos type, name e class definidos
     var inputTexto = $("<input type='text' name='Alternativas[" + index + "].Texto' class='form-control' />");
+    var inputHidden = $("<input type='hidden' name='Alternativas[" + index + "].AlternativaId' value='0' />");
+    // Adiciona o elemento inputHidden como filho do elemento tdTexto
+    tdTexto.append(inputHidden);
     // Adiciona o elemento inputTexto como filho do elemento tdTexto
     tdTexto.append(inputTexto);
     // Cria uma variável chamada tdAcoes que armazena um novo elemento HTML do tipo <td>

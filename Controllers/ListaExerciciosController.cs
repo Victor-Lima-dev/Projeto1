@@ -826,7 +826,12 @@ namespace ResolverQuestao.Controllers
             {
                 textoBase = "";
                 ViewBag.TextoBase = textoBase;
-                return View();
+                var exercicio = new Exercicio
+                {
+                    Materia = "",
+                    Tipo = ""
+                };
+                return View(exercicio);
             }
 
             else
@@ -939,6 +944,28 @@ namespace ResolverQuestao.Controllers
                     item.ExercicioId = 0;
                 }
 
+                var respostaCorreta = exercicio.Resposta;
+
+                //verificar se a resposta correta é uma das alternativas
+
+                var alternativas = exercicio.Alternativas;
+
+
+                var alternativaCorreta = alternativas.FirstOrDefault(a => a.Texto == respostaCorreta);
+
+                if (alternativaCorreta == null)
+                {
+                    var novaAlternativa = new Alternativa
+                    {
+                        Texto = respostaCorreta,
+                        ExercicioId = 0,
+                        AlternativaId = 0
+                    };
+
+                    alternativas.Add(novaAlternativa);
+
+                    exercicio.Alternativas = alternativas;
+                }
 
                 //adicionar o id do usuario logado
                 exercicio.UsuarioId = User.Identity.Name;
@@ -947,10 +974,8 @@ namespace ResolverQuestao.Controllers
                 _context.Exercicios.Add(exercicio);
                 _context.SaveChanges();
 
-
-
                 ViewBag.TextoBase = texto;
-                return  View("CreateExercicioJson", exercicio);
+                return View("CreateExercicioJson", exercicio);
             }
 
 

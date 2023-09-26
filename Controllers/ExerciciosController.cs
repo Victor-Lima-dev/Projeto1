@@ -126,8 +126,6 @@ namespace ResolverQuestao.Controllers
             return View(exercicio);
         }
 
-
-
         //HTTP GET - Edit
         [HttpGet("Edit/{id}")]
         public IActionResult Edit(int id)
@@ -152,7 +150,7 @@ namespace ResolverQuestao.Controllers
         [HttpPost("Edit/{id}")]
         public IActionResult Edit(Exercicio exercicio, int id)
         {
-
+            var alternativasBanco = _context.Alternativas.ToList();
             var alternativas = exercicio.Alternativas.ToList();
 
             foreach (var alternativa in alternativas)
@@ -161,8 +159,11 @@ namespace ResolverQuestao.Controllers
                 {
                     _context.Alternativas.Remove(alternativa);
                 }
-
             }
+
+           //procurar o exercicio no banco de dados
+            var exercicioBanco = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
+            var alternativasExercicio = exercicioBanco.Alternativas.ToList();
 
             _context.Exercicios.Update(exercicio);
             _context.SaveChanges();

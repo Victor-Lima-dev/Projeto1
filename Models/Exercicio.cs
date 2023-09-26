@@ -12,7 +12,7 @@ namespace ResolverQuestao.Models
         public string Enunciado { get; set; }
 
         public string Titulo { get; set; }
-        public string Tipo { get; set; }
+        public string Tipo { get; set; } = "";
 
 
         public string Resposta { get; set; }
@@ -32,7 +32,7 @@ namespace ResolverQuestao.Models
 
         public string UsuarioId { get; set; }
 
-        public string? Materia { get; set; }
+        public string? Materia { get; set; } = "";
 
 
           
