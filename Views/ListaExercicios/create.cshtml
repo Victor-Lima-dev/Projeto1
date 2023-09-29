@@ -85,6 +85,7 @@
             <option value="">Procurar por Tipo</option>
             @foreach (var tipo in tipos.Distinct())
             {
+
                 <option value="@Url.Action("ProcurarPorTipoExercicios", "ListaExercicios", new {tipo = tipo})"> @tipo
                 </option>
             }

@@ -148,9 +148,9 @@ namespace ResolverQuestao.Controllers
 
         //HTTP POST - Edit
         [HttpPost("Edit/{id}")]
-        public IActionResult Edit(Exercicio exercicio, int id)
+        public IActionResult Edit(Exercicio exercicio)
         {
-            var alternativasBanco = _context.Alternativas.ToList();
+    
             var alternativas = exercicio.Alternativas.ToList();
 
             foreach (var alternativa in alternativas)
@@ -161,9 +161,7 @@ namespace ResolverQuestao.Controllers
                 }
             }
 
-           //procurar o exercicio no banco de dados
-            var exercicioBanco = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
-            var alternativasExercicio = exercicioBanco.Alternativas.ToList();
+        
 
             _context.Exercicios.Update(exercicio);
             _context.SaveChanges();
