@@ -864,3 +864,22 @@ border: 1px solid #258cfb;
   padding-inline: 1rem;
   padding-top: 1rem;
 }
+
+
+.listaItens-HistoricoMateria
+{
+ color: black;
+  text-align: left;
+
+  font-weight: 500;
+
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.listaItens-HistoricoMateria > strong
+{
+  color: #258cfb;
+  display: block;
+}

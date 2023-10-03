@@ -1,32 +1,45 @@
 @model Usuario
 
 <div class="form-container">
-<form asp-action="Registrar" class="form-horizontal">
-    <h1 class="text-center">Registrar</h1>
+    <form asp-action="Registrar" class="form-horizontal">
+        <h1 class="text-center">Registrar</h1>
 
 
-<div class="form-group">
-<label for="Username" class="col-sm-2 control-label">Usuario</label>
-<div class="col-sm-10">
-@* input para Username *@
-<input type="text" name="Username" id="Username" class="form-control" />
-</div>
-</div>
 
-<div class="form-group">
-<label for="Password" class="col-sm-2 control-label">Senha</label>
-<div class="col-sm-10">
-@* input para Password *@
-<input type="password" name="Password" id="Password" class="form-control" />
-</div>
-</div>
+    @* mostrar erro *@
 
-@* submeter *@
-<div class="form-group">
-<div class="col-sm-offset-2 col-sm-10">
-<input type="submit" value="Registrar" class="btn btn-primary" />
-</div>
-</div>
+    @if (ViewBag.Erro != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Erro
+        </div>
 
-</form>
+    }
+
+
+
+        <div class="form-group">
+            <label for="Username" class="col-sm-2 control-label">Usuario</label>
+            <div class="col-sm-10">
+                @* input para Username *@
+                <input type="text" name="Username" id="Username" class="form-control" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Password" class="col-sm-2 control-label">Senha</label>
+            <div class="col-sm-10">
+                @* input para Password *@
+                <input type="password" name="Password" id="Password" class="form-control" required />
+            </div>
+        </div>
+
+        @* submeter *@
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Registrar" class="btn btn-primary" />
+            </div>
+        </div>
+
+    </form>
 </div>

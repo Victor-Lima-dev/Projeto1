@@ -1,0 +1,27 @@
+@model List<HistoricoMateria> 
+
+<div class="container">
+ 
+
+<div class="listaItens-box">
+
+ @foreach (var item in Model)
+    {
+    
+    <div class="listaItens">
+
+    <h3>@item.NomeMateria</h3>
+    <p class= "listaItens-HistoricoMateria" ><strong>Quantidade de Questões</strong> @item.QuantidadeQuestoesRespondidas</p>
+    <p class= "listaItens-HistoricoMateria" > <strong>Acertos</strong> @item.QuantidadeQuestoesCorretas</p>
+    <p class= "listaItens-HistoricoMateria" ><strong>Erros</strong> @item.QuantidadeQuestoesErradas</p>
+    <p class= "listaItens-HistoricoMateria" ><strong>Taxa de Aproveitamento</strong> @item.PorcentagemAcerto</p>
+
+  
+    </div>
+    
+}
+
+
+</div>
+
+</div>

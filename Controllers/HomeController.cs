@@ -233,30 +233,71 @@ public class HomeController : Controller
 
      
 
-
         return View(homeViewModel);
     }
 
     public IActionResult Privacy()
     {
-        //copiar todas as listas
-
-        var todasListas = _context.ListaExercicios.ToList();
-
-        //copiar todos os exercicios
-
-        var todosExercicios = _context.Exercicios.ToList();
-
-        //copiar todas as alternativas
-
-        var todasAlternativas = _context.Alternativas.ToList();
-
-        //usar o include para pegar nas listas os exercicios e as alternativas
-
-        var listaExercicios = _context.ListaExercicios.Include(x => x.Exercicios).ThenInclude(x => x.Alternativas).ToList();
-
+       
+       
+        var usuarioLogado = User.Identity.Name;
+        
+        var listaRegistros = _context.ListaRegistros.Where(x => x.UsuarioId == usuarioLogado).Include(x => x.ListaExercicio).ThenInclude(x => x.Exercicios).ThenInclude(x => x.Alternativas).ToList();
       
+        var listaExerciciosRespondidos = new List<ListaExercicio>();
 
+        var tiposListas = new List<string>();
+
+        foreach (var item in listaRegistros)
+        {
+            tiposListas.Add(item.ListaExercicio.Tipo);
+        }
+
+        //remover os tipos de lista repetidos
+
+        var tiposListasDistinct = tiposListas.Distinct().ToList();
+
+        //agora vamos criar um HistoricoMateria para cada tipo de lista
+
+        var listaHistoricoMateria = new List<HistoricoMateria>();
+
+        foreach (var item in tiposListasDistinct)
+        {
+            var historicoMateria = new HistoricoMateria
+            {
+                NomeMateria = item
+            };
+
+            var listaRegistrosMateria = listaRegistros.Where(x => x.ListaExercicio.Tipo == item).ToList();
+
+            var quantidadeQuestoesCorretasMateria = 0;
+
+            foreach (var registro in listaRegistrosMateria)
+            {
+                quantidadeQuestoesCorretasMateria += registro.Acertos;
+            }
+
+            var quantidadeQuestoesErradasMateria = 0;
+
+            foreach (var registro in listaRegistrosMateria)
+            {
+                quantidadeQuestoesErradasMateria += registro.Erros;
+            }
+
+            var quantidadeQuestoesRespondidasMateria = quantidadeQuestoesCorretasMateria + quantidadeQuestoesErradasMateria;
+
+            var aproveitamentoMateria = quantidadeQuestoesCorretasMateria * 100 / quantidadeQuestoesRespondidasMateria;
+
+            historicoMateria.QuantidadeQuestoesCorretas = quantidadeQuestoesCorretasMateria;
+
+            historicoMateria.QuantidadeQuestoesErradas = quantidadeQuestoesErradasMateria;
+
+            historicoMateria.QuantidadeQuestoesRespondidas = quantidadeQuestoesRespondidasMateria;
+
+            historicoMateria.PorcentagemAcerto = aproveitamentoMateria.ToString() + "%";
+
+            listaHistoricoMateria.Add(historicoMateria);
+        }
 
         return View();
     }

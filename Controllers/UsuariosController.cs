@@ -16,7 +16,7 @@ using ResolverQuestao.Models;
 
 namespace ResolverQuestao.Controllers
 {
-    
+
     [Route("[controller]")]
     public class UsuariosController : Controller
     {
@@ -62,9 +62,6 @@ namespace ResolverQuestao.Controllers
 
             var user = _userManager.FindByNameAsync(usuario.Username).Result;
 
-
-
-
             if (user != null)
 
             {
@@ -83,8 +80,11 @@ namespace ResolverQuestao.Controllers
                 }
             }
 
+            ViewBag.Erro = "Usuário ou senha inválidos";
             return View();
         }
+
+
 
         //HTTP GET Registrar
 
@@ -104,15 +104,25 @@ namespace ResolverQuestao.Controllers
 
             //atribuir a role de User para o usuario
 
-            await _userManager.AddToRoleAsync(user, "User");
 
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, "User");
                 //logar o usuario
                 await _signInManager.SignInAsync(user, false);
-                
+
 
                 return RedirectToAction("CriarPerfil", "Perfil");
+            }
+
+
+            if (result.Errors != null && result.Errors.Any())
+            {
+                ViewBag.Erro = result.Errors.FirstOrDefault().Description;
+            }
+            else
+            {
+                ViewBag.Erro = "Erro Inesperado";
             }
 
             return View(usuario);
@@ -127,7 +137,7 @@ namespace ResolverQuestao.Controllers
             return View();
         }
 
-        
+
 
 
         //HTTP Post LOUGOUT
@@ -140,7 +150,6 @@ namespace ResolverQuestao.Controllers
 
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
-
         }
 
 

@@ -6,13 +6,29 @@
 
     <form asp-action="Login" class="form-horizontal">
 
-        <h1 class="text-center">Login</h1>
+        @* validação de erros *@
+        <div asp-validation-summary="ModelOnly" class="text-danger">
 
+
+        </div>
+
+        @* mensagem de erro *@
+
+
+
+        <h1 class="text-center">Login</h1>
+        @if (ViewBag.Erro != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Erro
+            </div>
+        }
         <div class="form-group teste1">
             <label for="Username" class="col-sm-2 control-label">Usuario</label>
             <div class="col-sm-10">
                 @* input para Username *@
-                <input type="text" name="Username" id="Username" class="form-control" />
+                <input type="text" name="Username" id="Username" class="form-control" required />
+
             </div>
         </div>
 
@@ -20,7 +36,7 @@
             <label for="Password" class="col-sm-2 control-label">Senha</label>
             <div class="col-sm-10 ">
                 @* input para Password *@
-                <input type="password" name="Password" id="Password" class="form-control" />
+                <input type="password" name="Password" id="Password" class="form-control" required />
             </div>
         </div>
 
