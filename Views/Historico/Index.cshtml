@@ -1,7 +1,7 @@
 @model List<HistoricoMateria> 
 
 <div class="container">
- 
+ <h1 class="text-center">Central de Desempenho</h1>
 
 <div class="listaItens-box">
 
@@ -16,7 +16,8 @@
     <p class= "listaItens-HistoricoMateria" ><strong>Erros</strong> @item.QuantidadeQuestoesErradas</p>
     <p class= "listaItens-HistoricoMateria" ><strong>Taxa de Aproveitamento</strong> @item.PorcentagemAcerto</p>
 
-  
+    <a asp-action="procurarPorMateria" asp-controller="ListaRegistros" asp-route-materia="@item.NomeMateria" class="btn btn-primary">Detalhes</a>
+
     </div>
     
 }
