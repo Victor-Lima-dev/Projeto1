@@ -33,35 +33,34 @@
                     data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"> <i
                         class="fa-solid fa-bars"></i></a>
             </div>
-                <div class="menu-login">
+            <div class="menu-login">
 
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <a class="menu-login-nome" asp-controller="Perfil" asp-action="EditarPerfil"> <i
-                                class="fa-solid fa-user"></i> Hi @User.Identity.Name! </a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="menu-login-nome" asp-controller="Perfil" asp-action="EditarPerfil"> <i
+                            class="fa-solid fa-user"></i> Hi @User.Identity.Name! </a>
 
-                        <a class="menu-login-logout" asp-area="" asp-controller="Usuarios" asp-action="logout"> <i
-                                class="fa-solid fa-right-from-bracket"></i> Logout </a>
-                    }
+                    <a class="menu-login-logout" asp-area="" asp-controller="Usuarios" asp-action="logout"> <i
+                            class="fa-solid fa-right-from-bracket"></i> Logout </a>
+                }
 
-                    else
-                    {
+                else
+                {
 
-                        <a class="menu-login-nome" asp-area="" asp-controller="Usuarios"
-                            asp-action="Registrar">Registrar</a>
-                        <a class="menu-login-logout" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
-                    }
+                    <a class="menu-login-nome" asp-area="" asp-controller="Usuarios" asp-action="Registrar">Registrar</a>
+                    <a class="menu-login-logout" asp-area="" asp-controller="Usuarios" asp-action="Login">Login</a>
+                }
 
 
-                </div>
             </div>
+        </div>
     </header>
     <main class="principal">
         <section class="menu-lateral">
-        
 
-             
+
+
             @* menu mobile *@
             <div class="">
                 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
@@ -71,59 +70,58 @@
                         @* menu mobile *@
                         <ul class="menu-lateral-ul">
                             <div class="fechar-menu">
-                            <h4>Menu</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                <h4>Menu</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
                             </div>
-                             @if (User.Identity.IsAuthenticated)
-                             {
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="menu-lateral-item ">
+                                    <a class="menu-lateral-item-link" asp-area="" asp-controller="Home"
+                                        asp-action="Index"><i class="fa-solid fa-house"></i>Home</a>
+                                </li>
+                                <li class="menu-lateral-item">
+                                    <a class="menu-lateral-item-link" asp-area="" asp-controller="Exercicios"
+                                        asp-action="Index"><i class="fa-solid fa-pencil"></i> Exercicios</a>
+                                </li>
+                                <li class="menu-lateral-item">
+                                    <a class="menu-lateral-item-link" asp-area="" asp-controller="ListaExercicios"
+                                        asp-action="Index">
+                                        <i class="fa-solid fa-list"></i> Listas</a>
+                                </li>
+                                <li class="menu-lateral-item">
+                                    <a class="menu-lateral-item-link" asp-area="" asp-controller="Historico"
+                                        asp-action="Index"><i class="fa-solid fa-arrows-to-dot"></i> Desempenho</a>
+                                </li>
+                                <li class="menu-lateral-item">
+                                    <a class="menu-lateral-item-link" asp-area="" asp-controller="FeedBack"
+                                        asp-action="Index"><i class="fa-solid fa-comment"></i>FeedBacks</a>
+                                </li>
+                                <li class="menu-lateral-item">
+                                    <a class="menu-lateral-item-link" asp-area="" asp-controller="ListaExercicios"
+                                        asp-action="CreateExercicioJson"><i class="fa-solid fa-robot"></i>Assistente</a>
+                                </li>
+                                <li class="menu-lateral-item">
 
-                             
-                            <li class="menu-lateral-item ">
-                                <a class="menu-lateral-item-link" asp-area="" asp-controller="Home"
-                                    asp-action="Index"><i class="fa-solid fa-house"></i>Home</a>
-                            </li>
-                            <li class="menu-lateral-item">
-                                <a class="menu-lateral-item-link" asp-area="" asp-controller="Exercicios"
-                                    asp-action="Index"><i class="fa-solid fa-pencil"></i> Exercicios</a>
-                            </li>
-                            <li class="menu-lateral-item">
-                                <a class="menu-lateral-item-link" asp-area="" asp-controller="ListaExercicios"
-                                    asp-action="Index">
-                                    <i class="fa-solid fa-list"></i> Listas</a>
-                            </li>
-                            <li class="menu-lateral-item">
-                                <a class="menu-lateral-item-link" asp-area="" asp-controller="Historico"
-                                    asp-action="Index"><i class="fa-solid fa-rotate-left"></i> Histórico</a>
-                            </li>
-                            <li class="menu-lateral-item">
-                                <a class="menu-lateral-item-link" asp-area="" asp-controller="FeedBack"
-                                    asp-action="Index"><i class="fa-solid fa-comment"></i>FeedBacks</a>
-                            </li>
-                            <li class="menu-lateral-item">
-                                <a class="menu-lateral-item-link" asp-area="" asp-controller="ListaExercicios"
-                                    asp-action="CreateExercicioJson"><i class="fa-solid fa-robot"></i>Assistente</a>
-                            </li>
-                             <li class="menu-lateral-item">
-
-                                <a class="menu-lateral-item-link" asp-area="" asp-controller="Usuarios"
+                                    <a class="menu-lateral-item-link" asp-area="" asp-controller="Usuarios"
                                         asp-action="logout"> <i class="fa-solid fa-right-from-bracket"></i> Logout </a>
-                             </li>
-                             }
+                                </li>
+                            }
 
-                                else
-                                {
+                            else
+                            {
 
-                            <li class="menu-lateral-item">
+                                <li class="menu-lateral-item">
 
                                     <a class="menu-lateral-item-link" asp-area="" asp-controller="Usuarios"
                                         asp-action="Registrar">Registrar</a>
-                                 </li>
-                                            <li class="menu-lateral-item">
+                                </li>
+                                <li class="menu-lateral-item">
                                     <a class="menu-lateral-item-link" asp-area="" asp-controller="Usuarios"
                                         asp-action="Login">Login</a>
-                            </li>
+                                </li>
 
-                                }
+                            }
                         </ul>
                     </div>
                 </div>
@@ -144,7 +142,7 @@
                 </li>
                 <li class="menu-lateral-item">
                     <a class="menu-lateral-item-link" asp-area="" asp-controller="Historico" asp-action="Index"><i
-                            class="fa-solid fa-rotate-left"></i> Histórico</a>
+                            class="fa-solid fa-arrows-to-dot"></i> Desempenho</a>
                 </li>
                 <li class="menu-lateral-item">
                     <a class="menu-lateral-item-link" asp-area="" asp-controller="FeedBack" asp-action="Index"><i
