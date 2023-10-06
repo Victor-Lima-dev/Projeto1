@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,10 @@ namespace ResolverQuestao.Models
         public int QuantidadeQuestoesRespondidas { get; set; }
 
         public string PorcentagemAcerto { get; set; }
+        
+
+        [NotMapped]
+        public DateTime UltimaDataResposta { get; set; }
 
     }
 }

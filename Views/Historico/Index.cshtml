@@ -1,26 +1,83 @@
-@model List<HistoricoMateria> 
+@model List<HistoricoMateria>
+
 
 <div class="container">
- <h1 class="text-center">Central de Desempenho</h1>
+    <h1 class="text-center">Central de Desempenho</h1>
 
-<div class="listaItens-box">
 
- @foreach (var item in Model)
-    {
-    
-    <div class="listaItens">
+    <div class="listaItens-box">
 
-    <h3>@item.NomeMateria</h3>
-    <p class= "listaItens-HistoricoMateria" ><strong>Quantidade de Questões</strong> @item.QuantidadeQuestoesRespondidas</p>
-    <p class= "listaItens-HistoricoMateria" > <strong>Acertos</strong> @item.QuantidadeQuestoesCorretas</p>
-    <p class= "listaItens-HistoricoMateria" ><strong>Erros</strong> @item.QuantidadeQuestoesErradas</p>
-    <p class= "listaItens-HistoricoMateria" ><strong>Taxa de Aproveitamento</strong> @item.PorcentagemAcerto</p>
 
-    <a asp-action="procurarPorMateria" asp-controller="ListaRegistros" asp-route-materia="@item.NomeMateria" class="btn btn-primary">Detalhes</a>
+        <div>
+
+
+
+            @if (ViewBag.filtro == "data invertida")
+            {
+
+                <a asp-action="Index">Ordenar por Data</a>
+            }
+
+            else
+            {
+                <a asp-action="Index" asp-route-filtro="data">Ordenar por Data</a>
+            }
+
+        </div>
+
+        <div>
+
+        @if (ViewBag.filtroAcerto == "porcentagemAcerto")
+        {
+
+            <a asp-action="Index" asp-route-filtro="porcentagemAcertoInvertida">Ordenar por Taxa de Acerto</a>
+        }
+
+        else
+        {
+            <a asp-action="Index" asp-route-filtro="porcentagemAcerto">Ordenar por Taxa de Acerto</a>
+        }
+
 
     </div>
-    
-}
+
+</div>
+<div class="listaItens-box">
+
+
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="listaItens">
+
+
+            <h3>@item.NomeMateria</h3>
+
+
+
+
+            <p class="listaItens-HistoricoMateria"><strong>Quantidade de Questões</strong>
+                @item.QuantidadeQuestoesRespondidas</p>
+            <p class="listaItens-HistoricoMateria"> <strong>Acertos</strong> @item.QuantidadeQuestoesCorretas</p>
+            <p class="listaItens-HistoricoMateria"><strong>Erros</strong> @item.QuantidadeQuestoesErradas</p>
+            <p class="listaItens-HistoricoMateria"><strong>Taxa de Aproveitamento</strong> @item.PorcentagemAcerto
+            </p>
+
+
+            <div class="listaItensIcones-Box">
+                <a asp-action="procurarPorMateria" asp-controller="ListaRegistros" asp-route-materia="@item.NomeMateria"><i
+                        class="fa-solid fa-rotate-left listaItensIcones listaItensIcones"></i></a>
+
+                <a asp-action="ProcurarPorTipo" asp-controller="ListaExercicios" asp-route-tipo="@item.NomeMateria"><i
+                        class="fa-solid fa-fire-flame-curved listaItensIcones"></i></a>
+
+            </div>
+
+        </div>
+
+    }
 
 
 </div>
