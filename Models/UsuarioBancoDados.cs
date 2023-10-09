@@ -15,9 +15,7 @@ namespace ResolverQuestao.Models
 
         public string Email { get; set; } = "sem email";
 
-        public string Profissao { get; set; }
-
-        public string Objetivo { get; set; }
+        public double MetaMedia { get; set; }
 
          public string MediaGeral { get; set; } = "nulo";
 

@@ -1,27 +1,30 @@
 @model UsuarioBancoDados
 
-@* Nome *@
-
-@Html.LabelFor(model => model.Nome)
-
-@Html.TextBoxFor(model => model.Nome)
+<div class="perfilBox">
 
 
-@* email *@
+    <h4>Nome</h4>
+    <p>
+        @Model.Nome
+    </p>
+   
+    <h4>Email</h4>
 
-@Html.LabelFor(model => model.Email)
+    <p>
+        @Model.Email
+    </p>
 
-@Html.TextBoxFor(model => model.Email)
+<h4>Meta de Media</h4>
+    <p>
+        @Model.MetaMedia.ToString() %
+    </p>
 
-@* Profissao *@
+<h4>Media Atual</h4>
+    <p>
+        100 %
+    </p>
 
-@Html.LabelFor(model => model.Profissao)
+    <a asp-action="EditarPerfil" class="btn btn-primary">Editar</a>
 
-@Html.TextBoxFor(model => model.Profissao)
 
-@* Objetivos *@
-
-@Html.LabelFor(model => model.Objetivo)
-
-@Html.TextBoxFor(model => model.Objetivo)
-
+</div>
