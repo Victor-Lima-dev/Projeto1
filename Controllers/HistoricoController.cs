@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -99,8 +100,6 @@ namespace ResolverQuestao.Controllers
 
                 historicoMateria.UltimaDataResposta = ultimaData;
 
-
-
                 listaHistoricoMateria.Add(historicoMateria);
             }
             //inverter a lista para que a materia mais recente apareça primeiro
@@ -128,6 +127,35 @@ namespace ResolverQuestao.Controllers
                     // code to handle all other cases
                     break;
             }
+
+            Guid id = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+
+            var usuario = _context.UsuarioBancoDados.FirstOrDefault(u => u.UsuarioGuidId == id);
+
+            var metaUsuario = usuario.MetaMedia;
+
+            ViewBag.MetaUsuario = metaUsuario;
+
+            var MediaGeral = 0;
+
+            foreach (var item in listaHistoricoMateria)
+            {
+                MediaGeral += int.Parse(item.PorcentagemAcerto.Replace("%", ""));
+            }
+
+            MediaGeral = MediaGeral / listaHistoricoMateria.Count();
+
+            ViewBag.MediaGeral = MediaGeral;
+
+            var totalExercicio = 0;
+
+            foreach (var item in listaHistoricoMateria)
+            {
+                totalExercicio += item.QuantidadeQuestoesRespondidas;
+            }
+
+            ViewBag.TotalExercicio = totalExercicio;
 
         
             return View(listaHistoricoMateria);
