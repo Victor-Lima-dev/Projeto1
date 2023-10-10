@@ -144,7 +144,7 @@ namespace ResolverQuestao.Controllers
                 MediaGeral += int.Parse(item.PorcentagemAcerto.Replace("%", ""));
             }
 
-            MediaGeral = MediaGeral / listaHistoricoMateria.Count();
+            MediaGeral /= listaHistoricoMateria.Count();
 
             ViewBag.MediaGeral = MediaGeral;
 

@@ -42,6 +42,23 @@ namespace ResolverQuestao.Controllers
             //invertendo a lista para mostrar os ultimos registros primeiro
             registrosUsuario.Reverse();
 
+            
+            double todosAcertos = 0;
+
+            double todosErros = 0;
+
+            foreach(var registro in registrosUsuario)
+            {
+                todosAcertos += registro.Acertos;
+                todosErros += registro.Erros;
+            }
+
+            double total = todosAcertos + todosErros;
+
+            double media = todosAcertos / total;
+
+
+                 ViewBag.Media = media.ToString("00" + "%");
 
   
             return View(registrosUsuario);
@@ -69,6 +86,23 @@ namespace ResolverQuestao.Controllers
             //invertendo a lista para mostrar os ultimos registros primeiro
             registrosTipo.Reverse();
 
+        double todosAcertos = 0;
+
+            double todosErros = 0;
+
+            foreach(var registro in registrosTipo)
+            {
+                todosAcertos += registro.Acertos;
+                todosErros += registro.Erros;
+            }
+
+            double total = todosAcertos + todosErros;
+
+            double media = todosAcertos / total;
+
+
+                ViewBag.Media = media.ToString("00" + "%");
+
             return View("Index", registrosTipo);
         }
 
@@ -92,6 +126,23 @@ namespace ResolverQuestao.Controllers
             //invertendo a lista para mostrar os ultimos registros primeiro
             registrosData.Reverse();
 
+       double todosAcertos = 0;
+
+            double todosErros = 0;
+
+            foreach(var registro in registrosData)
+            {
+                todosAcertos += registro.Acertos;
+                todosErros += registro.Erros;
+            }
+
+            double total = todosAcertos + todosErros;
+
+            double media = todosAcertos / total;
+
+
+                 ViewBag.Media = media.ToString("00" + "%");
+
             return View("Index", registrosData);
         }
 
@@ -112,8 +163,25 @@ namespace ResolverQuestao.Controllers
     
               //invertendo a lista para mostrar os ultimos registros primeiro
               registrosMateria.Reverse();
+
+         double todosAcertos = 0;
+
+            double todosErros = 0;
+
+            foreach(var registro in registrosMateria)
+            {
+                todosAcertos += registro.Acertos;
+                todosErros += registro.Erros;
+            }
+
+            double total = todosAcertos + todosErros;
+
+            double media = todosAcertos / total;
+
+
+                 ViewBag.Media = media.ToString("00" + "%");
     
-              return View("Index", registrosMateria);
+            return View("Index", registrosMateria);
 
        }
 
