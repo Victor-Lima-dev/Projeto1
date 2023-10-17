@@ -60,9 +60,17 @@ namespace ResolverQuestao.Controllers
 
                  ViewBag.Media = media.ToString("00" + "%");
 
+             //contar a quantidade de exercicios totais
+
+      
+
+             ViewBag.QuantidadeExercicios = total.ToString();
+             ViewBag.TodosAcertos = todosAcertos.ToString();
+             ViewBag.TodosErros = todosErros.ToString(); 
+
   
             return View(registrosUsuario);
-
+ 
       
         }
 
@@ -102,6 +110,11 @@ namespace ResolverQuestao.Controllers
 
 
                 ViewBag.Media = media.ToString("00" + "%");
+                
+             ViewBag.QuantidadeExercicios = total.ToString();
+             ViewBag.TodosAcertos = todosAcertos.ToString();
+             ViewBag.TodosErros = todosErros.ToString(); 
+
 
             return View("Index", registrosTipo);
         }
@@ -142,6 +155,11 @@ namespace ResolverQuestao.Controllers
 
 
                  ViewBag.Media = media.ToString("00" + "%");
+                 
+             ViewBag.QuantidadeExercicios = total.ToString();
+             ViewBag.TodosAcertos = todosAcertos.ToString();
+             ViewBag.TodosErros = todosErros.ToString(); 
+
 
             return View("Index", registrosData);
         }
@@ -180,6 +198,11 @@ namespace ResolverQuestao.Controllers
 
 
                  ViewBag.Media = media.ToString("00" + "%");
+                 
+             ViewBag.QuantidadeExercicios = total.ToString();
+             ViewBag.TodosAcertos = todosAcertos.ToString();
+             ViewBag.TodosErros = todosErros.ToString(); 
+
     
             return View("Index", registrosMateria);
 

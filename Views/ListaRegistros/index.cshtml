@@ -1,115 +1,131 @@
 @model List<ListaRegistro>
 
-    @{
-        var tipos = new List<string>();
-        foreach (var item in Model)
-        {
-            tipos.Add(item.TituloLista);
-        }
+@{
+    var tipos = new List<string>();
+    foreach (var item in Model)
+    {
+        tipos.Add(item.TituloLista);
+    }
 
     var materias = Model.Select(r => r.ListaExercicio.Tipo).Distinct().ToList();
-    }
+}
 
-    <div class="container feedbacks">
+<div class="container feedbacks">
 
-        <h1>Historico</h1>
-        <h4>@ViewBag.Media</h4>
+    <h1>Histórico</h1>
+    <div class="feedbacks-resumo">
+        <div>
 
-     <div class="input-group">
-                <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
-                <select class="form-control" id="tipo" name="tipo" onchange="window.location.href=this.value">
-                    <option value="">Procurar por Lista</option>
-                    @foreach (var tipo in tipos.Distinct())
-                    {
-                        <option value="@Url.Action("ProcurarPorTipo", "ListaRegistros", new {tipo = tipo})"> @tipo
-                        </option>
-                    }
-                </select>
-            </div> 
-
-             <div class="input-group">
-                <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
-                <select class="form-control" id="materia" name="materia" onchange="window.location.href=this.value">
-                    <option value="">Procurar por Materia</option>
-                    @foreach (var materia in materias.Distinct())
-                    {
-                        <option value="@Url.Action("procurarPorMateria", "ListaRegistros", new {materia = materia})"> @materia
-                        </option>
-                    }
-                </select>
-            </div> 
-<div>
-
-    @* selecionar por data *@
-
-    <form asp-action="ProcurarPorData" method="get">
-        <div class="input-group">
-            <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
-            <input type="date" class="form-control" id="data" name="data" />
-            <input type="submit" value="Procurar" class="btn btn-primary" />
+            <h4>Exercicios @ViewBag.QuantidadeExercicios</h4>
         </div>
-    </form>
 
-      <a asp-action="Index" class="btn btn-primary">Limpar Pesquisa</a>
+        <div>
 
-      <div class="listaItens-box">
+            <h4>Acertos: @ViewBag.TodosAcertos</h4>
+        </div>
+        <div>
+            <h4>Erros: @ViewBag.TodosErros</h4>
+        </div>
+        <div>
+            <h4>Media: @ViewBag.Media</h4>
+        </div>
+    </div>
 
-
-      
-    @foreach (var item in Model)
-    {
-        <div class="registroItens">
-            <h4>
-                @item.TituloLista
-            </h4>
-            <p>
-                Acertos
-                @item.Acertos
-            </p>
-
-            <p>
-                Erros
-                @item.Erros
-            </p>
-
-            <p class="listaItensTipo">
-                @item.DataRegistro
-            </p>
-
-            @{
-                var aproveitamento = (item.Acertos * 100) / (item.Acertos + item.Erros);
-            }
-
-            @if (aproveitamento < 75)
+    <div class="input-group">
+        <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+        <select class="form-control" id="tipo" name="tipo" onchange="window.location.href=this.value">
+            <option value="">Procurar por Lista</option>
+            @foreach (var tipo in tipos.Distinct())
             {
-
-            <P style="color: red !important;">
-            
-                Aproveitamento
-                @aproveitamento%
-            </P>
-
+                <option value="@Url.Action("ProcurarPorTipo", "ListaRegistros", new {tipo = tipo})"> @tipo
+                </option>
             }
+        </select>
+    </div>
 
-            else
+    <div class="input-group">
+        <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+        <select class="form-control" id="materia" name="materia" onchange="window.location.href=this.value">
+            <option value="">Procurar por Materia</option>
+            @foreach (var materia in materias.Distinct())
             {
-                  <P style="color: green !important;">
-            
-                Aproveitamento
-                @aproveitamento%
-            </P>
+                <option value="@Url.Action("procurarPorMateria", "ListaRegistros", new {materia = materia})"> @materia
+                </option>
             }
-        
+        </select>
+    </div>
+    <div>
 
-        <form asp-action="Delete" method="post">
-            <input type="hidden" name="id" value="@item.ListaRegistroId" />
-            <input type="submit" value="Delete" class="btn btn-danger" />
+        @* selecionar por data *@
+
+        <form asp-action="ProcurarPorData" method="get">
+            <div class="input-group">
+                <div class="input-group-text"><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
+                <input type="date" class="form-control" id="data" name="data" />
+                <input type="submit" value="Procurar" class="btn btn-primary" />
+            </div>
         </form>
 
+        <a asp-action="Index" class="btn btn-primary">Limpar Pesquisa</a>
+
+        <div class="listaItens-box">
+
+
+
+            @foreach (var item in Model)
+            {
+                <div class="registroItens">
+                    <h4>
+                        @item.TituloLista
+                    </h4>
+                    <p>
+                        Acertos
+                        @item.Acertos
+                    </p>
+
+                    <p>
+                        Erros
+                        @item.Erros
+                    </p>
+
+                    <p class="listaItensTipo">
+                        @item.DataRegistro
+                    </p>
+
+                    @{
+                        var aproveitamento = (item.Acertos * 100) / (item.Acertos + item.Erros);
+                    }
+
+                    @if (aproveitamento < 75)
+                    {
+
+                        <P style="color: red !important;">
+
+                            Aproveitamento
+                            @aproveitamento%
+                        </P>
+
+                    }
+
+                    else
+                    {
+                        <P style="color: green !important;">
+
+                            Aproveitamento
+                            @aproveitamento%
+                        </P>
+                    }
+
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" name="id" value="@item.ListaRegistroId" />
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </form>
+
+                </div>
+            }
         </div>
-    }
-  </div>
 
 
-      </div>
+    </div>
 </div>
