@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ResolverQuestao.Context;
 using ResolverQuestao.Models;
@@ -31,27 +32,9 @@ namespace ResolverQuestao.Controllers
         [HttpGet("Index")]
         public IActionResult Index()
         {
-            //deixar uma lista com os exercicios
-            var exercicios = _context.Exercicios.ToList();
-
-            //pegar os exercicios do usuario logado
-
-            var exerciciosUsuario = new List<Exercicio>();
-
-            exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
-
-            //inverter lista
-            exerciciosUsuario.Reverse();
-
-            var tipos = new List<string>();
-
-            foreach (var exercicio in exerciciosUsuario)
-            {
-                if (!tipos.Contains(exercicio.Tipo))
-                {
-                    tipos.Add(exercicio.Tipo);
-                }
-            }
+      
+            var exerciciosUsuario = ExerciciosUsuario().Result;
+            var tipos = ListaTiposUsuario(exerciciosUsuario);
 
 
             var viewModel = new IndexExerciciosViewModel
@@ -79,8 +62,12 @@ namespace ResolverQuestao.Controllers
         public IActionResult Create(Exercicio exercicio)
         {
 
+            //verificar se existe um usuario logado
 
-            //colocar o id do usuario logado no exercicio
+            if (User?.Identity?.Name == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             exercicio.UsuarioId = User.Identity.Name;
 
@@ -178,6 +165,13 @@ namespace ResolverQuestao.Controllers
             //buscar o exercicio no banco de dados
             var exercicio = _context.Exercicios.FirstOrDefault(e => e.ExercicioId == id);
 
+            //verificar se o exercicio existe
+
+            if (exercicio == null)
+            {
+                return NotFound();
+            }
+
             //apagar o exercicio
             _context.Exercicios.Remove(exercicio);
             _context.SaveChanges();
@@ -265,27 +259,12 @@ namespace ResolverQuestao.Controllers
         [HttpGet("ProcurarPorTipo")]
         public IActionResult ProcurarPorTipo(string tipo)
         {
-            //pegar a lista de exercicios do usuario
-            var exercicios = _context.Exercicios.ToList();
+            
+            var exerciciosUsuario = ExerciciosUsuario().Result;
+            var tipos = ListaTiposUsuario(exerciciosUsuario);
 
-            //pegar os exercicios do usuario logado
-
-            var exerciciosUsuario = new List<Exercicio>();
-
-            exerciciosUsuario = exercicios.Where(e => e.UsuarioId == User.Identity.Name).ToList();
-
-            //pegar os exercicios do tipo selecionado
+ 
             var exerciciosTipo = exerciciosUsuario.Where(e => e.Tipo == tipo).ToList();
-
-              var tipos = new List<string>();
-
-            foreach (var exercicio in exerciciosUsuario)
-            {
-                if (!tipos.Contains(exercicio.Tipo))
-                {
-                    tipos.Add(exercicio.Tipo);
-                }
-            }
 
 
             var viewModel = new IndexExerciciosViewModel
@@ -299,6 +278,44 @@ namespace ResolverQuestao.Controllers
         }
 
 
+        private async Task<List<Exercicio>> ExerciciosUsuario()
+        {
+            //pegar a lista de exercicios do usuario
+            var exercicios = await _context.Exercicios.ToListAsync();
+
+            var UsuarioId = UsuarioLogado();
+
+            //pegar os exercicios do usuario logado
+            var exerciciosUsuario = exercicios.Where(e => e.UsuarioId == UsuarioId).ToList();
+
+            return exerciciosUsuario;
+        }
+
+
+        private List<string> ListaTiposUsuario(List<Exercicio> exerciciosUsuario)
+        {
+            var tipos = new List<string>();
+
+            foreach (var exercicio in exerciciosUsuario)
+            {
+                if (!tipos.Contains(exercicio.Tipo))
+                {
+                    tipos.Add(exercicio.Tipo);
+                }
+            }
+
+            return tipos;
+        }
+     
+
+        private string UsuarioLogado()
+        {
+            var UsuarioId = User?.Identity?.Name;
+
+            //como funciona o ?? -> se o UsuarioId for nulo, retorna uma string vazia, se nao, retorna o proprio UsuarioId
+
+            return UsuarioId ?? "";
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -47,12 +47,9 @@ public class HomeController : Controller
         if (listaRegistros.Count == 0)
         {
             //enviar uma viewBag mostrando que nao tem nehuma lista respondida
-
             ViewBag.NenhumaListaRespondida = true;
             return View(homeViewModel);
         }
-
-
 
         var listaExerciciosRespondidos = new List<ListaExercicio>();
 
